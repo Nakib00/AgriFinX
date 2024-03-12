@@ -22,7 +22,7 @@
                     </li>
 
                     <li class="footer-menu-item">
-                        <a href="#" class="footer-menu-link">Become a volunteer</a>
+                        <a href="#" class="footer-menu-link">Become a Investor</a>
                     </li>
 
                     <li class="footer-menu-item">
@@ -38,21 +38,21 @@
                     <i class="bi-telephone me-2"></i>
 
                     <a href="tel: 120-240-9600" class="site-footer-link">
-                        120-240-9600
+                        01627199815
                     </a>
                 </p>
 
                 <p class="text-white d-flex">
                     <i class="bi-envelope me-2"></i>
 
-                    <a href="mailto:info@yourgmail.com" class="site-footer-link">
-                        donate@charity.org
+                    <a href="agrifinx@gmail.com" class="site-footer-link">
+                        agrifinx@gmail.com
                     </a>
                 </p>
 
                 <p class="text-white d-flex mt-3">
                     <i class="bi-geo-alt me-2"></i>
-                    Akershusstranda 20, 0150 Oslo, Norway
+                    Bashundhara 1229, Dhaka, Bangladesh
                 </p>
 
                 <a href="#" class="custom-btn btn mt-3">Get Direction</a>
@@ -65,8 +65,7 @@
             <div class="row">
                 <div class="col-lg-6 col-md-7 col-12">
                     <p class="copyright-text mb-0">
-                        Copyright © 2036 <a href="#">Kind Heart</a> Charity Org. Design:
-                        <a href="https://templatemo.com" target="_blank">TemplateMo</a>
+                        Copyright © 2024 <a href="#">Napver</a>
                     </p>
                 </div>
 
@@ -98,7 +97,7 @@
     </div>
 </footer>
 
-<!-- JAVASCRIPT FILES -->
+{{--  <!-- JAVASCRIPT FILES -->  --}}
 <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
 <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('assets/js/jquery.sticky.js') }}"></script>

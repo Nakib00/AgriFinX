@@ -6,7 +6,7 @@
                     <h2>Get in touch</h2>
 
                     <div class="contact-image-wrap d-flex flex-wrap">
-                        <img src="{{ asset('assets/images/avatar/pretty-blonde-woman-wearing-white-t-shirt.jpg')}}"
+                        <img src="{{ asset('assets/images/avatar/pretty-blonde-woman-wearing-white-t-shirt.jpg') }}"
                             class="img-fluid avatar-image" alt="" />
 
                         <div class="d-flex flex-column justify-content-center ms-3">
@@ -20,19 +20,19 @@
 
                         <p class="d-flex mb-2">
                             <i class="bi-geo-alt me-2"></i>
-                            Akershusstranda 20, 0150 Oslo, Norway
+                            Bashundhara 1229, Dhaka, Bangladesh
                         </p>
 
                         <p class="d-flex mb-2">
                             <i class="bi-telephone me-2"></i>
 
-                            <a href="tel: 120-240-9600"> 120-240-9600 </a>
+                            <a href="tel: 120-240-9600"> 01627199815 </a>
                         </p>
 
                         <p class="d-flex">
                             <i class="bi-envelope me-2"></i>
 
-                            <a href="mailto:info@yourgmail.com"> donate@charity.org </a>
+                            <a href="agrifinx@gmail.com"> agrifinx@gmail.com </a>
                         </p>
 
                         <a href="#" class="custom-btn btn mt-3">Get Direction</a>
