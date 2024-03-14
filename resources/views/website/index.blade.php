@@ -66,7 +66,7 @@
 
                 <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0">
                     <div class="featured-block d-flex justify-content-center align-items-center">
-                        <a href="donate.html" class="d-block">
+                        <a href="{{ route('mindex') }}" class="d-block">
                             <img src="{{ asset('assets/images/icons/hands.png') }}" style="width: 50%"
                                 class="featured-block-image img-fluid" alt="" />
 
@@ -79,7 +79,7 @@
 
                 <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0 mb-md-4">
                     <div class="featured-block d-flex justify-content-center align-items-center">
-                        <a href="donate.html" class="d-block">
+                        <a href="{{ route('iindex') }}" class="d-block">
                             <img src="{{ asset('assets/images/icons/heart.png') }}" style="width: 50%"
                                 class="featured-block-image img-fluid" alt="" />
 
@@ -92,12 +92,12 @@
 
                 <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0 mb-md-4">
                     <div class="featured-block d-flex justify-content-center align-items-center">
-                        <a href="donate.html" class="d-block">
+                        <a href="{{ route('agropindex') }}" class="d-block">
                             <img src="{{ asset('assets/images/icons/receive.png') }}" style="width: 50%"
                                 class="featured-block-image img-fluid" alt="" />
 
                             <p class="featured-block-text">
-                                Agri <strong>Project</strong>
+                                Agro <strong>Project</strong>
                             </p>
                         </a>
                     </div>
@@ -105,7 +105,7 @@
 
                 <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0">
                     <div class="featured-block d-flex justify-content-center align-items-center">
-                        <a href="donate.html" class="d-block">
+                        <a href="{{ route('sindex') }}" class="d-block">
                             <img src="{{ asset('assets/images/icons/scholarship.png') }}" style="width: 50%"
                                 class="featured-block-image img-fluid" alt="" />
 
@@ -316,7 +316,7 @@
                 </div>
             </div>
             <div class="col-lg-5 col-md-5 col-12 m-auto mt-4">
-                <a class="nav-link custom-btn custom-border-btn btn" href="donate.html">See more</a>
+                <a class="nav-link custom-btn custom-border-btn btn" href="{{ route('agropindex') }}">See more</a>
             </div>
         </div>
     </section>
@@ -387,7 +387,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-12 mx-auto">
-                    <h2 class="mb-lg-3">Happy Customers</h2>
+                    <h2 class="mb-lg-3">Happy Farmers</h2>
 
                     <div id="testimonial-carousel" class="carousel carousel-fade slide" data-bs-ride="carousel">
                         <div class="carousel-inner">

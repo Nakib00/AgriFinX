@@ -1,18 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\{appsfunctioncontroller};
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
 
 Route::get('/', function () {
     return view('website.index');
 });
+
+Route::get('/microloan',[appsfunctioncontroller::class, 'mindex'])->name('mindex');
+Route::get('/incurance',[appsfunctioncontroller::class, 'iindex'])->name('iindex');
+Route::get('/agroproject',[appsfunctioncontroller::class, 'agropindex'])->name('agropindex');
+Route::get('/subsides',[appsfunctioncontroller::class, 'sindex'])->name('sindex');
