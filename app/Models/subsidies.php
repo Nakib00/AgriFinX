@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class cropproject extends Model
+class subsidies extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'farmer_id', 'project_name', 'description', 'launch_date', 'end_date', 'farm_size', 'corp_quality', 'pesticide_cost', 'labour_cost', 'funding_status'
+        'farmer_id', 'reason_of_taking_subsidies', 'amount', 'farm_size', 'approvel_status'
     ];
 
     // Define relationships if needed

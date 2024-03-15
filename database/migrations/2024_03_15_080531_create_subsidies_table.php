@@ -11,18 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('cropprojects', function (Blueprint $table) {
+        Schema::create('subsidies', function (Blueprint $table) {
             $table->id();
             $table->foreignId('farmer_id')->constrained('farmers');
-            $table->string('project_name');
-            $table->longText('description');
-            $table->date('launch_date');
-            $table->date('end_date');
+            $table->longText('reason_of_taking_subsidies');
             $table->string('farm_size');
-            $table->string('corp_quality');
-            $table->string('pesticide_cost');
-            $table->string('labour_cost');
-            $table->boolean('funding_status');
+            $table->string('amount');
+            $table->boolean('approvel_status');
             $table->timestamps();
         });
     }
@@ -32,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('cropprojects');
+        Schema::dropIfExists('subsidies');
     }
 };
