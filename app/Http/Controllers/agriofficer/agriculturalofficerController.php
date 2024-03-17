@@ -18,13 +18,13 @@ class agriculturalofficerController extends Controller
     public function index()
     {
         return view('website.users.agri_officer.main');
-    }
+    } //end
     //dashboard
     public function dashboard()
     {
 
         return view('website.users.agri_officer.deashboad');
-    }
+    } //end
     // login
     public function login(Request $request)
     {
@@ -35,7 +35,7 @@ class agriculturalofficerController extends Controller
         } else {
             return back()->with('error', 'Invalid password and email');
         }
-    }
+    } //end
 
     //Register
     public function register(Request $request)
@@ -73,7 +73,7 @@ class agriculturalofficerController extends Controller
         ]);
 
         return redirect()->route('agri_officer.dashboard')->with('success', 'Agri officer account created successfully.');
-    }
+    } //end
 
     //logout
     public function logout()
@@ -81,5 +81,5 @@ class agriculturalofficerController extends Controller
         Auth::guard('agricultural_officer')->logout();
 
         return redirect()->route('login_agri_officer')->with('success', 'Agri officer logout successfully.');
-    }
+    } //end
 }
