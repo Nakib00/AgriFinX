@@ -1,0 +1,72 @@
+/* Dashboard css stert */
+.sidebar {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar h4 {
+    color: #333;
+}
+
+.sidebar p {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.list-group-item {
+    border: none;
+    padding: 10px 15px;
+}
+
+.list-group-item a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.dashboard-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-content h1 {
+    color: #333;
+}
+/* Dashboard css end */
+
+/* login register css stirt */
+.form-container {
+    max-width: 400px;
+    margin: 0 auto;
+    margin-top: 50px;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-container h2 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.form-container form .form-group label {
+    font-weight: bold;
+}
+
+.form-container form .form-group input {
+    border-radius: 20px;
+}
+
+.form-container form .btn-primary {
+    border-radius: 20px;
+    width: 100%;
+}
+
+.form-container p {
+    text-align: center;
+}
+/* login register css end */

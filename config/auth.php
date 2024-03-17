@@ -40,6 +40,22 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'farmer' => [
+            'driver' => 'session',
+            'provider' => 'farmers',
+        ],
+        'agricultural_officer' => [
+            'driver' => 'session',
+            'provider' => 'agricultural_officers',
+        ],
+        'flnancial_group' => [
+            'driver' => 'session',
+            'provider' => 'flnancial_groups',
+        ],
+        'investor' => [
+            'driver' => 'session',
+            'provider' => 'investors',
+        ],
     ],
 
     /*
@@ -64,11 +80,22 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
-
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'farmers' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\farmer::class,
+        ],
+        'agricultural_officers' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\agricultural_officer::class,
+        ],
+        'flnancial_groups' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\flnancial_group::class,
+        ],
+        'investors' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\investor::class,
+        ],
     ],
 
     /*

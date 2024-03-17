@@ -10,10 +10,12 @@
 
     <title>AgriFinx</title>
 
-    <!-- CSS FILES -->
+    {{--  <!-- CSS FILES -->  --}}
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" />
 
     <link href="{{ asset('assets/css/bootstrap-icons.css') }}" rel="stylesheet" />
 
     <link href="{{ asset('assets/css/templatemo-kind-heart-charity.css') }}" rel="stylesheet" />
+
+    <link href="{{ asset('assets/css/app.css') }}" rel="stylesheet" />
 </head>

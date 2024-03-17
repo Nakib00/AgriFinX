@@ -44,8 +44,8 @@
 
     <nav class="navbar navbar-expand-lg bg-light shadow-lg">
         <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <img src="assets/images/logo.png" class="logo img-fluid" alt="Kind Heart Charity" />
+            <a class="navbar-brand" href="/">
+                <img src="{{ asset('assets/images/logo.png') }}" class="logo img-fluid" alt="Kind Heart Charity" />
                 <span>
                     AgriFinx
                     <small>Empowering Agriculture through Financial Innovation</small>
@@ -60,7 +60,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link click-scroll" href="#top">Home</a>
+                        <a class="nav-link click-scroll" href="/">Home</a>
                     </li>
 
                     <li class="nav-item">
@@ -86,7 +86,7 @@
                             </li>
 
                             <li>
-                                <a class="dropdown-item" href="news-detail.html">Agri organization</a>
+                                <a class="dropdown-item" href="{{ route('login_agri_officer') }}">Agri organization</a>
                             </li>
                         </ul>
                     </li>
