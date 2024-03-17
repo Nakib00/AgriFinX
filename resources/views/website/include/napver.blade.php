@@ -94,6 +94,9 @@
                     <li class="nav-item">
                         <a class="nav-link click-scroll" href="#section_6">Contact</a>
                     </li>
+                    {{--  <li class="nav-item">
+                        <a class="nav-link click-scroll" href="{{ route('agri_officer.dashboard') }}">Dashboard</a>
+                    </li>  --}}
 
                     {{--  <li class="nav-item ms-3">
                         <a class="nav-link custom-btn custom-border-btn btn" href="donate.html">Donate</a>

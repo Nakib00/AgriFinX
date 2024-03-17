@@ -26,8 +26,6 @@ Route::prefix('agriculture_office')->group(function(){
     Route::post('/register',[agriculturalofficerController::class, 'register'])->name('agri_officer.register');
     Route::get('/logout',[agriculturalofficerController::class, 'logout'])->name('agri_officer.logout');
 });
-
-
 // agriculture office route end
 
 
