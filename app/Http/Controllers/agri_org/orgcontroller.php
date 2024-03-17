@@ -70,6 +70,7 @@ class orgcontroller extends Controller
         $org_type = $request->Orgnization_type;
 
         if (Auth::guard('flnancial_group')->attempt(['email' => $check['email'], 'password' => $check['password'], 'orgnization_type' => $check['Orgnization_type']])) {
+            // open dashboard by user type
             if ($org_type == 'loan_provider') {
                 return view('website.users.agri_org.loan_provider.deashboad')->with('success', 'Loan provider login successfully');
             } elseif ($org_type == 'investing_organization') {
