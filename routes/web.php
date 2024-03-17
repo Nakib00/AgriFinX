@@ -39,10 +39,9 @@ Route::prefix('agriculture_office')->group(function () {
         //end
     });
 });
-
 // agriculture office route end
 
-// agriculture office route start
+// flnancial_groups route start
 Route::prefix('flnancial_groups')->group(function () {
     // login and register
     Route::get('/login', [orgcontroller::class, 'index'])->name('login_org');
@@ -61,7 +60,7 @@ Route::prefix('flnancial_groups')->group(function () {
         //end
     });
 });
-// agriculture office route end
+// flnancial_groups route end
 
 
 // admin routes start
