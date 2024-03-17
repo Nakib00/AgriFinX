@@ -1,7 +1,9 @@
 <?php
 
-use App\Http\Controllers\{ProfileController,appsfunctioncontroller,agriculturalofficerController};
+use App\Http\Controllers\{ProfileController,appsfunctioncontroller};
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\agriofficer\agriculturalofficerController;
+
 
 // index page route start
 Route::get('/', function () {
