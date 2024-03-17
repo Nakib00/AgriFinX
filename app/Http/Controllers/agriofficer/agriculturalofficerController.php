@@ -82,4 +82,51 @@ class agriculturalofficerController extends Controller
 
         return redirect()->route('login_agri_officer')->with('success', 'Agri officer logout successfully.');
     } //end
+
+    // edit profile
+    public function editprofile()
+    {
+        $user = auth()->guard('agricultural_officer')->user();
+        return view('website.users.agri_officer.editprofile', compact('user'));
+    } //end
+
+    //update profile
+    public function updateprofile(Request $request)
+    {
+        $user = auth()->guard('agricultural_officer')->user();
+        $id = $user->id;
+
+        // Validate input
+        $request->validate([
+            'f_name' => 'required|string|max:255',
+            'l_name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:agricultural_officers,email,',
+            'phone' => 'required|string|max:15',
+            'address' => 'required|string|max:255',
+            'dateofbirth' => 'required|date',
+            'password' => 'nullable|string|min:8|confirmed',
+        ]);
+
+        // Find the team by ID
+        $agriofficer = agricultural_officer::findOrFail($id);
+
+        // Update user data
+        $agriofficer->f_name = $request->input('f_name');
+        $agriofficer->l_name = $request->input('l_name');
+        $agriofficer->email = $request->input('email');
+        $agriofficer->phone = $request->input('phone');
+        $agriofficer->address = $request->input('address');
+        $agriofficer->dateofbirth = $request->input('dateofbirth');
+
+        // Save the changes to the user object
+        $agriofficer->save();
+
+        return redirect()->back()->with('success', 'Profile updated successfully.');
+    } //end
+
+    // try
+    public function button()
+    {
+        return view('website.users.agri_officer.button');
+    }
 }
