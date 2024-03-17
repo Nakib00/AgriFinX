@@ -18,12 +18,6 @@ class orgcontroller extends Controller
         return view('website.users.agri_org.main');
     } //end
 
-    // //dashboard
-    // public function dashboard()
-    // {
-    //     return view('website.users.agri_org.deashboad');
-    // } //end
-
     //Register
     public function register(Request $request)
     {

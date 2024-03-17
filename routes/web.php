@@ -25,14 +25,21 @@ Route::prefix('agriculture_office')->group(function () {
     // login and register
     Route::get('/login', [agriculturalofficerController::class, 'index'])->name('login_agri_officer');
     Route::post('/login/owner', [agriculturalofficerController::class, 'login'])->name('agri_officer.login');
-    // Route::get('/dashboard', [agriculturalofficerController::class, 'dashboard'])->name('agri_officer.dashboard');
     Route::post('/register', [agriculturalofficerController::class, 'register'])->name('agri_officer.register');
     Route::get('/logout', [agriculturalofficerController::class, 'logout'])->name('agri_officer.logout');
-    Route::get('/edit', [AgriculturalOfficerController::class, 'editprofile'])->name('agri_officer.profile.edit');
-    Route::put('/update', [AgriculturalOfficerController::class, 'updateprofile'])->name('agri_officer.profile.update');
     //end
-    Route::get('/button', [agriculturalofficerController::class, 'button'])->name('agri_officer.button');
+    Route::middleware('agricultural_officer')->group(function () {
+        //Dashboard routes start
+        Route::prefix('dashboard')->group(function () {
+            Route::get('/', [agriculturalofficerController::class, 'dashboard'])->name('agri_officer.dashboard');
+            Route::get('/edit', [AgriculturalOfficerController::class, 'editprofile'])->name('agri_officer.profile.edit');
+            Route::put('/update', [AgriculturalOfficerController::class, 'updateprofile'])->name('agri_officer.profile.update');
+            Route::get('/button', [agriculturalofficerController::class, 'button'])->name('agri_officer.button');
+        });
+        //end
+    });
 });
+
 // agriculture office route end
 
 // agriculture office route start
@@ -40,13 +47,19 @@ Route::prefix('flnancial_groups')->group(function () {
     // login and register
     Route::get('/login', [orgcontroller::class, 'index'])->name('login_org');
     Route::post('/login/owner', [orgcontroller::class, 'login'])->name('org.login');
-    Route::get('/dashboard', [orgcontroller::class, 'dashboard'])->name('org.dashboard');
     Route::post('/register', [orgcontroller::class, 'register'])->name('org.register');
     Route::get('/logout', [orgcontroller::class, 'logout'])->name('org.logout');
-    Route::get('/edit', [orgcontroller::class, 'editprofile'])->name('org.profile.edit');
-    Route::put('/update', [orgcontroller::class, 'updateprofile'])->name('org.profile.update');
+
     //end
-    Route::get('/button', [orgcontroller::class, 'button'])->name('org.button');
+    Route::middleware('financial_group')->group(function () {
+        //Dashboard routes start
+        Route::prefix('dashboard')->group(function () {
+            Route::get('/edit', [orgcontroller::class, 'editprofile'])->name('org.profile.edit');
+            Route::put('/update', [orgcontroller::class, 'updateprofile'])->name('org.profile.update');
+            Route::get('/button', [orgcontroller::class, 'button'])->name('org.button');
+        });
+        //end
+    });
 });
 // agriculture office route end
 
