@@ -19,12 +19,14 @@ class agriculturalofficerController extends Controller
     {
         return view('website.users.agri_officer.main');
     } //end
+
     //dashboard
     public function dashboard()
     {
 
         return view('website.users.agri_officer.deashboad');
     } //end
+
     // login
     public function login(Request $request)
     {
@@ -45,7 +47,7 @@ class agriculturalofficerController extends Controller
             'f_name' => 'required',
             'l_name' => 'required',
             'email' => 'required|email|unique:agricultural_officers,email',
-            'password' => 'required|min:8|confirmed',
+            'password' => 'required|min:8',
         ]);
 
         // Check if validation fails

@@ -4,12 +4,12 @@
     @include('website.include.alirt')
     <section class="section-padding" id="section_3">
         <div class="container">
-            <h1 class="text-center">Agricultural Officer</h1>
+            <h1 class="text-center">Agricultural Organization</h1>
 
             {{--  Registration  --}}
             <div class="form-container" id="registerForm" style="display:none;">
                 <h2>Register</h2>
-                <form action="{{ route('agri_officer.register') }}" method="POST">
+                <form action="{{ route('org.register') }}" method="POST">
                     @csrf
                     <div class="form-group">
                         <label for="firstName">First Name:</label>
@@ -27,6 +27,16 @@
                         <label for="password">Password:</label>
                         <input type="password" class="form-control" name="password" placeholder="Enter password" required>
                     </div>
+
+                    <div class="form-group">
+                        <label for="category">Organization Type:</label>
+                        <select class="form-control" name="Orgnization_type" required>
+                            <option value="" disabled selected>Select Organization Type</option>
+                            <option value="loan_provider">Loan Provider</option>
+                            <option value="investing_organization">Investing Organization</option>
+                            <option value="insurance_organization">Insurance Organization</option>
+                        </select>
+                    </div>
                     <button type="submit" class="btn btn-primary mt-3">Register</button>
                 </form>
                 <p class="mt-3"><a href="#login-form" onclick="toggleForm()">Already registered</a>.</p>
@@ -35,7 +45,7 @@
             {{--  Login  --}}
             <div class="form-container" id="loginForm">
                 <h2>Login</h2>
-                <form action="{{ route('agri_officer.login') }}" method="POST">
+                <form action="{{ route('org.login') }}" method="POST">
                     @csrf
                     <div class="form-group">
                         <label for="loginEmail">Email:</label>
@@ -44,6 +54,15 @@
                     <div class="form-group">
                         <label for="loginPassword">Password:</label>
                         <input type="password" class="form-control" name="password" placeholder="Enter password">
+                    </div>
+                    <div class="form-group">
+                        <label for="category">Organization Type:</label>
+                        <select class="form-control" name="Orgnization_type" required>
+                            <option value="" disabled selected>Select Organization Type</option>
+                            <option value="loan_provider">Loan Provider</option>
+                            <option value="investing_organization">Investing Organization</option>
+                            <option value="insurance_organization">Insurance Organization</option>
+                        </select>
                     </div>
                     <button type="submit" class="btn btn-primary mt-3">Login</button>
                 </form>

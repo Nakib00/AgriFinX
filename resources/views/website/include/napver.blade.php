@@ -86,7 +86,7 @@
                             </li>
 
                             <li>
-                                <a class="dropdown-item" href="">Agri organization</a>
+                                <a class="dropdown-item" href="{{ route('login_org') }}">Agri organization</a>
                             </li>
                             <li>
                                 <a class="dropdown-item" href="{{ route('login_agri_officer') }}">Agri officer</a>
