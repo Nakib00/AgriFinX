@@ -53,6 +53,7 @@ Route::prefix('flnancial_groups')->group(function () {
     Route::middleware('financial_group')->group(function () {
         //Dashboard routes start
         Route::prefix('dashboard')->group(function () {
+            // Route::get('/', [orgcontroller::class, 'dashboard'])->name('org.dashboard');
             Route::get('/edit', [orgcontroller::class, 'editprofile'])->name('org.profile.edit');
             Route::put('/update', [orgcontroller::class, 'updateprofile'])->name('org.profile.update');
             Route::get('/button', [orgcontroller::class, 'button'])->name('org.button');

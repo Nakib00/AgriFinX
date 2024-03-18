@@ -23,7 +23,6 @@ class agriculturalofficerController extends Controller
     //dashboard
     public function dashboard()
     {
-
         return view('website.users.agri_officer.deashboad');
     } //end
 

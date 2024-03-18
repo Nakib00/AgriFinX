@@ -71,10 +71,6 @@
                         <a class="nav-link click-scroll" href="#section_3">Agriculture Project</a>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link click-scroll" href="#section_4">Invastor</a>
-                    </li>
-
                     <li class="nav-item dropdown">
                         <a class="nav-link click-scroll dropdown-toggle" href="#section_5"
                             id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown"
@@ -84,25 +80,27 @@
                             <li>
                                 <a class="dropdown-item" href="news.html">Farmer</a>
                             </li>
-
+                            <li>
+                                <a class="dropdown-item" href="news.html">Invastor</a>
+                            </li>
                             <li>
                                 <a class="dropdown-item" href="{{ route('login_org') }}">Agri organization</a>
                             </li>
-                            <li>
-                                <a class="dropdown-item" href="{{ route('login_agri_officer') }}">Agri officer</a>
-                            </li>
+                            @if (Auth::guard('agricultural_officer'))
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('agri_officer.dashboard') }}">Agri
+                                        officer</a>
+                                </li>
+                            @endif
                         </ul>
                     </li>
 
                     <li class="nav-item">
                         <a class="nav-link click-scroll" href="#section_6">Contact</a>
                     </li>
+                    {{--  Dashboard  --}}
                     {{--  <li class="nav-item">
-                        <a class="nav-link click-scroll" href="{{ route('agri_officer.dashboard') }}">Dashboard</a>
-                    </li>  --}}
-
-                    {{--  <li class="nav-item ms-3">
-                        <a class="nav-link custom-btn custom-border-btn btn" href="donate.html">Donate</a>
+                        <a class="nav-link" href="{{ route('agri_officer.dashboard') }}">Dashboard</a>
                     </li>  --}}
                 </ul>
             </div>
