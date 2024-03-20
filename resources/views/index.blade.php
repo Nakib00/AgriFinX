@@ -64,7 +64,7 @@
                     <h2 class="mb-5">Welcome to Agrifinx</h2>
                 </div>
 
-                <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0">
+                <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
                     <div class="featured-block d-flex justify-content-center align-items-center">
                         <a href="{{ route('mindex') }}" class="d-block">
                             <img src="{{ asset('assets/images/icons/hands.png') }}" style="width: 50%"
@@ -77,7 +77,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0 mb-md-4">
+                <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0 mb-md-4">
                     <div class="featured-block d-flex justify-content-center align-items-center">
                         <a href="{{ route('iindex') }}" class="d-block">
                             <img src="{{ asset('assets/images/icons/heart.png') }}" style="width: 50%"
@@ -90,7 +90,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0 mb-md-4">
+                <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0 mb-md-4">
                     <div class="featured-block d-flex justify-content-center align-items-center">
                         <a href="{{ route('agropindex') }}" class="d-block">
                             <img src="{{ asset('assets/images/icons/receive.png') }}" style="width: 50%"
@@ -103,7 +103,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0">
+                {{--  <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0">
                     <div class="featured-block d-flex justify-content-center align-items-center">
                         <a href="{{ route('sindex') }}" class="d-block">
                             <img src="{{ asset('assets/images/icons/scholarship.png') }}" style="width: 50%"
@@ -114,7 +114,7 @@
                             </p>
                         </a>
                     </div>
-                </div>
+                </div>  --}}
             </div>
         </div>
     </section>

@@ -65,7 +65,7 @@
             <div class="row">
                 <div class="col-lg-6 col-md-7 col-12">
                     <p class="copyright-text mb-0">
-                        Copyright © 2024 <a href="#">Napver</a>
+                        Copyright © 2024 <a href="https://napver.com/">Napver</a>
                     </p>
                 </div>
 
