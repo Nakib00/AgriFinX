@@ -22,9 +22,4 @@ class appsfunctioncontroller extends Controller
 
         return view('website.agroproject.agropindex');
     }
-
-    public function sindex(){
-
-        return view('website.subsides.sindex');
-    }
 }

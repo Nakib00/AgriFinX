@@ -132,14 +132,11 @@
                         <h2 class="mb-2">Our Story</h2>
 
                         <h5 class="mb-3">
-                            Kind Heart Charity, Non-Profit Organization
+                            AgriFinx
                         </h5>
 
                         <p class="mb-0">
-                            This is a Bootstrap 5.2.2 CSS template for charity
-                            organization websites. You can feel free to use it. Please
-                            tell your friends about TemplateMo website. Thank you. HTML
-                            CSS files updated on 20 Oct 2022.
+                            Grow your farm, secure your future.Connect with investors, access financing & manage risk.Agrifinx is a one-stop platform for farmers and investors.
                         </p>
                     </div>
 
@@ -152,18 +149,6 @@
                                     Sed leo nisl, posuere at molestie ac, suscipit auctor quis
                                     metus
                                 </p>
-
-                                <ul class="custom-list mt-2">
-                                    <li class="custom-list-item d-flex">
-                                        <i class="bi-check custom-text-box-icon me-2"></i>
-                                        Charity Theme
-                                    </li>
-
-                                    <li class="custom-list-item d-flex">
-                                        <i class="bi-check custom-text-box-icon me-2"></i>
-                                        Semantic HTML
-                                    </li>
-                                </ul>
                             </div>
                         </div>
 
@@ -171,22 +156,21 @@
                             <div class="custom-text-box d-flex flex-wrap d-lg-block mb-lg-0">
                                 <div class="counter-thumb">
                                     <div class="d-flex">
-                                        <span class="counter-number" data-from="1" data-to="2009"
-                                            data-speed="1000"></span>
+                                        <span class="counter-number" data-from="1" data-to="860" data-speed="1000"></span>
                                         <span class="counter-number-text"></span>
                                     </div>
 
-                                    <span class="counter-text">Founded</span>
+                                    <span class="counter-text">Investor</span>
                                 </div>
 
                                 <div class="counter-thumb mt-4">
                                     <div class="d-flex">
-                                        <span class="counter-number" data-from="1" data-to="120"
+                                        <span class="counter-number" data-from="1" data-to="18"
                                             data-speed="1000"></span>
-                                        <span class="counter-number-text">B</span>
+                                        <span class="counter-number-text">k</span>
                                     </div>
 
-                                    <span class="counter-text">Donations</span>
+                                    <span class="counter-text">Agro project</span>
                                 </div>
                             </div>
                         </div>

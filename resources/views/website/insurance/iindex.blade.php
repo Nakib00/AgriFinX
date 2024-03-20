@@ -17,7 +17,7 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td><a href="">MicroFinanceCo</a></td>
+                            <td><a href="{{ route('iprofile') }}">MicroFinanceCo</a></td>
                             <td>New York, USA</td>
                             <td>info@microfinanceco.com</td>
                         </tr>
