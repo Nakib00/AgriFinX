@@ -34,8 +34,6 @@
 
                             <a href="agrifinx@gmail.com"> agrifinx@gmail.com </a>
                         </p>
-
-                        <a href="#" class="custom-btn btn mt-3">Get Direction</a>
                     </div>
                 </div>
             </div>
@@ -46,16 +44,11 @@
 
                     <p class="mb-4">
                         Or, you can just send an email:
-                        <a href="#">info@charity.org</a>
+                        <a href="#">agrifinx@gmail.com</a>
                     </p>
                     <div class="row">
-                        <div class="col-lg-6 col-md-6 col-12">
-                            <input type="text" name="first-name" id="first-name" class="form-control"
-                                placeholder="Jack" required />
-                        </div>
-
-                        <div class="col-lg-6 col-md-6 col-12">
-                            <input type="text" name="last-name" id="last-name" class="form-control" placeholder="Doe"
+                        <div class="col-lg-12 col-md-6 col-12">
+                            <input type="text" name="name" id="first-name" class="form-control" placeholder="Jack"
                                 required />
                         </div>
                     </div>

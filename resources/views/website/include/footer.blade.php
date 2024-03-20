@@ -54,8 +54,6 @@
                     <i class="bi-geo-alt me-2"></i>
                     Bashundhara 1229, Dhaka, Bangladesh
                 </p>
-
-                <a href="#" class="custom-btn btn mt-3">Get Direction</a>
             </div>
         </div>
     </div>

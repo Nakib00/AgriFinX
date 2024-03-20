@@ -13,7 +13,7 @@
                                 <div class="carousel-caption d-flex flex-column justify-content-end">
                                     <h1>be a Kind Heart</h1>
 
-                                    <p>Professional charity theme based on Bootstrap 5.2.2</p>
+                                    {{--  <p>Professional charity theme based on Bootstrap 5.2.2</p>  --}}
                                 </div>
                             </div>
 
@@ -24,7 +24,7 @@
                                 <div class="carousel-caption d-flex flex-column justify-content-end">
                                     <h1>Non-profit</h1>
 
-                                    <p>You can support us to grow more</p>
+                                    {{--  <p>You can support us to grow more</p>  --}}
                                 </div>
                             </div>
 
@@ -35,7 +35,7 @@
                                 <div class="carousel-caption d-flex flex-column justify-content-end">
                                     <h1>Humanity</h1>
 
-                                    <p>Please tell your friends about our website</p>
+                                    {{--  <p>Please tell your friends about our website</p>  --}}
                                 </div>
                             </div>
                         </div>
@@ -136,7 +136,8 @@
                         </h5>
 
                         <p class="mb-0">
-                            Grow your farm, secure your future.Connect with investors, access financing & manage risk.Agrifinx is a one-stop platform for farmers and investors.
+                            Grow your farm, secure your future.Connect with investors, access financing & manage
+                            risk.Agrifinx is a one-stop platform for farmers and investors.
                         </p>
                     </div>
 
@@ -316,34 +317,25 @@
 
                         <div class="row">
                             <div class="col-lg-6 col-12">
-                                <input type="text" name="volunteer-name" id="volunteer-name" class="form-control"
-                                    placeholder="Jack Doe" required />
+                                <input type="text" name="f_name" id="volunteer-name" class="form-control"
+                                    placeholder="Jack" required />
                             </div>
 
                             <div class="col-lg-6 col-12">
-                                <input type="email" name="volunteer-email" id="volunteer-email"
-                                    pattern="[^ @]*@[^ @]*" class="form-control" placeholder="Jackdoe@gmail.com"
-                                    required />
+                                <input type="text" name="l_name" id="volunteer-name" class="form-control"
+                                    placeholder="Doe" required />
                             </div>
 
-                            <div class="col-lg-6 col-12">
-                                <input type="text" name="volunteer-subject" id="volunteer-subject"
-                                    class="form-control" placeholder="Subject" required />
+                            <div class="col-lg-12 col-12">
+                                <input type="email" name="email" id="volunteer-email" pattern="[^ @]*@[^ @]*"
+                                    class="form-control" placeholder="Jackdoe@gmail.com" required />
                             </div>
 
-                            <div class="col-lg-6 col-12">
-                                <div class="input-group input-group-file">
-                                    <input type="file" class="form-control" id="inputGroupFile02" />
-
-                                    <label class="input-group-text" for="inputGroupFile02">Upload your CV</label>
-
-                                    <i class="bi-cloud-arrow-up ms-auto"></i>
-                                </div>
-                            </div>
                         </div>
-
-                        <textarea name="volunteer-message" rows="3" class="form-control" id="volunteer-message"
-                            placeholder="Comment (Optional)"></textarea>
+                        <div class="col-lg-12 col-12">
+                            <input type="password" name="password" id="volunteer-name" class="form-control"
+                                placeholder="Password" required />
+                        </div>
 
                         <button type="submit" class="form-control">Submit</button>
                     </form>
