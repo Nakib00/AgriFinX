@@ -32,7 +32,7 @@
                         <p class="d-flex">
                             <i class="bi-envelope me-2"></i>
 
-                            <a href="agrifinx@gmail.com"> agrifinx@gmail.com </a>
+                            <a href="#"> agrifinx@gmail.com </a>
                         </p>
                     </div>
                 </div>

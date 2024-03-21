@@ -45,7 +45,7 @@
                 <p class="text-white d-flex">
                     <i class="bi-envelope me-2"></i>
 
-                    <a href="agrifinx@gmail.com" class="site-footer-link">
+                    <a href="/" class="site-footer-link">
                         agrifinx@gmail.com
                     </a>
                 </p>
