@@ -102,6 +102,7 @@
 <script src="{{ asset('assets/js/click-scroll.js') }}"></script>
 <script src="{{ asset('assets/js/counter.js') }}"></script>
 <script src="{{ asset('assets/js/custom.js') }}"></script>
+
 </body>
 
 </html>

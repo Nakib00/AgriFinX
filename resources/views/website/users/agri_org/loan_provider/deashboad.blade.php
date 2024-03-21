@@ -10,7 +10,7 @@
         </div>
         <div class="row">
             {{--  include sideber  --}}
-            @include('website.users.agri_org.investing_org.include.sidebar')
+            @include('website.users.agri_org.loan_provider.include.sidebar')
             <div class="col-md-9">
                 <div class="dashboard-content">
                     @yield('scontent.dashboard')

@@ -6,9 +6,8 @@
             <p>profile update</p>
         </a>
         <ul class="list-group">
-            <li class="list-group-item"><a href="{{ route('org.button') }}" class="btn btn-primary btn-block">Button 1</a>
+            <li class="list-group-item"><a href="{{ route('org.about') }}" class="btn btn-primary btn-block m-3 px-3">About</a>
             </li>
-            <li class="list-group-item"><a href="#" class="btn btn-primary btn-block">Button 2</a></li>
             <li class="list-group-item"><a href="{{ route('org.logout') }}" class="btn btn-danger btn-block">Logout</a>
             </li>
         </ul>

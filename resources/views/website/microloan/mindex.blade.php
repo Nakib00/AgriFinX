@@ -17,22 +17,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td><a href="{{ route('mprofile') }}">MicroFinanceCo</a></td>
-                            <td>New York, USA</td>
-                            <td>info@microfinanceco.com</td>
-                        </tr>
-                        <tr>
-                            <td><a href="">MicroFinanceCo</a></td>
-                            <td>London, UK</td>
-                            <td>contact@microloansinc.com</td>
-                        </tr>
-                        <tr>
-                            <td><a href="">MicroFinanceCo</a></td>
-                            <td>Sydney, Australia</td>
-                            <td>support@smallbizloans.com</td>
-                        </tr>
-                        <!-- Add more rows as needed -->
+                        @foreach ($loanProviders as $provider)
+                            <tr>
+                                <td><a href="{{ route('mprofile', $provider->id) }}">{{ $provider->f_name }}
+                                        {{ $provider->l_name }}</a></td>
+                                <td>{{ $provider->address }}</td>
+                                <td>{{ $provider->email }}</td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
                 {{--  end  --}}

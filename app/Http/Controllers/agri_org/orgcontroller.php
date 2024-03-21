@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
-use App\Models\flnancial_group;
+use App\Models\{flnancial_group, ingo_financial_grup};
 
 class orgcontroller extends Controller
 {
@@ -125,4 +125,44 @@ class orgcontroller extends Controller
         return redirect()->back()->with('success', 'Profile updated successfully.');
     } //end
 
+    // about button
+    public function about()
+    {
+        $about = ingo_financial_grup::all();
+        return view('website.users.agri_org.loan_provider.about', ['about' => $about]);
+    } //end
+
+    // Edit about
+    public function editAbout()
+    {
+        $id = 1;
+        $organization = ingo_financial_grup::findOrFail($id);
+        return view('website.users.agri_org.loan_provider.updateabout', ['organization' => $organization]);
+    }
+
+    // about Edit about
+    public function updateAbout(Request $request, string $id)
+    {
+        // Find the organization record by its ID
+        $organization = ingo_financial_grup::findOrFail($id);
+
+        // Validate input
+        $request->validate([
+            'about' => 'required|string',
+            'loan_types' => 'required|string',
+            'team' => 'required|string',
+            'conditions' => 'required|string',
+        ]);
+
+        // Update the organization data
+        $organization->update([
+            'about' => $request->input('about'),
+            'type_of_service' => $request->input('loan_types'),
+            'team' => $request->input('team'),
+            'conditions' => $request->input('conditions'),
+        ]);
+
+        // Redirect back or to a specific route after updating the data
+        return redirect()->back()->with('success', 'Data updated successfully.');
+    }
 }

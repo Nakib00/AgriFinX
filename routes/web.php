@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\{ProfileController, appsfunctioncontroller,microloneController,insuranceController};
+use App\Http\Controllers\{ProfileController, appsfunctioncontroller, microloneController, insuranceController};
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\agriofficer\agriculturalofficerController;
 use App\Http\Controllers\agri_org\orgcontroller;
@@ -13,13 +13,13 @@ Route::get('/', function () {
 
 // website route start
 Route::prefix('/')->group(function () {
-    Route::prefix('/microloan')->group(function(){
+    Route::prefix('/microloan')->group(function () {
         Route::get('/', [appsfunctioncontroller::class, 'mindex'])->name('mindex');
-        Route::get('/profile', [microloneController::class, 'mview'])->name('mprofile');
+        Route::get('/profile/{id}', [microloneController::class, 'mview'])->name('mprofile');
     });
-    Route::prefix('incurance')->group(function (){
+    Route::prefix('incurance')->group(function () {
         Route::get('/', [appsfunctioncontroller::class, 'iindex'])->name('iindex');
-        Route::get('profile',[insuranceController::class, 'iview'])->name('iprofile');
+        Route::get('profile', [insuranceController::class, 'iview'])->name('iprofile');
     });
     Route::get('/agroproject', [appsfunctioncontroller::class, 'agropindex'])->name('agropindex');
 });
@@ -63,7 +63,9 @@ Route::prefix('flnancial_groups')->group(function () {
             // Route::get('/', [orgcontroller::class, 'dashboard'])->name('org.dashboard');
             Route::get('/edit', [orgcontroller::class, 'editprofile'])->name('org.profile.edit');
             Route::put('/update', [orgcontroller::class, 'updateprofile'])->name('org.profile.update');
-            Route::get('/button', [orgcontroller::class, 'button'])->name('org.button');
+            Route::get('/about', [orgcontroller::class, 'about'])->name('org.about');
+            Route::get('/editAbout', [orgcontroller::class, 'editAbout'])->name('org.editabout');
+            Route::put('/updateAbout/{id}', [orgcontroller::class, 'updateAbout'])->name('org.updateAbout');
         });
         //end
     });
