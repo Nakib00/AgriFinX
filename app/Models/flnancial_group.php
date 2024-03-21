@@ -43,4 +43,9 @@ class flnancial_group extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function ingoFinancialGrup()
+    {
+        return $this->hasOne(ingo_financial_grup::class, 'Organization_id');
+    }
 }

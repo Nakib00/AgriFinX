@@ -6,9 +6,12 @@
             <p>profile update</p>
         </a>
         <ul class="list-group">
-            <li class="list-group-item"><a href="{{ route('org.about') }}" class="btn btn-primary btn-block m-3 px-3">About</a>
+            <li class="list-group-item">
+                <a href="{{ route('org.about', ['id' => Auth::guard('flnancial_group')->id()]) }}"
+                    class="btn btn-primary btn-block m-3 px-3">About</a>
             </li>
-            <li class="list-group-item"><a href="{{ route('org.logout') }}" class="btn btn-danger btn-block">Logout</a>
+            <li class="list-group-item">
+                <a href="{{ route('org.logout') }}" class="btn btn-danger btn-block">Logout</a>
             </li>
         </ul>
     </div>

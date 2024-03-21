@@ -60,10 +60,14 @@ Route::prefix('flnancial_groups')->group(function () {
     Route::middleware('financial_group')->group(function () {
         //Dashboard routes start
         Route::prefix('dashboard')->group(function () {
-            // Route::get('/', [orgcontroller::class, 'dashboard'])->name('org.dashboard');
+            // edit profile routes
             Route::get('/edit', [orgcontroller::class, 'editprofile'])->name('org.profile.edit');
             Route::put('/update', [orgcontroller::class, 'updateprofile'])->name('org.profile.update');
-            Route::get('/about', [orgcontroller::class, 'about'])->name('org.about');
+            // add info
+            Route::get('/addAbout', [orgcontroller::class, 'addAbout'])->name('org.addAbout');
+            Route::post('/storeAbout', [orgcontroller::class, 'storeAbout'])->name('org.storeAbout');
+            Route::get('/about/{id}', [orgcontroller::class, 'about'])->name('org.about');
+            // update info
             Route::get('/editAbout', [orgcontroller::class, 'editAbout'])->name('org.editabout');
             Route::put('/updateAbout/{id}', [orgcontroller::class, 'updateAbout'])->name('org.updateAbout');
         });

@@ -9,26 +9,34 @@
             </div>
         </div>
         <div class="row">
-            {{--  include sideber  --}}
+            {{--  include sidebar  --}}
             @include('website.users.agri_org.loan_provider.include.sidebar')
             <div class="col-md-9 pb-3">
                 <div class="aboutcontainer">
-                    @foreach ($about as $item)
+                    {{-- Check if $about is not empty --}}
+                    @if ($about)
                         <h1>About Details</h1>
-                        <p>{{ $item->about }}</p>
+                        <p>{{ $about->about }}</p>
 
                         <h1>Loan Providing Types</h1>
-                        <p>{!! $item->type_of_service !!}</p>
+                        <p>{!! $about->type_of_service !!}</p>
 
                         <h1>Team</h1>
-                        <p>{{ $item->team }}</p>
+                        <p>{{ $about->team }}</p>
 
                         <h1>Conditions</h1>
-                        <p>{!! $item->conditions !!}</p>
+                        <p>{!! $about->conditions !!}</p>
+
                         <a href="{{ route('org.editabout') }}"><button type="submit">Make update</button></a>
+                    @else
+                        <p>No about information available.</p>
+
+                        {{-- Button to add new information --}}
+                        <a href="{{ route('org.addAbout') }}" class="btn btn-primary">Add Information</a>
+                    @endif
                 </div>
-                @endforeach
             </div>
         </div>
+
     </div>
 @endsection

@@ -11,4 +11,9 @@ class ingo_financial_grup extends Model
     protected $fillable = [
         'Organization_id', 'about', 'type_of_service', 'team', 'conditions'
     ];
+
+    public function organization()
+    {
+        return $this->belongsTo(flnancial_group::class, 'flnancial_group_id');
+    }
 }

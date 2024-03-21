@@ -14,38 +14,32 @@
             @include('website.users.agri_org.loan_provider.include.sidebar')
             <div class="col-md-9 pb-3">
                 <div class="aboutcontainer">
-                    <h1>Update About Details</h1>
+                    <h1>Add About Details</h1>
                     {{--  <!-- Form -->  --}}
-                    <form id="microloan-form" action="{{ route('org.updateAbout', ['id' => $organization->id]) }}"
-                        method="POST">
+                    <form id="add-about-form" action="{{ route('org.storeAbout') }}" method="POST">
                         @csrf
-                        @method('PUT')
                         <div class="form-group">
                             <label for="about">About</label>
-                            <textarea id="about" name="about">{{ $organization->about }}</textarea>
+                            <textarea id="about" name="about"></textarea>
                         </div>
 
                         <div class="form-group">
                             <label for="loan-types">Loan Providing Types</label>
-                            <textarea id="loan-types" name="loan_types">{{ $organization->type_of_service }}</textarea>
+                            <textarea id="loan-types" name="loan_types"></textarea>
                         </div>
 
                         <div class="form-group">
                             <label for="team">Team</label>
-                            <textarea id="team" name="team" required>{{ $organization->team }}</textarea>
+                            <textarea id="team" name="team" required></textarea>
                         </div>
 
                         <div class="form-group pb-2">
                             <label for="conditions">Conditions</label>
-                            <textarea id="conditions" name="conditions">{{ $organization->conditions }}</textarea>
+                            <textarea id="conditions" name="conditions"></textarea>
                         </div>
 
-                        <button type="submit">Update</button>
+                        <button type="submit">Add Information</button>
                     </form>
-                    <a href="{{ route('org.about', ['id' => Auth::guard('flnancial_group')->id()]) }}">
-                        <button type="button" class="mt-3 btn btn-secondary">Back</button>
-                    </a>
-
                 </div>
             </div>
         </div>

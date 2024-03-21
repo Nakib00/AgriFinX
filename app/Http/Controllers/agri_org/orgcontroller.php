@@ -126,17 +126,56 @@ class orgcontroller extends Controller
     } //end
 
     // about button
-    public function about()
+    public function about($id)
     {
-        $about = ingo_financial_grup::all();
+        // Fetch the ingo_financial_grup record associated with the specified user id
+        $user = flnancial_group::findOrFail($id);
+        $about = $user->ingoFinancialGrup()->first();
         return view('website.users.agri_org.loan_provider.about', ['about' => $about]);
     } //end
+
+    // Display the form to add new information
+    public function addAbout()
+    {
+        return view('website.users.agri_org.loan_provider.addabout');
+    }
+
+    // Store the new information
+    public function storeAbout(Request $request)
+    {
+        // Validate input
+        $request->validate([
+            'about' => 'required|string',
+            'loan_types' => 'required|string',
+            'team' => 'required|string',
+            'conditions' => 'nullable|string',
+        ]);
+
+        // Get the ID of the currently authenticated user
+        $organization_id = Auth::guard('flnancial_group')->id();
+
+        // Create a new organization record with the provided data and the user's ID
+        ingo_financial_grup::create([
+            'about' => $request->input('about'),
+            'type_of_service' => $request->input('loan_types'),
+            'team' => $request->input('team'),
+            'conditions' => $request->input('conditions'),
+            'Organization_id' => $organization_id,
+        ]);
+
+        // Redirect back or to a specific route after storing the data
+        return redirect()->back()->with('success', 'About details added successfully.');
+    }
+
 
     // Edit about
     public function editAbout()
     {
-        $id = 1;
-        $organization = ingo_financial_grup::findOrFail($id);
+        // Get the ID of the currently authenticated user
+        $userId = Auth::guard('flnancial_group')->id();
+
+        // Find the organization record associated with the authenticated user
+        $organization = ingo_financial_grup::where('Organization_id', $userId)->firstOrFail();
         return view('website.users.agri_org.loan_provider.updateabout', ['organization' => $organization]);
     }
 
