@@ -27,7 +27,19 @@
     {{--  <!-- Nav Item - -->  --}}
     <li class="nav-item">
         <a class="nav-link" href="tables.html">
-            <span>Farmer list</span></a>
+            <span><b>Crop</b></span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="tables.html">
+            <span><b>Farmer list</b></span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="tables.html">
+            <span><b>Agri officer list</b></span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="tables.html">
+            <span><b>Agri Org list</b></span></a>
     </li>
 
     {{--  <!-- Divider -->  --}}
