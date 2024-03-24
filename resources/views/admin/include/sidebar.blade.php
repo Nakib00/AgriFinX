@@ -70,5 +70,20 @@
     <div class="text-center d-none d-md-inline">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
     </div>
+
+    {{--  profile edit  --}}
+    <a class="dropdown-item" href="{{ route('profile.edit') }}">
+        <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+        Profile Settings
+    </a>
+    {{--  logout  --}}
+    <form method="POST" action="{{ route('logout') }}">
+        @csrf
+
+        <button type="submit" class="dropdown-item">
+            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+            {{ __('Log Out') }}
+        </button>
+    </form>
 </ul>
 {{--  <!-- End of Sidebar -->  --}}
