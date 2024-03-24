@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\{ProfileController, appsfunctioncontroller, microloneController, insuranceController};
+use App\Http\Controllers\{ProfileController, appsfunctioncontroller, microloneController, insuranceController,adminNavigation,adminCrop};
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\agriofficer\agriculturalofficerController;
 use App\Http\Controllers\agri_org\orgcontroller;
@@ -88,6 +88,28 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     // sideber navigation
+
+    //admin navigation
+    Route::prefix('/dashboard')->group(function(){
+        // Crop section
+        Route::prefix('/crop')->group(function(){
+            Route::get('/', [adminNavigation::class, 'crop'])->name('crop');
+            Route::post('/storecrop', [adminCrop::class, 'cropStore'])->name('crop.store');
+            Route::get('/editpage/{id}', [adminCrop::class, 'edit'])->name('crop.editpage');
+            Route::put('/editcrop/{id}', [adminCrop::class, 'update'])->name('crop.edit');
+            Route::delete('/deletecrop/{id}', [adminCrop::class, 'delete'])->name('crop.delete');
+        });
+        // End
+        // Crop marcket Price
+        Route::prefix('/crop/marcketprice')->group(function(){
+            Route::get('/', [adminNavigation::class, 'marckerprice'])->name('crop.marcketprice');
+            Route::post('/storecrop', [adminCrop::class, 'priceStore'])->name('crop.marcketprice.store');
+            Route::get('/editpage/{id}', [adminCrop::class, 'mpedit'])->name('crop.marcketprice.editpage');
+            Route::put('/editcrop/{id}', [adminCrop::class, 'pricupdate'])->name('crop.marcketprice.edit');
+            Route::delete('/deletecrop/{id}', [adminCrop::class, 'pricdelete'])->name('crop.marcketprice.delete');
+        });
+        // end
+    });
 });
 
 require __DIR__ . '/auth.php';

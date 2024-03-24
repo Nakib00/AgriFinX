@@ -2,7 +2,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     {{--  <!-- Sidebar - Brand -->  --}}
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('dashboard') }}">
         <div class="sidebar-brand-text mx-3">AgriFinx</div>
     </a>
 
@@ -11,7 +11,7 @@
 
     {{--  <!-- Nav Item - Dashboard -->  --}}
     <li class="nav-item active">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{{ route('dashboard') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
@@ -25,21 +25,42 @@
     </div>
 
     {{--  <!-- Nav Item - -->  --}}
+    {{--  Crod item  --}}
     <li class="nav-item">
-        <a class="nav-link" href="tables.html">
-            <span><b>Crop</b></span></a>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+            aria-expanded="true" aria-controls="collapseTwo">
+            <span>Crop Details</span>
+        </a>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="{{ route('crop') }}">Add Crop</a>
+                <a class="collapse-item" href="{{ route('crop.marcketprice') }}">Crop Marcket Price</a>
+            </div>
+        </div>
     </li>
+    {{--  Farmer  --}}
     <li class="nav-item">
         <a class="nav-link" href="tables.html">
-            <span><b>Farmer list</b></span></a>
+            <span><b>Farmer</b></span></a>
     </li>
+    {{--  Agri officer  --}}
     <li class="nav-item">
         <a class="nav-link" href="tables.html">
-            <span><b>Agri officer list</b></span></a>
+            <span><b>Agriculture officer</b></span></a>
     </li>
+    {{--  Agri org  --}}
     <li class="nav-item">
-        <a class="nav-link" href="tables.html">
-            <span><b>Agri Org list</b></span></a>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTw"
+            aria-expanded="true" aria-controls="collapseTw">
+            <span>Agriculture organization</span>
+        </a>
+        <div id="collapseTw" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="#">Loan Provider</a>
+                <a class="collapse-item" href="#">Insurance Provider</a>
+                <a class="collapse-item" href="#">Investing organization</a>
+            </div>
+        </div>
     </li>
 
     {{--  <!-- Divider -->  --}}
