@@ -26,6 +26,37 @@ class adminNavigation extends Controller
         $cropMarketPrices = crop_marcket_price::with('crop')->get();
         $crop = Crop::all();
 
-        return view('admin.crop.cropmarcketprice', ['cropMarketPrices' => $cropMarketPrices],['crop'=>$crop]);
+        return view('admin.crop.cropmarcketprice', ['cropMarketPrices' => $cropMarketPrices], ['crop' => $crop]);
+    }
+
+    // farmer show
+    public function showfarmer()
+    {
+
+        return view('admin.farmer.farmershow');
+    }
+
+    // invistor show
+    public function showinvistor()
+    {
+        return view('admin.invistor.invistorshow');
+    }
+
+    // loanprovider show
+    public function showloanprovider()
+    {
+        return view('admin.fin_org.loanprovidershow');
+    }
+
+    // investingorg show
+    public function showinvestingorg()
+    {
+        return view('admin.fin_org.investingorgshow');
+    }
+
+    // insurance show
+    public function showinsurance()
+    {
+        return view('admin.fin_org.insuranceshow');
     }
 }

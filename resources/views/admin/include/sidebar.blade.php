@@ -40,13 +40,13 @@
     </li>
     {{--  Farmer  --}}
     <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+        <a class="nav-link" href="{{ route('farmer.show') }}">
             <span><b>Farmer</b></span></a>
     </li>
-    {{--  Agri officer  --}}
+    {{--  Invistor officer  --}}
     <li class="nav-item">
-        <a class="nav-link" href="tables.html">
-            <span><b>Agriculture officer</b></span></a>
+        <a class="nav-link" href="{{ route('invistor.show') }}">
+            <span><b>Invistor</b></span></a>
     </li>
     {{--  Agri org  --}}
     <li class="nav-item">
@@ -56,9 +56,9 @@
         </a>
         <div id="collapseTw" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="#">Loan Provider</a>
-                <a class="collapse-item" href="#">Insurance Provider</a>
-                <a class="collapse-item" href="#">Investing organization</a>
+                <a class="collapse-item" href="{{ route('loanprovider.show') }}">Loan Provider</a>
+                <a class="collapse-item" href="{{ route('insurance.show') }}">Insurance Provider</a>
+                <a class="collapse-item" href="{{ route('investingorg.show') }}">Investing organization</a>
             </div>
         </div>
     </li>

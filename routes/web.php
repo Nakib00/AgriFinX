@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\{ProfileController, appsfunctioncontroller, microloneController, insuranceController,adminNavigation,adminCrop};
+use App\Http\Controllers\{ProfileController, appsfunctioncontroller, microloneController, insuranceController, adminNavigation, adminCrop};
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\agriofficer\agriculturalofficerController;
 use App\Http\Controllers\agri_org\orgcontroller;
@@ -90,9 +90,9 @@ Route::middleware('auth')->group(function () {
     // sideber navigation
 
     //admin navigation
-    Route::prefix('/dashboard')->group(function(){
+    Route::prefix('/dashboard')->group(function () {
         // Crop section
-        Route::prefix('/crop')->group(function(){
+        Route::prefix('/crop')->group(function () {
             Route::get('/', [adminNavigation::class, 'crop'])->name('crop');
             Route::post('/storecrop', [adminCrop::class, 'cropStore'])->name('crop.store');
             Route::get('/editpage/{id}', [adminCrop::class, 'edit'])->name('crop.editpage');
@@ -101,12 +101,29 @@ Route::middleware('auth')->group(function () {
         });
         // End
         // Crop marcket Price
-        Route::prefix('/crop/marcketprice')->group(function(){
+        Route::prefix('/crop/marcketprice')->group(function () {
             Route::get('/', [adminNavigation::class, 'marckerprice'])->name('crop.marcketprice');
             Route::post('/storecrop', [adminCrop::class, 'priceStore'])->name('crop.marcketprice.store');
             Route::get('/editpage/{id}', [adminCrop::class, 'mpedit'])->name('crop.marcketprice.editpage');
             Route::put('/editcrop/{id}', [adminCrop::class, 'pricupdate'])->name('crop.marcketprice.edit');
             Route::delete('/deletecrop/{id}', [adminCrop::class, 'pricdelete'])->name('crop.marcketprice.delete');
+        });
+        // end
+        // farmer section
+        Route::prefix('/farmer')->group(function () {
+            Route::get('/', [adminNavigation::class, 'showfarmer'])->name('farmer.show');
+        });
+        // end
+        // invistor section
+        Route::prefix('/invistor')->group(function () {
+            Route::get('/', [adminNavigation::class, 'showinvistor'])->name('invistor.show');
+        });
+        // end
+        // invistor section
+        Route::prefix('/agricultureorganization')->group(function () {
+            Route::get('/loanprovider', [adminNavigation::class, 'showloanprovider'])->name('loanprovider.show');
+            Route::get('/investingorg', [adminNavigation::class, 'showinvestingorg'])->name('investingorg.show');
+            Route::get('/insurance', [adminNavigation::class, 'showinsurance'])->name('insurance.show');
         });
         // end
     });
