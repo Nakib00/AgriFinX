@@ -3,9 +3,8 @@
     <section class="section-padding" id="section_3">
         <div class="container viewprofile">
             <div class="col-lg-12 col-12 text-center mb-4">
-                <h2>Insurance Provider Organization Profile</h2>
+                <h2>Investing Organization Profile</h2>
             </div>
-            
             {{--  <!-- About section -->  --}}
             <div class="profile-section">
                 <h2>About</h2>

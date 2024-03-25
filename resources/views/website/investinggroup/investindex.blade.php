@@ -4,7 +4,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-12 text-center mb-4">
-                    <h2>Microloan Provider Organization</h2>
+                    <h2>Investing Organization</h2>
                 </div>
                 {{--  Table start  --}}
                 <div class="table-responsive">
@@ -17,9 +17,9 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($loanProviders as $provider)
+                            @foreach ($investingorg as $provider)
                                 <tr>
-                                    <td><a href="{{ route('mprofile', $provider->id) }}">{{ $provider->f_name }}
+                                    <td><a href="{{ route('ivesprofile', $provider->id) }}">{{ $provider->f_name }}
                                             {{ $provider->l_name }}</a></td>
                                     <td>{{ $provider->address }}</td>
                                     <td>{{ $provider->email }}</td>

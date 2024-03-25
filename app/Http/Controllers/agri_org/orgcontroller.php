@@ -131,13 +131,16 @@ class orgcontroller extends Controller
         // Fetch the ingo_financial_grup record associated with the specified user id
         $user = flnancial_group::findOrFail($id);
         $about = $user->ingoFinancialGrup()->first();
-        return view('website.users.agri_org.loan_provider.about', ['about' => $about]);
+        return view('website.users.agri_org.about', ['about' => $about]);
     } //end
+
+
+    // About section
 
     // Display the form to add new information
     public function addAbout()
     {
-        return view('website.users.agri_org.loan_provider.addabout');
+        return view('website.users.agri_org.addabout');
     }
 
     // Store the new information
@@ -167,7 +170,6 @@ class orgcontroller extends Controller
         return redirect()->back()->with('success', 'About details added successfully.');
     }
 
-
     // Edit about
     public function editAbout()
     {
@@ -176,7 +178,7 @@ class orgcontroller extends Controller
 
         // Find the organization record associated with the authenticated user
         $organization = ingo_financial_grup::where('Organization_id', $userId)->firstOrFail();
-        return view('website.users.agri_org.loan_provider.updateabout', ['organization' => $organization]);
+        return view('website.users.agri_org.updateabout', ['organization' => $organization]);
     }
 
     // about Edit about

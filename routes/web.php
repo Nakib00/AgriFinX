@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\{ProfileController, appsfunctioncontroller, microloneController, insuranceController, adminNavigation, adminCrop};
+use App\Http\Controllers\{ProfileController, appsfunctioncontroller, microloneController, insuranceController, investingorg, adminNavigation, adminCrop};
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\agriofficer\agriculturalofficerController;
 use App\Http\Controllers\agri_org\orgcontroller;
@@ -13,14 +13,22 @@ Route::get('/', function () {
 
 // website route start
 Route::prefix('/')->group(function () {
+    // loans provider
     Route::prefix('/microloan')->group(function () {
         Route::get('/', [appsfunctioncontroller::class, 'mindex'])->name('mindex');
         Route::get('/profile/{id}', [microloneController::class, 'mview'])->name('mprofile');
     });
+    // incurance
     Route::prefix('incurance')->group(function () {
         Route::get('/', [appsfunctioncontroller::class, 'iindex'])->name('iindex');
-        Route::get('profile', [insuranceController::class, 'iview'])->name('iprofile');
+        Route::get('/profile/{id}', [insuranceController::class, 'iview'])->name('iprofile');
     });
+    // invsting group
+    Route::prefix('investinggroup')->group(function () {
+        Route::get('/', [appsfunctioncontroller::class, 'ivesindex'])->name('ivesindex');
+        Route::get('/profile/{id}', [investingorg::class, 'ivesview'])->name('ivesprofile');
+    });
+    // agri project
     Route::get('/agroproject', [appsfunctioncontroller::class, 'agropindex'])->name('agropindex');
 });
 //website route end

@@ -13,8 +13,9 @@ class crop_marcket_price extends Model
     ];
 
     // Define relationships if needed
+
     public function crop()
     {
-        return $this->belongsTo(crop::class);
+        return $this->belongsTo(Crop::class);
     }
 }

@@ -66,11 +66,14 @@ class adminCrop extends Controller
         // Find the crop record by ID
         $crop = Crop::findOrFail($id);
 
-        // Delete the crop record
-        $crop->delete();
-
-        // Redirect back to the crop listing page with success message
-        return redirect()->route('crop')->with('success', 'Crop deleted successfully.');
+        // Attempt to delete the crop record
+        if ($crop->delete()) {
+            // If deletion is successful, redirect back to the crop listing page with success message
+            return redirect()->route('crop')->with('success', 'Crop deleted successfully.');
+        } else {
+            // If deletion fails due to foreign key constraint violation, show error message
+            return redirect()->route('crop')->with('error', 'Cannot delete crop. It is referenced in other tables.');
+        }
     }
 
 
