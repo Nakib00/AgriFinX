@@ -1,9 +1,9 @@
 @extends('website.users.investor.deashboad')
 @section('agriofficer.dashboard')
-    <section class="section-padding" id="section_3">
+    <section class="" id="section_3">
         <div class="container">
             <div class="row">
-                <div class="col-md-10 offset-md-2">
+                <div class="col-md-12 ">
                     <div class="card">
                         <div class="card-header">
                             <h5 class="card-title">Crop Project Details</h5>
