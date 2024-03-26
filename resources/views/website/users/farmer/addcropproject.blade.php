@@ -47,8 +47,8 @@
             <div class="form-group">
                 <label for="funding_status">Funding Status:</label>
                 <select class="form-control" id="funding_status" name="funding_status" required>
-                    <option value="Funded">Funded</option>
-                    <option value="Not Funded">Not Funded</option>
+                    <option value="1">Funded</option>
+                    <option value="0">Not Funded</option>
                 </select>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>

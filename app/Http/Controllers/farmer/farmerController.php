@@ -71,7 +71,7 @@ class farmerController extends Controller
             'created_at' => Carbon::now(),
         ]);
 
-        return redirect()->route('farmer.dashboard')->with('success', 'farmer account created successfully.');
+        return redirect()->route('login_farmer')->with('success', 'farmer account created successfully.');
     } //end
 
     //logout
@@ -96,7 +96,6 @@ class farmerController extends Controller
         $id = $user->id;
 
 
-
         // Find the team by ID
         $agriofficer = farmer::findOrFail($id);
 
@@ -115,12 +114,19 @@ class farmerController extends Controller
     } //end
 
 
+
     // Crop project section
 
     // show crop project
     public function cropproject()
     {
-        return view('website.users.farmer.croppeoject');
+        // Find the ID of the logged-in farmer
+        $userId = auth()->guard('farmer')->user()->id;
+
+        // Retrieve all crop projects created by the logged-in farmer
+        $cropprojects = Cropproject::where('farmer_id', $userId)->get();
+
+        return view('website.users.farmer.croppeoject', ['cropprojects' => $cropprojects]);
     }
 
     // add crop project
@@ -129,45 +135,96 @@ class farmerController extends Controller
         $crop = Crop::all();
         return view('website.users.farmer.addcropproject', ['crop' => $crop]);
     }
-
-    // Store crop project
+    // stroe project
     public function storeproject(Request $request)
     {
-        // Validate the form data
-        $validatedData = $request->validate([
-            'project_name' => 'required|string',
-            'description' => 'required|string',
-            'crop_id' => 'required|exists:crops,id',
-            'launch_date' => 'required|date',
-            'end_date' => 'required|date|after:launch_date',
-            'farm_size' => 'required|string',
-            'corp_quality' => 'required|string',
-            'pesticide_cost' => 'required|numeric',
-            'labour_cost' => 'required|numeric',
-            'funding_status' => 'required|in:Funded,Not Funded',
-        ]);
-
-        // Map the funding status to 1 for Funded and 0 for Not Funded
-        $fundingStatus = $validatedData['funding_status'] === 'Funded' ? 1 : 0;
+        // find out login farmer id
+        $userid = auth()->guard('farmer')->user()->id;
 
         // Create a new crop project instance
         $cropproject = new Cropproject();
-        $cropproject->farmer_id = auth()->user()->id;
-        $cropproject->project_name = $validatedData['project_name'];
-        $cropproject->description = $validatedData['description'];
-        $cropproject->crop_id = $validatedData['crop_id'];
-        $cropproject->launch_date = $validatedData['launch_date'];
-        $cropproject->end_date = $validatedData['end_date'];
-        $cropproject->farm_size = $validatedData['farm_size'];
-        $cropproject->corp_quality = $validatedData['corp_quality'];
-        $cropproject->pesticide_cost = $validatedData['pesticide_cost'];
-        $cropproject->labour_cost = $validatedData['labour_cost'];
-        $cropproject->funding_status = $fundingStatus; 
+        $cropproject->farmer_id =  $userid;
+        $cropproject->project_name = $request['project_name'];
+        $cropproject->description = $request['description'];
+        $cropproject->crop_id = $request['corp_id'];
+        $cropproject->launch_date = $request['launch_date'];
+        $cropproject->end_date = $request['end_date'];
+        $cropproject->farm_size = $request['farm_size'];
+        $cropproject->corp_quality = $request['corp_quality'];
+        $cropproject->pesticide_cost = $request['pesticide_cost'];
+        $cropproject->labour_cost = $request['labour_cost'];
+        $cropproject->funding_status = $request['funding_status'];
 
         // Save the crop project
         $cropproject->save();
 
         // Redirect the user back or to any specific route after successful submission
         return redirect()->back()->with('success', 'Crop project created successfully.');
+    }
+
+    // Show crop projectq
+    public function showproject($id)
+    {
+        // Retrieve the crop project based on the provided ID
+        $cropproject = Cropproject::findOrFail($id);
+
+        // Pass the crop project data to the view
+        return view('website.users.farmer.showcropproject', ['cropproject' => $cropproject]);
+    }
+
+    // Open edit crop project page
+    public function editproject($id)
+    {
+        // Retrieve the crop project based on the provided ID
+        $cropproject = Cropproject::findOrFail($id);
+
+        $crop = Crop::all();
+
+        // Pass the crop project data to the view
+        return view('website.users.farmer.editcropproject', ['cropproject' => $cropproject], ['crop' => $crop]);
+    }
+
+    // Update crop project page
+    public function updateproject($id, Request $request)
+    {
+        // Find the crop project by ID
+        $cropproject = Cropproject::findOrFail($id);
+
+        // Update the crop project instance
+        $cropproject->project_name = $request['project_name'];
+        $cropproject->description = $request['description'];
+        $cropproject->crop_id = $request['crop_id'];
+        $cropproject->launch_date = $request['launch_date'];
+        $cropproject->end_date = $request['end_date'];
+        $cropproject->farm_size = $request['farm_size'];
+        $cropproject->corp_quality = $request['corp_quality'];
+        $cropproject->pesticide_cost = $request['pesticide_cost'];
+        $cropproject->labour_cost = $request['labour_cost'];
+        $cropproject->funding_status = $request['funding_status'];
+
+        // Save the updated crop project
+        $cropproject->save();
+
+        // Redirect the user back or to any specific route after successful update
+        return redirect()->back()->with('success', 'Crop project updated successfully.');
+    }
+
+    // Delete the crop project
+    public function deleteproject($id)
+    {
+        // Find the crop project by its ID
+        $cropproject = Cropproject::find($id);
+
+        // Check if the crop project exists
+        if (!$cropproject) {
+            // If the crop project does not exist, return a redirect with an error message
+            return redirect()->back()->with('error', 'Crop project not found.');
+        }
+
+        // Delete the crop project
+        $cropproject->delete();
+
+        // Redirect back with a success message
+        return redirect()->back()->with('success', 'Crop project deleted successfully.');
     }
 }

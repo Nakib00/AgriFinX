@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\{ProfileController, appsfunctioncontroller, microloneController, insuranceController, investingorg, adminNavigation, adminCrop};
 use Illuminate\Support\Facades\Route;
+use App\Models\Cropproject;
 use App\Http\Controllers\agriofficer\agriculturalofficerController;
 use App\Http\Controllers\agri_org\orgcontroller;
 use App\Http\Controllers\farmer\farmerController;
@@ -9,7 +10,8 @@ use App\Http\Controllers\invesotr\investorController;
 
 // index page route start
 Route::get('/', function () {
-    return view('index');
+    $cropprojects = Cropproject::take(3)->get();
+    return view('index', compact('cropprojects'));
 });
 // index page route end
 
@@ -32,6 +34,7 @@ Route::prefix('/')->group(function () {
     });
     // agri project
     Route::get('/agroproject', [appsfunctioncontroller::class, 'agropindex'])->name('agropindex');
+    Route::get('/showagroproject/{id}', [appsfunctioncontroller::class, 'showagriproject'])->name('agriproject.show');
 });
 //website route end
 
@@ -76,6 +79,10 @@ Route::prefix('farmer')->group(function () {
             Route::get('/cropproject', [farmerController::class, 'cropproject'])->name('farmer.cropproject');
             Route::get('/addproject', [farmerController::class, 'addproject'])->name('farmer.cropproject.add');
             Route::post('/storeproject', [farmerController::class, 'storeproject'])->name('farmer.cropproject.store');
+            Route::get('/showproject/{id}', [farmerController::class, 'showproject'])->name('farmer.cropproject.show');
+            Route::get('/editproject/{id}', [farmerController::class, 'editproject'])->name('farmer.cropproject.edit');
+            Route::put('/updateproject/{id}', [farmerController::class, 'updateproject'])->name('farmer.cropproject.update');
+            Route::delete('/deleteproject/{id}', [farmerController::class, 'deleteproject'])->name('farmer.deleteproject.update');
         });
         //end
     });

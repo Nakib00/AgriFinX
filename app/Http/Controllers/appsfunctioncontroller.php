@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\flnancial_group;
+use App\Models\{farmer, cropproject, crop};
 
 class appsfunctioncontroller extends Controller
 {
@@ -32,7 +33,15 @@ class appsfunctioncontroller extends Controller
     // shwo agri project
     public function agropindex()
     {
+        $cropprojects = Cropproject::all();
+        return view('website.agroproject.agropindex', compact('cropprojects'));
+    }
 
-        return view('website.agroproject.agropindex');
+    // show details of project
+    public function showagriproject($id)
+    {
+        // Find the project by its ID
+        $cropproject = Cropproject::findOrFail($id);
+        return view('website.agroproject.showagriporject', compact('cropproject'));
     }
 }

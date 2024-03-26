@@ -21,49 +21,42 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Project 1</td>
-                        <td>2022-03-01</td>
-                        <td>2022-06-30</td>
-                        <td>10 acres</td>
-                        <td>High</td>
-                        <td>
-                            <!-- View Icon -->
-                            <a href="#" class="btn btn-info btn-sm" title="View">
-                                <i class="fas fa-eye"></i>
-                            </a>
-                            <!-- Edit Icon -->
-                            <a href="#" class="btn btn-primary btn-sm" title="Edit">
-                                <i class="fas fa-edit"></i>
-                            </a>
-                            <!-- Delete Icon -->
-                            <a href="#" class="btn btn-danger btn-sm" title="Delete">
-                                <i class="fas fa-trash"></i>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Project 2</td>
-                        <td>2022-04-15</td>
-                        <td>2022-09-30</td>
-                        <td>15 acres</td>
-                        <td>Medium</td>
-                        <td>
-                            {{--  <!-- View Icon -->  --}}
-                            <a href="#" class="btn btn-info btn-sm" title="View">
-                                <i class="far fa-eye"></i>
-                            </a>
-                            {{--  <!-- Edit Icon -->  --}}
-                            <a href="#" class="btn btn-primary btn-sm" title="Edit">
-                                <i class="far fa-edit"></i>
-                            </a>
-                            {{--  <!-- Delete Icon -->  --}}
-                            <a href="#" class="btn btn-danger btn-sm" title="Delete">
-                                <i class="far fa-trash-alt"></i>
-                            </a>
-                        </td>
-                    </tr>
+                    @foreach ($cropprojects as $cropproject)
+                        <tr>
+                            <td><a
+                                    href="{{ route('farmer.cropproject.show', ['id' => $cropproject->id]) }}"><b>{{ $cropproject->project_name }}</b></a>
+                            </td>
+                            <td>{{ $cropproject->launch_date }}</td>
+                            <td>{{ $cropproject->end_date }}</td>
+                            <td>{{ $cropproject->farm_size }}</td>
+                            <td>{{ $cropproject->corp_quality }}</td>
+                            <td>
+                                {{-- View Icon --}}
+                                <a href="{{ route('farmer.cropproject.show', ['id' => $cropproject->id]) }}"
+                                    class="btn btn-info" title="View">
+                                    <i class="far fa-eye"></i>
+                                </a>
+                                {{-- Edit Icon --}}
+                                <a href="{{ route('farmer.cropproject.edit', ['id' => $cropproject->id]) }}"
+                                    class="btn btn-primary" title="Edit">
+                                    <i class="far fa-edit"></i>
+                                </a>
+                                {{-- Delete Icon --}}
+                                <form action="{{ route('farmer.deleteproject.update', ['id' => $cropproject->id]) }}"
+                                    method="POST" style="display: inline;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-sm" style="background-color: #ff0000; color: #ffffff;"
+                                        title="Delete"
+                                        onclick="return confirm('Are you sure you want to delete this crop project?')">
+                                        <i class="far fa-trash-alt"></i>
+                                    </button>
+                                </form>
 
+
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
