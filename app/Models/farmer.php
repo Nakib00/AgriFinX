@@ -44,4 +44,9 @@ class farmer extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function cropProjects()
+    {
+        return $this->hasMany(Cropproject::class);
+    }
 }

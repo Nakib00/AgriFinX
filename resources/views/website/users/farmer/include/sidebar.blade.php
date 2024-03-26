@@ -6,8 +6,8 @@
             <p>profile update</p>
         </a>
         <ul class="list-group">
-            <li class="list-group-item"><a href=""
-                    class="btn btn-primary btn-block">Button 1</a></li>
+            <li class="list-group-item"><a href="{{ route('farmer.cropproject') }}"
+                    class="btn btn-primary btn-block">Crop Project</a></li>
             <li class="list-group-item"><a href="#" class="btn btn-primary btn-block">Button 2</a></li>
             <li class="list-group-item"><a href="{{ route('farmer.logout') }}"
                     class="btn btn-danger btn-block">Logout</a></li>

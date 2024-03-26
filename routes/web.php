@@ -72,7 +72,10 @@ Route::prefix('farmer')->group(function () {
             Route::get('/', [farmerController::class, 'dashboard'])->name('farmer.dashboard');
             Route::get('/edit', [farmerController::class, 'editprofile'])->name('farmer.profile.edit');
             Route::put('/update', [farmerController::class, 'updateprofile'])->name('farmer.profile.update');
-            Route::get('/button', [farmerController::class, 'button'])->name('farmer.button');
+            // crop projects
+            Route::get('/cropproject', [farmerController::class, 'cropproject'])->name('farmer.cropproject');
+            Route::get('/addproject', [farmerController::class, 'addproject'])->name('farmer.cropproject.add');
+            Route::post('/storeproject', [farmerController::class, 'storeproject'])->name('farmer.cropproject.store');
         });
         //end
     });

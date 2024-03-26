@@ -18,4 +18,6 @@
     <link href="{{ asset('assets/css/templatemo-kind-heart-charity.css') }}" rel="stylesheet" />
 
     <link href="{{ asset('assets/css/app.css') }}" rel="stylesheet" />
+    {{--  Bootstrap  --}}
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>

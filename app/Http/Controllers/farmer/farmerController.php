@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
-use App\Models\farmer;
+use App\Models\{farmer, cropproject, crop};
 
 class farmerController extends Controller
 {
@@ -82,14 +82,14 @@ class farmerController extends Controller
         return redirect()->route('login_farmer')->with('success', 'Farmer logout successfully.');
     } //end
 
-     // edit profile
-     public function editprofile()
-     {
-         $user = auth()->guard('investors')->user();
-         return view('website.users.farmer.editprofile', compact('user'));
-     } //end
+    // edit profile
+    public function editprofile()
+    {
+        $user = auth()->guard('farmer')->user();
+        return view('website.users.farmer.editprofile', compact('user'));
+    } //end
 
-     //update profile
+    //update profile
     public function updateprofile(Request $request)
     {
         $user = auth()->guard('farmer')->user();
@@ -114,9 +114,60 @@ class farmerController extends Controller
         return redirect()->back()->with('success', 'Profile updated successfully.');
     } //end
 
-    // try
-    public function button()
+
+    // Crop project section
+
+    // show crop project
+    public function cropproject()
     {
-        return view('website.users.farmer.button');
+        return view('website.users.farmer.croppeoject');
+    }
+
+    // add crop project
+    public function addproject()
+    {
+        $crop = Crop::all();
+        return view('website.users.farmer.addcropproject', ['crop' => $crop]);
+    }
+
+    // Store crop project
+    public function storeproject(Request $request)
+    {
+        // Validate the form data
+        $validatedData = $request->validate([
+            'project_name' => 'required|string',
+            'description' => 'required|string',
+            'crop_id' => 'required|exists:crops,id',
+            'launch_date' => 'required|date',
+            'end_date' => 'required|date|after:launch_date',
+            'farm_size' => 'required|string',
+            'corp_quality' => 'required|string',
+            'pesticide_cost' => 'required|numeric',
+            'labour_cost' => 'required|numeric',
+            'funding_status' => 'required|in:Funded,Not Funded',
+        ]);
+
+        // Map the funding status to 1 for Funded and 0 for Not Funded
+        $fundingStatus = $validatedData['funding_status'] === 'Funded' ? 1 : 0;
+
+        // Create a new crop project instance
+        $cropproject = new Cropproject();
+        $cropproject->farmer_id = auth()->user()->id;
+        $cropproject->project_name = $validatedData['project_name'];
+        $cropproject->description = $validatedData['description'];
+        $cropproject->crop_id = $validatedData['crop_id'];
+        $cropproject->launch_date = $validatedData['launch_date'];
+        $cropproject->end_date = $validatedData['end_date'];
+        $cropproject->farm_size = $validatedData['farm_size'];
+        $cropproject->corp_quality = $validatedData['corp_quality'];
+        $cropproject->pesticide_cost = $validatedData['pesticide_cost'];
+        $cropproject->labour_cost = $validatedData['labour_cost'];
+        $cropproject->funding_status = $fundingStatus; 
+
+        // Save the crop project
+        $cropproject->save();
+
+        // Redirect the user back or to any specific route after successful submission
+        return redirect()->back()->with('success', 'Crop project created successfully.');
     }
 }

@@ -17,4 +17,9 @@ class cropproject extends Model
     {
         return $this->belongsTo(Farmer::class);
     }
+
+    public function crop()
+    {
+        return $this->belongsTo(Crop::class); 
+    }
 }
