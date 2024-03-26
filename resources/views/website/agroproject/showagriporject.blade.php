@@ -84,7 +84,6 @@
                             <li><strong>First Name:</strong> {{ $cropproject->farmer->f_name }}</li>
                             <li><strong>Last Name:</strong> {{ $cropproject->farmer->l_name }}</li>
                             <li><strong>Email:</strong> {{ $cropproject->farmer->email }}</li>
-                            <li><strong>NID:</strong> {{ $cropproject->farmer->nid }}</li>
                             <li><strong>Phone:</strong> {{ $cropproject->farmer->phone }}</li>
                             <li><strong>Address:</strong> {{ $cropproject->farmer->address }}</li>
                         </ul>
