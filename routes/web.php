@@ -4,6 +4,8 @@ use App\Http\Controllers\{ProfileController, appsfunctioncontroller, microloneCo
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\agriofficer\agriculturalofficerController;
 use App\Http\Controllers\agri_org\orgcontroller;
+use App\Http\Controllers\farmer\farmerController;
+use App\Http\Controllers\invesotr\investorController;
 
 // index page route start
 Route::get('/', function () {
@@ -47,14 +49,56 @@ Route::prefix('agriculture_office')->group(function () {
         //Dashboard routes start
         Route::prefix('dashboard')->group(function () {
             Route::get('/', [agriculturalofficerController::class, 'dashboard'])->name('agri_officer.dashboard');
-            Route::get('/edit', [AgriculturalOfficerController::class, 'editprofile'])->name('agri_officer.profile.edit');
-            Route::put('/update', [AgriculturalOfficerController::class, 'updateprofile'])->name('agri_officer.profile.update');
+            Route::get('/edit', [agriculturalofficerController::class, 'editprofile'])->name('agri_officer.profile.edit');
+            Route::put('/update', [agriculturalofficerController::class, 'updateprofile'])->name('agri_officer.profile.update');
             Route::get('/button', [agriculturalofficerController::class, 'button'])->name('agri_officer.button');
         });
         //end
     });
 });
 // agriculture office route end
+
+// Farmer route start
+Route::prefix('farmer')->group(function () {
+    // login and register
+    Route::get('/login', [farmerController::class, 'index'])->name('login_farmer');
+    Route::post('/login/owner', [farmerController::class, 'login'])->name('farmer.login');
+    Route::post('/register', [farmerController::class, 'register'])->name('farmer.register');
+    Route::get('/logout', [farmerController::class, 'logout'])->name('farmer.logout');
+    //end
+    Route::middleware('farmer')->group(function () {
+        //Dashboard routes start
+        Route::prefix('dashboard')->group(function () {
+            Route::get('/', [farmerController::class, 'dashboard'])->name('farmer.dashboard');
+            Route::get('/edit', [farmerController::class, 'editprofile'])->name('farmer.profile.edit');
+            Route::put('/update', [farmerController::class, 'updateprofile'])->name('farmer.profile.update');
+            Route::get('/button', [farmerController::class, 'button'])->name('farmer.button');
+        });
+        //end
+    });
+});
+// Farmer office route end
+
+// Investor route start
+Route::prefix('investor')->group(function () {
+    // login and register
+    Route::get('/login', [investorController::class, 'index'])->name('login_investor');
+    Route::post('/login/owner', [investorController::class, 'login'])->name('investor.login');
+    Route::post('/register', [investorController::class, 'register'])->name('investor.register');
+    Route::get('/logout', [investorController::class, 'logout'])->name('investor.logout');
+    //end
+    Route::middleware('investor')->group(function () {
+        //Dashboard routes start
+        Route::prefix('dashboard')->group(function () {
+            Route::get('/', [investorController::class, 'dashboard'])->name('investor.dashboard');
+            Route::get('/edit', [investorController::class, 'editprofile'])->name('investor.profile.edit');
+            Route::put('/update', [investorController::class, 'updateprofile'])->name('investor.profile.update');
+            Route::get('/button', [investorController::class, 'button'])->name('investor.button');
+        });
+        //end
+    });
+});
+// Farmer office route end
 
 // flnancial_groups route start
 Route::prefix('flnancial_groups')->group(function () {

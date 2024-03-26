@@ -78,10 +78,10 @@
 
                         <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
                             <li>
-                                <a class="dropdown-item" href="news.html">Farmer</a>
+                                <a class="dropdown-item" href="{{ route('login_farmer') }}">Farmer</a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="news.html">Invastor</a>
+                                <a class="dropdown-item" href="{{ route('login_investor') }}">Invastor</a>
                             </li>
                             <li>
                                 <a class="dropdown-item" href="{{ route('login_org') }}">Agri organization</a>
