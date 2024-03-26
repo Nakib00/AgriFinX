@@ -1,10 +1,9 @@
-@extends('website.layout.webpage')
-
-@section('content')
+@extends('website.users.investor.deashboad')
+@section('agriofficer.dashboard')
     <section class="section-padding" id="section_3">
         <div class="container">
             <div class="row">
-                <div class="col-md-8 offset-md-2">
+                <div class="col-md-10 offset-md-2">
                     <div class="card">
                         <div class="card-header">
                             <h5 class="card-title">Crop Project Details</h5>
@@ -61,7 +60,7 @@
                                 <strong>Updated At:</strong> {{ $cropproject->updated_at }}
                             </div>
                             {{--  <!-- Back button -->  --}}
-                            <a href="{{ route('agropindex') }}" class="btn btn-secondary">Back</a>
+                            <a href="{{ route('investor.cropproject.show') }}" class="btn btn-secondary">Back</a>
                         </div>
                     </div>
                 </div>
@@ -89,21 +88,10 @@
                             <li><strong>Address:</strong> {{ $cropproject->farmer->address }}</li>
                         </ul>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    </div>
+
                 </div>
             </div>
         </div>
 
     </section>
-
-    {{--  <!-- Bootstrap CSS -->  --}}
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-
-    {{--  <!-- jQuery -->  --}}
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-    {{--  <!-- Bootstrap JS -->  --}}
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 @endsection

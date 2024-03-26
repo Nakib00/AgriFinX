@@ -100,10 +100,19 @@ Route::prefix('investor')->group(function () {
     Route::middleware('investor')->group(function () {
         //Dashboard routes start
         Route::prefix('dashboard')->group(function () {
+            // Investor profile routes
             Route::get('/', [investorController::class, 'dashboard'])->name('investor.dashboard');
             Route::get('/edit', [investorController::class, 'editprofile'])->name('investor.profile.edit');
             Route::put('/update', [investorController::class, 'updateprofile'])->name('investor.profile.update');
             Route::get('/button', [investorController::class, 'button'])->name('investor.button');
+
+            // crop project show
+            Route::get('/cropproject', [investorController::class, 'cropproject'])->name('investor.cropproject.show');
+            Route::get('/cropproject/view/{id}', [investorController::class, 'projectview'])->name('investor.cropproject.view');
+
+            // Investing organizations
+            Route::get('/investingorg', [investorController::class, 'investingorg'])->name('investor.investingorg.show');
+            Route::get('/investingorg/view/{id}', [investorController::class, 'investingorgshow'])->name('investor.investingorg.view');
         });
         //end
     });

@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Hash;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
 use App\Models\investor;
+use App\Models\{cropproject};
+use App\Models\{ingo_financial_grup, flnancial_group};
 
 class investorController extends Controller
 {
@@ -82,14 +84,14 @@ class investorController extends Controller
         return redirect()->route('login_investor')->with('success', 'investor logout successfully.');
     } //end
 
-     // edit profile
-     public function editprofile()
-     {
-         $user = auth()->guard('investor')->user();
-         return view('website.users.investor.editprofile', compact('user'));
-     } //end
+    // edit profile
+    public function editprofile()
+    {
+        $user = auth()->guard('investor')->user();
+        return view('website.users.investor.editprofile', compact('user'));
+    } //end
 
-     //update profile
+    //update profile
     public function updateprofile(Request $request)
     {
         $user = auth()->guard('investor')->user();
@@ -114,9 +116,40 @@ class investorController extends Controller
         return redirect()->back()->with('success', 'Profile updated successfully.');
     } //end
 
-    // try
-    public function button()
+
+    // show crop project information
+    public function cropproject()
     {
-        return view('website.users.investor.button');
+        $cropproject = Cropproject::all();
+
+        return view('website.users.investor.cropproject.showcropproject', ['cropproject' => $cropproject]);
+    }
+
+    // view project information
+    public function projectview($id)
+    {
+        // Retrieve the crop project based on the provided ID
+        $cropproject = Cropproject::findOrFail($id);
+
+        return view('website.users.investor.cropproject.viewporject', ['cropproject' => $cropproject]);
+    }
+
+    // Display investing organizations
+    public function investingorg()
+    {
+        $investingorg = flnancial_group::where('Orgnization_type', 'investing_organization')->get();
+        return view('website.users.investor.investingorg.investingorg', compact('investingorg'));
+    }
+
+    // view inveting organizations
+    public function investingorgshow($id)
+    {
+        // Find the organization record by its ID
+        $about = ingo_financial_grup::findOrFail($id);
+
+        // Fetch additional information from the flnancial_groups table
+        $organization = flnancial_group::findOrFail($about->Organization_id);
+
+        return view('website.users.investor.investingorg.viewinvestingorg', ['about' => $about, 'organization' => $organization]);
     }
 }

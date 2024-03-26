@@ -13,7 +13,7 @@ class investingorg extends Controller
     {
 
         // Find the organization record by its ID
-        $about = ingo_financial_grup::findOrFail($id+1);
+        $about = ingo_financial_grup::findOrFail($id);
 
         // Fetch additional information from the flnancial_groups table
         $organization = flnancial_group::findOrFail($about->Organization_id);

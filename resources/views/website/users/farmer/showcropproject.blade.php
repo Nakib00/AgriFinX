@@ -24,18 +24,18 @@
                             <strong>Farm Size:</strong> {{ $cropproject->farm_size }}
                         </div>
                         <div class="mb-3">
-                            <strong>Crop Quality:</strong> {{ $cropproject->corp_quality }}
+                            <strong>Crop Quality:</strong> {{ $cropproject->corp_quality }} KG
                         </div>
                         <div class="mb-3">
-                            <strong>Pesticide Cost:</strong> {{ $cropproject->pesticide_cost }}
+                            <strong>Pesticide Cost:</strong> {{ $cropproject->pesticide_cost }} TK
                         </div>
                         <div class="mb-3">
-                            <strong>Labour Cost:</strong> {{ $cropproject->labour_cost }}
+                            <strong>Labour Cost:</strong> {{ $cropproject->labour_cost }} TK
                         </div>
 
                         <div class="mb-3">
                             <strong>Total expance:</strong>
-                            {{ $cropproject->labour_cost + $cropproject->pesticide_cost }}
+                            {{ $cropproject->labour_cost + $cropproject->pesticide_cost }} TK
                         </div>
                         <div class="mb-3">
                             <strong>Funding Status:</strong> {{ $cropproject->funding_status ? 'Funded' : 'Not Funded' }}
