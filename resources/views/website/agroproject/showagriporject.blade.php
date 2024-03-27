@@ -63,6 +63,10 @@
                             {{--  <!-- Back button -->  --}}
                             <a href="{{ route('agropindex') }}" class="btn btn-secondary">Back</a>
                         </div>
+                        {{--  Investing button  --}}
+                        <div class="mb-3">
+                            <a href="{{ route('login_investor') }}"><button type="button" class="btn btn-primary btn-lg m-3">Invest</button></a>
+                        </div>
                     </div>
                 </div>
             </div>
