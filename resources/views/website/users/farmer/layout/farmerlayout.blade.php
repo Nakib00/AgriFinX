@@ -1,10 +1,21 @@
-@extends('website.users.farmer.layout.farmerlayout')
-@section('agriofficer.dashboard')
+@extends('website.layout.webpage')
+@section('content')
+    {{--  include alirt  --}}
+    @include('website.include.alirt')
     <div class="container mt-4">
+        <div class="col-md-9">
+            <div class="">
+                <a href="{{ route('farmer.dashboard') }}">
+                    <h4 class="mb-4">Farmer Dashboard</h4>
+                </a>
+            </div>
+        </div>
         <div class="row">
-            <div class="col-md-12">
+            {{--  include sideber  --}}
+            @include('website.users.farmer.include.sidebar')
+            <div class="col-md-9">
                 <div class="dashboard-content">
-                    <H1>HIIII</H1>
+                    @yield('agriofficer.dashboard')
                 </div>
             </div>
         </div>

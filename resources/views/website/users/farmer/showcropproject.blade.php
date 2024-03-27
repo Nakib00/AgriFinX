@@ -1,4 +1,4 @@
-@extends('website.users.farmer.deashboad')
+@extends('website.users.farmer.layout.farmerlayout')
 @section('agriofficer.dashboard')
     <div class="container mt-5">
         <div class="row">

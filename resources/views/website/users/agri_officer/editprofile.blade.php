@@ -1,5 +1,5 @@
-@extends('website.layout.webpage')
-@section('content')
+@extends('website.users.agri_officer.layout.agriofficerlayout')
+@section('agriofficer.dashboard')
     <div class="col-md-9 pb-5">
         <div class="form-container pb-5">
             <h2>Edit Profile</h2>
@@ -33,9 +33,6 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Update</button>
             </form>
-            {{--  back button  --}}
-            <a href="{{ route('agri_officer.dashboard') }}"><button type="submit"
-                    class="btn btn-secondary">Back</button></a>
         </div>
     </div>
 @endsection

@@ -109,6 +109,10 @@ Route::prefix('investor')->group(function () {
             // crop project show
             Route::get('/cropproject', [investorController::class, 'cropproject'])->name('investor.cropproject.show');
             Route::get('/cropproject/view/{id}', [investorController::class, 'projectview'])->name('investor.cropproject.view');
+            // invest in crop project
+            Route::post('/invest/crop/{id}',[investorController::class, 'investcrop'])->name('investor.crop.invest');
+             // invest in investing organization
+             Route::post('/invest/investingorg/{id}',[investorController::class, 'investingorginvest'])->name('investor.investingorg.invest');
 
             // Investing organizations
             Route::get('/investingorg', [investorController::class, 'investingorg'])->name('investor.investingorg.show');

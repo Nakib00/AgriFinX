@@ -1,30 +1,10 @@
-@extends('website.layout.webpage')
-@section('content')
-    {{--  include alirt  --}}
-    @include('website.include.alirt')
+@extends('website.users.agri_officer.layout.agriofficerlayout')
+@section('agriofficer.dashboard')
     <div class="container mt-4">
-        <div class="col-md-9">
-            <div class="">
-                <h4 class="mb-4">Agricultural Officer Dashboard</h4>
-            </div>
-        </div>
         <div class="row">
-            {{--  include sideber  --}}
-            @include('website.users.agri_officer.include.sidebar')
-            <div class="col-md-9">
-                <div class="dashboard-content">
-                    @yield('agriofficer.dashboard')
-                </div>
+            <div class="col-md-12">
+                <h1>HII</h1>
             </div>
         </div>
     </div>
-
-    {{--  <!-- Bootstrap CSS -->  --}}
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-
-    {{--  <!-- jQuery -->  --}}
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-    {{--  <!-- Bootstrap JS -->  --}}
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 @endsection

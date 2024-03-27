@@ -1,4 +1,4 @@
-@extends('website.users.investor.deashboad')
+@extends('website.users.investor.layout.investorlayout')
 @section('agriofficer.dashboard')
     <div class="col-md-9 pb-5">
         <div class="form-container pb-5">

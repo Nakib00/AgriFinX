@@ -1,4 +1,4 @@
-@extends('website.users.investor.deashboad')
+@extends('website.users.investor.layout.investorlayout')
 @section('agriofficer.dashboard')
     <section class="section-padding" id="section_3">
         <div class="container viewprofile">
@@ -57,7 +57,47 @@
             </div>
         </div>
         <div class="modal-footer">
-            <a href="{{ route('investor.investingorg.show') }}"><button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button></a>
+            <a href="{{ route('investor.investingorg.show') }}"><button type="button" class="btn btn-secondary"
+                    data-dismiss="modal">Back</button></a>
+        </div>
+
+        {{--  Investing button  --}}
+        <div class="mb-3">
+            <button type="button" class="btn btn-primary btn-lg m-3" data-toggle="modal"
+                data-target="#investModal">Invest</button>
+        </div>
+
+
+        {{--  Investing form  --}}
+        <div class="modal fade" id="investModal" tabindex="-1" role="dialog" aria-labelledby="investModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="investModalLabel">Invest in Crop Project</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{{ route('investor.investingorg.invest', ['id' => $organization->id]) }}"
+                            method="POST">
+                            @csrf
+                            <div class="form-group">
+                                <label for="investing_amount">Investing Amount:</label>
+                                <input type="number" class="form-control" id="investing_amount" name="investing_amount"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <label for="percentage_rate">Percentage Rate:</label>
+                                <input type="number" class="form-control" id="percentage_rate" name="percentage_rate"
+                                    required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Invest</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 @endsection

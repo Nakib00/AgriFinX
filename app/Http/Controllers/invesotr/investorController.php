@@ -10,7 +10,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
 use App\Models\investor;
 use App\Models\{cropproject};
-use App\Models\{ingo_financial_grup, flnancial_group};
+use App\Models\{ingo_financial_grup, flnancial_group, investing_track, investing_track_Organization};
 
 class investorController extends Controller
 {
@@ -151,5 +151,57 @@ class investorController extends Controller
         $organization = flnancial_group::findOrFail($about->Organization_id);
 
         return view('website.users.investor.investingorg.viewinvestingorg', ['about' => $about, 'organization' => $organization]);
+    }
+
+
+    // Invest in crop projects
+    public function investcrop(Request $request, $id)
+    {
+
+        // get investor id
+        $investor_id = auth()->guard('investor')->user()->id;
+
+        // get current crop project id
+        $project_id = $id;
+
+        // Get the current date
+        $investing_date = now();
+
+        // Create a new instance of InvestingTrack model and store the data
+        investing_track::create([
+            'investor_id' => $investor_id,
+            'project_id' => $project_id,
+            'investing_amount' => $request->investing_amount,
+            'percentage_rate' => $request->percentage_rate,
+            'investing_date' => $investing_date,
+        ]);
+
+        // Optionally, you can redirect the user to a specific page after the investment is made
+        return redirect()->back()->with('success', 'Investment successful.');
+    }
+
+    // Invest in investing organizations
+    public function investingorginvest(Request $request, $id)
+    {
+        // get investor id
+        $investor_id = auth()->guard('investor')->user()->id;
+
+        // get current investing org id
+        $investingorg_id = $id;
+
+        // Get the current date
+        $investing_date = now();
+
+        // Create a new instance of InvestingTrack model and store the data
+        investing_track_Organization::create([
+            'investor_id' => $investor_id,
+            'Organization_id' => $investingorg_id,
+            'investing_amount' => $request->investing_amount,
+            'percentage_rate' => $request->percentage_rate,
+            'investing_date' => $investing_date,
+        ]);
+
+        // Optionally, you can redirect the user to a specific page after the investment is made
+        return redirect()->back()->with('success', 'Investment successful.');
     }
 }

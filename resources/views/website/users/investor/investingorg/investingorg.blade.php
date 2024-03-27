@@ -1,4 +1,4 @@
-@extends('website.users.investor.deashboad')
+@extends('website.users.investor.layout.investorlayout')
 @section('agriofficer.dashboard')
     <section class="section-padding" id="section_3">
         <div class="container">
