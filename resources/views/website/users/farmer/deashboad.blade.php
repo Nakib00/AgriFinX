@@ -38,7 +38,10 @@
                         {{--  end  --}}
                     </div>
 
-                    <h2>Project Investment Chart</h2>
+                    {{--  chart show here  --}}
+                    <div class="col-lg-12 col-12 text-center mb-4">
+                        <h2>Project Investment Chart</h2>
+                    </div>
                     <canvas id="investmentChart" width="800" height="400"></canvas>
                 </div>
             </div>
@@ -49,9 +52,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
     {{--  line chart  --}}
     <script>
-        // Extract project names and invested amounts from PHP variable
         var projectNames = [];
         var investedAmounts = [];
         @foreach ($investedProjects as $investment)
@@ -66,7 +69,7 @@
             data: {
                 labels: projectNames,
                 datasets: [{
-                    label: 'Invested Amount ($)',
+                    label: 'Invested Amount (৳)',
                     data: investedAmounts,
                     backgroundColor: 'rgba(54, 162, 235, 0.2)',
                     borderColor: 'rgba(54, 162, 235, 1)',
@@ -82,5 +85,4 @@
             }
         });
     </script>
-
 @endsection
