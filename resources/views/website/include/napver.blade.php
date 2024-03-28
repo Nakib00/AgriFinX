@@ -81,7 +81,7 @@
                                 <a class="dropdown-item" href="{{ route('login_farmer') }}">Farmer</a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="{{ route('login_investor') }}">Invastor</a>
+                                <a class="dropdown-item" href="{{ route('login_investor') }}">Investor</a>
                             </li>
                             <li>
                                 <a class="dropdown-item" href="{{ route('login_org') }}">Agri organization</a>
