@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
-use App\Models\{farmer, cropproject, crop};
+use App\Models\{farmer, cropproject, crop, investing_track, flnancial_group, ingo_financial_grup, micro_loan};
 
 class farmerController extends Controller
 {
@@ -21,7 +21,19 @@ class farmerController extends Controller
     //dashboard
     public function dashboard()
     {
-        return view('website.users.farmer.deashboad');
+        // Find the ID of the logged-in farmer
+        $userId = auth()->guard('farmer')->user()->id;
+
+        // Find all crop projects associated with the logged-in farmer
+        $cropProjects = Cropproject::where('farmer_id', $userId)->get();
+
+        // Extract IDs of crop projects associated with the logged-in farmer
+        $cropProjectIds = $cropProjects->pluck('id')->toArray();
+
+        // Find investment details for the extracted crop project IDs
+        $investedProjects = investing_track::whereIn('project_id', $cropProjectIds)->get();
+
+        return view('website.users.farmer.deashboad', ['investedProjects' => $investedProjects]);
     } //end
 
     // login
@@ -226,5 +238,47 @@ class farmerController extends Controller
 
         // Redirect back with a success message
         return redirect()->back()->with('success', 'Crop project deleted successfully.');
+    }
+
+
+    // Microloan
+    public function showloanprovider()
+    {
+        // Fetch all loan provider type users from the database
+        $loanProviders = flnancial_group::where('Orgnization_type', 'loan_provider')->get();
+
+        return view('website.users.farmer.loan.loanprovider', compact('loanProviders'));
+    }
+    // shwo loan provider profile
+    public function viewloanprovider($id)
+    {
+        // Find the organization record by its ID
+        $about = ingo_financial_grup::findOrFail($id);
+
+        // Fetch additional information from the flnancial_groups table
+        $organization = flnancial_group::findOrFail($about->Organization_id);
+
+        return view('website.users.farmer.loan.viewloanprovider', ['about' => $about, 'organization' => $organization]);
+    }
+
+    // apply loan
+    public function applyloan(Request $request, $id)
+    {
+        // loneprovider id
+        $loanprovider = $id;
+        // find out login farmer id
+        $userid = auth()->guard('farmer')->user()->id;
+
+        $loan = new micro_loan();
+        $loan->reason_of_taking_loan = $request['reason'];
+        $loan->amount = $request['amount'];
+        $loan->installment_period = $request['installment'];
+        $loan->interest_rate = $request->input('amount') * 0.08;
+        $loan->Organization_id = $loanprovider;
+        $loan->farmer_id = $userid;
+        $loan->approval_status = 0; // default o for not approved
+        $loan->save();
+
+        return back()->with('success', 'Loan application submitted successfully!');
     }
 }

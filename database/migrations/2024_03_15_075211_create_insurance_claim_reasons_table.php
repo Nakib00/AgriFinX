@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreignId('Organization_id')->constrained('flnancial_groups');
             $table->string('disaster_type');
             $table->boolean('status');
-            $table->date('issue_date');
+            $table->date('issue_date')->nullable();
             $table->timestamps();
         });
     }

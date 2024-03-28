@@ -76,18 +76,26 @@ Route::prefix('farmer')->group(function () {
             Route::get('/edit', [farmerController::class, 'editprofile'])->name('farmer.profile.edit');
             Route::put('/update', [farmerController::class, 'updateprofile'])->name('farmer.profile.update');
             // crop projects
-            Route::get('/cropproject', [farmerController::class, 'cropproject'])->name('farmer.cropproject');
-            Route::get('/addproject', [farmerController::class, 'addproject'])->name('farmer.cropproject.add');
-            Route::post('/storeproject', [farmerController::class, 'storeproject'])->name('farmer.cropproject.store');
-            Route::get('/showproject/{id}', [farmerController::class, 'showproject'])->name('farmer.cropproject.show');
-            Route::get('/editproject/{id}', [farmerController::class, 'editproject'])->name('farmer.cropproject.edit');
-            Route::put('/updateproject/{id}', [farmerController::class, 'updateproject'])->name('farmer.cropproject.update');
-            Route::delete('/deleteproject/{id}', [farmerController::class, 'deleteproject'])->name('farmer.deleteproject.update');
+            Route::prefix('project')->group(function () {
+                Route::get('/cropproject', [farmerController::class, 'cropproject'])->name('farmer.cropproject');
+                Route::get('/addproject', [farmerController::class, 'addproject'])->name('farmer.cropproject.add');
+                Route::post('/storeproject', [farmerController::class, 'storeproject'])->name('farmer.cropproject.store');
+                Route::get('/showproject/{id}', [farmerController::class, 'showproject'])->name('farmer.cropproject.show');
+                Route::get('/editproject/{id}', [farmerController::class, 'editproject'])->name('farmer.cropproject.edit');
+                Route::put('/updateproject/{id}', [farmerController::class, 'updateproject'])->name('farmer.cropproject.update');
+                Route::delete('/deleteproject/{id}', [farmerController::class, 'deleteproject'])->name('farmer.deleteproject.update');
+            });
+            // microloan
+            Route::prefix('microloan')->group(function () {
+                Route::get('/loan', [farmerController::class, 'showloanprovider'])->name('farmer.microloan');
+                Route::get('/profile/{id}', [farmerController::class, 'viewloanprovider'])->name('viewloanprovider');
+                Route::post('/applyloan/{id}', [farmerController::class, 'applyloan'])->name('farmer.applyloan');
+            });
         });
         //end
     });
 });
-// Farmer office route end
+// Farmer  route end
 
 // Investor route start
 Route::prefix('investor')->group(function () {
@@ -110,9 +118,9 @@ Route::prefix('investor')->group(function () {
             Route::get('/cropproject', [investorController::class, 'cropproject'])->name('investor.cropproject.show');
             Route::get('/cropproject/view/{id}', [investorController::class, 'projectview'])->name('investor.cropproject.view');
             // invest in crop project
-            Route::post('/invest/crop/{id}',[investorController::class, 'investcrop'])->name('investor.crop.invest');
-             // invest in investing organization
-             Route::post('/invest/investingorg/{id}',[investorController::class, 'investingorginvest'])->name('investor.investingorg.invest');
+            Route::post('/invest/crop/{id}', [investorController::class, 'investcrop'])->name('investor.crop.invest');
+            // invest in investing organization
+            Route::post('/invest/investingorg/{id}', [investorController::class, 'investingorginvest'])->name('investor.investingorg.invest');
 
             // Investing organizations
             Route::get('/investingorg', [investorController::class, 'investingorg'])->name('investor.investingorg.show');
@@ -121,7 +129,7 @@ Route::prefix('investor')->group(function () {
         //end
     });
 });
-// Farmer office route end
+
 
 // flnancial_groups route start
 Route::prefix('flnancial_groups')->group(function () {

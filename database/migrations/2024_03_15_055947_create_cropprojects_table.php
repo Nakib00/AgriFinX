@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('farmer_id')->constrained('farmers');
             $table->string('project_name');
             $table->longText('description');
-            $table->foreignId('crop_id')->constrained('crops');;
+            $table->foreignId('crop_id')->constrained('crops');
             $table->date('launch_date');
             $table->date('end_date');
             $table->string('farm_size');

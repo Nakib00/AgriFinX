@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('subsides_id')->constrained('subsidies');
             $table->foreignId('agri_officer_id')->constrained('agricultural_officers');
-            $table->date('issue_date');
+            $table->date('issue_date')->nullable();
             $table->timestamps();
         });
     }

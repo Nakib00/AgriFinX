@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('claim_amount');
             $table->string('crop_amount');
             $table->boolean('approvel_status');
-            $table->date('issue_date');
+            $table->date('issue_date')->nullable();
             $table->timestamps();
         });
     }

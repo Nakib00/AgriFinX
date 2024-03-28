@@ -4,9 +4,6 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="dashboard-content">
-                    {{--  Insert data from sidebar button  --}}
-                    @yield('agriofficer.dashboard')
-
                     {{--  Dashboaed containt  --}}
                     {{--  Title  --}}
                     <div class="card">

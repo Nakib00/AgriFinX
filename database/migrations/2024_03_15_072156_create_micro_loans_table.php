@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string('interest_rate');
             $table->string('installment_period');
             $table->boolean('approval_status');
-            $table->date('loan_issue_date');
-            $table->date('debt_repayment_date');
+            $table->date('loan_issue_date')->nullable();
+            $table->date('debt_repayment_date')->nullable();
             $table->timestamps();
         });
     }
