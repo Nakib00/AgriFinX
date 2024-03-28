@@ -244,10 +244,16 @@ class farmerController extends Controller
     // Microloan
     public function showloanprovider()
     {
+        // find out login farmer id
+        $userid = auth()->guard('farmer')->user()->id;
+        // Retrieve all loan applications
+        $loanApplications = micro_loan::where('farmer_id', $userid)->get();
+
+
         // Fetch all loan provider type users from the database
         $loanProviders = flnancial_group::where('Orgnization_type', 'loan_provider')->get();
 
-        return view('website.users.farmer.loan.loanprovider', compact('loanProviders'));
+        return view('website.users.farmer.loan.loanprovider', compact('loanProviders','loanApplications'));
     }
     // shwo loan provider profile
     public function viewloanprovider($id)

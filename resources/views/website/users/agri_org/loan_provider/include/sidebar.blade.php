@@ -8,7 +8,14 @@
         <ul class="list-group">
             <li class="list-group-item">
                 <a href="{{ route('org.about', ['id' => Auth::guard('flnancial_group')->id()]) }}"
-                    class="btn btn-primary btn-block m-3 px-3">About</a>
+                    class="btn btn-primary btn-block ">About</a>
+            </li>
+            <li class="list-group-item">
+                <a href="{{ route('org.loanprovider.loanshow') }}" class="btn btn-primary btn-block ">Micro loans
+                    Application</a>
+            </li>
+            <li class="list-group-item">
+                <a href="{{ route('org.loanprovider.approvelloan') }}" class="btn btn-primary btn-block ">Approved loans</a>
             </li>
             <li class="list-group-item">
                 <a href="{{ route('org.logout') }}" class="btn btn-danger btn-block">Logout</a>

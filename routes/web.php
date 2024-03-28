@@ -153,6 +153,15 @@ Route::prefix('flnancial_groups')->group(function () {
             // update info
             Route::get('/editAbout', [orgcontroller::class, 'editAbout'])->name('org.editabout');
             Route::put('/updateAbout/{id}', [orgcontroller::class, 'updateAbout'])->name('org.updateAbout');
+
+
+            // loan provider user routes
+            Route::prefix('dashboard')->group(function () {
+                Route::get('/loan', [microloneController::class, 'showloan'])->name('org.loanprovider.loanshow');
+                Route::get('/loan/{id}', [microloneController::class, 'viewloan'])->name('org.loanprovider.loanview');
+                Route::post('/loan/status/{id}', [microloneController::class, 'loanstatus'])->name('org.loanprovider.status');
+                Route::get('/approveloan',[microloneController::class, 'approveloan'])->name('org.loanprovider.approvelloan');
+            });
         });
         //end
     });

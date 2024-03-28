@@ -22,4 +22,5 @@ class micro_loan extends Model
     {
         return $this->belongsTo(Farmer::class);
     }
+
 }
