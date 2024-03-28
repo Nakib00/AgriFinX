@@ -54,7 +54,7 @@ class microloneController extends Controller
             'debt_repayment_date' => 'required|date',
         ]);
         // Find the microloan record by ID
-        $microloan = Micro_loan::findOrFail($id);
+        $microloan = micro_loan::findOrFail($id);
 
         $microloan->approval_status = $request->input('approval_status');
         $microloan->loan_issue_date = now();
@@ -66,8 +66,17 @@ class microloneController extends Controller
     }
 
     // shwo all aproved loan
-    public function approveloan(){
+    public function approveloan()
+    {
 
-        return view('website.users.agri_org.loan_provider.loanapply.approveloan');
+        //  login loan provider id
+        $loanprovider_id = Auth::guard('flnancial_group')->id();
+
+        // all approved loans
+        $approvedLoans = Micro_loan::where('Organization_id', $loanprovider_id)
+            ->where('approval_status', 1)
+            ->get();
+
+        return view('website.users.agri_org.loan_provider.loanapply.approveloan', ['approvedLoans' => $approvedLoans]);
     }
 }
