@@ -48,4 +48,9 @@ class flnancial_group extends Authenticatable
     {
         return $this->hasOne(ingo_financial_grup::class, 'Organization_id');
     }
+
+    public function investingTracks()
+    {
+        return $this->hasMany(investing_track_Organization::class, 'Organization_id'); 
+    }
 }

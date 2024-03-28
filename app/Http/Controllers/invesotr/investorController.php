@@ -23,7 +23,17 @@ class investorController extends Controller
     //dashboard
     public function dashboard()
     {
-        return view('website.users.investor.deashboad');
+        // login investro id
+        $investor_id = Auth::guard('investor')->id();
+
+        // Total crop project investment amount
+        $totalCropInvestment = investing_track::where('investor_id', $investor_id)->sum('investing_amount');
+
+        // Total investing organization amount
+        $totalOrgInvestment = investing_track_Organization::where('investor_id', $investor_id)->sum('investing_amount');
+        
+
+        return view('website.users.investor.deashboad', compact('totalCropInvestment', 'totalOrgInvestment'));
     } //end
 
     // login
@@ -120,9 +130,16 @@ class investorController extends Controller
     // show crop project information
     public function cropproject()
     {
+        // show all crop projects
         $cropproject = Cropproject::all();
 
-        return view('website.users.investor.cropproject.showcropproject', ['cropproject' => $cropproject]);
+        // get investor id
+        $investor_id = auth()->guard('investor')->user()->id;
+
+        // Fetch the investments made by the logged-in investor
+        $investments = investing_track::where('investor_id', $investor_id)->with('project')->get();
+
+        return view('website.users.investor.cropproject.showcropproject', ['cropproject' => $cropproject], ['investments' => $investments]);
     }
 
     // view project information
@@ -137,8 +154,16 @@ class investorController extends Controller
     // Display investing organizations
     public function investingorg()
     {
+        // show all projects
         $investingorg = flnancial_group::where('Orgnization_type', 'investing_organization')->get();
-        return view('website.users.investor.investingorg.investingorg', compact('investingorg'));
+
+        // get investor id
+        $investor_id = auth()->guard('investor')->user()->id;
+
+        // Fetch the investments made by the logged-in investor
+        $investments = investing_track_Organization::where('investor_id', $investor_id)->with('organization')->get();
+
+        return view('website.users.investor.investingorg.investingorg', ['investingorg' => $investingorg], ['investments' => $investments]);
     }
 
     // view inveting organizations

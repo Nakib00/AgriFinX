@@ -24,6 +24,11 @@ class investor extends Authenticatable
         'f_name', 'l_name', 'email', 'nid', 'phone', 'address', 'dateofbirth', 'password',
     ];
 
+    public function investments()
+    {
+        return $this->hasMany(investing_track::class, 'investor_id');
+    }
+    
     /**
      * The attributes that should be hidden for serialization.
      *

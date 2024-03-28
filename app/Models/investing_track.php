@@ -9,7 +9,7 @@ class investing_track extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'investor_id', 'project_id', 'investing_amount','investing_date','percentage_rate'
+        'investor_id', 'project_id', 'investing_amount', 'investing_date', 'percentage_rate'
     ];
 
     // Define relationships if needed
@@ -19,6 +19,6 @@ class investing_track extends Model
     }
     public function project()
     {
-        return $this->belongsTo(cropproject::class);
+        return $this->belongsTo(Cropproject::class, 'project_id');
     }
 }

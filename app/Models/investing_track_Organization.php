@@ -9,7 +9,7 @@ class investing_track_Organization extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'investor_id', 'Organization_id', 'investing_amount','investing_date','percentage_rate'
+        'investor_id', 'Organization_id', 'investing_amount', 'investing_date', 'percentage_rate'
     ];
 
     // Define relationships if needed
@@ -17,8 +17,9 @@ class investing_track_Organization extends Model
     {
         return $this->belongsTo(investor::class);
     }
+    
     public function organization()
     {
-        return $this->belongsTo(flnancial_group::class);
+        return $this->belongsTo(flnancial_group::class, 'Organization_id');
     }
 }
