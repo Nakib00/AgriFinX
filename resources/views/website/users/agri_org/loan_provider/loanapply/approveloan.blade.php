@@ -30,8 +30,6 @@
                                     @endforeach
                                 </tbody>
                             </table>
-
-
                         </div>
                         {{--  end  --}}
                     </div>
