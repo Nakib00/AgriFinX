@@ -38,10 +38,49 @@
                         {{--  end  --}}
                     </div>
 
-                    {{--  chart of comparing  --}}
-                    <canvas id="investmentChart" class="mt-3" width="500" height="200"></canvas>
+                    <h2>Project Investment Chart</h2>
+                    <canvas id="investmentChart" width="800" height="400"></canvas>
                 </div>
             </div>
         </div>
     </div>
+
+    {{--  <!-- Bootstrap JS and Chart.js -->  --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    {{--  line chart  --}}
+    <script>
+        // Extract project names and invested amounts from PHP variable
+        var projectNames = [];
+        var investedAmounts = [];
+        @foreach ($investedProjects as $investment)
+            projectNames.push("{{ $investment->project->project_name }}");
+            investedAmounts.push({{ $investment->investing_amount }});
+        @endforeach
+
+        // Create the chart
+        var ctx = document.getElementById('investmentChart').getContext('2d');
+        var investmentChart = new Chart(ctx, {
+            type: 'line', // Changed to line chart
+            data: {
+                labels: projectNames,
+                datasets: [{
+                    label: 'Invested Amount ($)',
+                    data: investedAmounts,
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+
 @endsection
