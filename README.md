@@ -21,3 +21,4 @@ When migrating a table to the database, follow these steps:
     ```
 
     This command will migrate all pending migrations, including the one for the `crops` table and any other tables defined in your migration files.
+jani naa
