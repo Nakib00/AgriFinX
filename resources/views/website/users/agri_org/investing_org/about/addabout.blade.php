@@ -1,4 +1,4 @@
-@extends('website.users.agri_org.loan_provider.deashboad')
+@extends('website.users.agri_org.investing_org.deashboad')
 @section('scontent.dashboard')
     <div class="container mt-4">
         <div class="row">
@@ -6,7 +6,7 @@
                 <div class="aboutcontainer">
                     <h1>Add About Details</h1>
                     {{--  <!-- Form -->  --}}
-                    <form id="add-about-form" action="{{ route('loanprovider.storeAbout') }}" method="POST">
+                    <form id="add-about-form" action="{{ route('investing.storeAbout') }}" method="POST">
                         @csrf
                         <div class="form-group">
                             <label for="about">About</label>

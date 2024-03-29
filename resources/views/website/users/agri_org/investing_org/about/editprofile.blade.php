@@ -1,9 +1,9 @@
-@extends('website.users.agri_org.investing_org.deashboard')
+@extends('website.users.agri_org.investing_org.deashboad')
 @section('scontent.dashboard')
     <div class="col-md-9 pb-5">
         <div class="form-container pb-5">
             <h2>Edit Profile</h2>
-            <form action="{{ route('org.profile.update') }}" class="pb-4" method="POST">
+            <form action="{{ route('investing.profile.update') }}" class="pb-4" method="POST">
                 @csrf
                 @method('PUT')
                 <div class="form-group">
@@ -30,13 +30,4 @@
             </form>
         </div>
     </div>
-
-    {{--  <!-- Bootstrap CSS -->  --}}
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-
-    {{--  <!-- jQuery -->  --}}
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-    {{--  <!-- Bootstrap JS -->  --}}
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 @endsection

@@ -143,17 +143,6 @@ Route::prefix('flnancial_groups')->group(function () {
     Route::middleware('financial_group')->group(function () {
         //Dashboard routes start
         Route::prefix('dashboard')->group(function () {
-            // // edit profile routes
-            // Route::get('/edit', [orgcontroller::class, 'editprofile'])->name('org.profile.edit');
-            // Route::put('/update', [orgcontroller::class, 'updateprofile'])->name('org.profile.update');
-            // // add info
-            // Route::get('/addAbout', [orgcontroller::class, 'addAbout'])->name('org.addAbout');
-            // Route::post('/storeAbout', [orgcontroller::class, 'storeAbout'])->name('org.storeAbout');
-            // Route::get('/about/{id}', [orgcontroller::class, 'about'])->name('org.about');
-            // // update info
-            // Route::get('/editAbout', [orgcontroller::class, 'editAbout'])->name('org.editabout');
-            // Route::put('/updateAbout/{id}', [orgcontroller::class, 'updateAbout'])->name('org.updateAbout');
-
             // loan provider user routes
             Route::prefix('loanprovider')->group(function () {
                 // About and profile routes
@@ -169,6 +158,18 @@ Route::prefix('flnancial_groups')->group(function () {
                 Route::get('/loan/{id}', [microloneController::class, 'viewloan'])->name('org.loanprovider.loanview');
                 Route::post('/loan/status/{id}', [microloneController::class, 'loanstatus'])->name('org.loanprovider.status');
                 Route::get('/approveloan', [microloneController::class, 'approveloan'])->name('org.loanprovider.approvelloan');
+            });
+
+            // Investing  user routes
+            Route::prefix('investingorg')->group(function () {
+                // About and profile routes
+                Route::get('/editprofile', [orgcontroller::class, 'editprofileinvesting'])->name('investing.editprofile');
+                Route::put('/update', [orgcontroller::class, 'updateprofileinvesting'])->name('investing.profile.update');
+                Route::get('/about/{id}', [orgcontroller::class, 'aboutinvesting'])->name('investing.about');
+                Route::get('/addAbout', [orgcontroller::class, 'addAboutinvesting'])->name('investing.addAbout');
+                Route::post('/storeAbout', [orgcontroller::class, 'storeAboutinvesting'])->name('investing.storeAbout');
+                Route::get('/editAbout', [orgcontroller::class, 'editAboutinvesting'])->name('investing.editabout');
+                Route::put('/updateAbout/{id}', [orgcontroller::class, 'updateAboutinvesting'])->name('investing.updateAbout');
             });
         });
         //end
