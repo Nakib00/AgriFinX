@@ -11,7 +11,6 @@ class investingorg extends Controller
     //Investing org view profile
     public function ivesview($id)
     {
-
         // Find the organization record by its ID
         $about = ingo_financial_grup::findOrFail($id);
 
@@ -20,4 +19,9 @@ class investingorg extends Controller
 
         return view('website.investinggroup.view', ['about' => $about, 'organization' => $organization]);
     } //end
+
+
+    public function showproject(){
+        return view('website.users.agri_org.investing_org.invest.invest');
+    }
 }
