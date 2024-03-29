@@ -87,15 +87,18 @@ class orgcontroller extends Controller
         return redirect()->route('login_org')->with('success', 'Financial org logout successfully.');
     } //end
 
+
+
+    // Edit Loan provider Information
     // edit profile
-    public function editprofile()
+    public function editprofileloanprovider()
     {
         $user = auth()->guard('flnancial_group')->user();
-        return view('website.users.agri_org.editprofile', compact('user'));
+        return view('website.users.agri_org.loan_provider.about.editprofile', compact('user'));
     } //end
 
     //update profile
-    public function updateprofile(Request $request)
+    public function updateprofileloanprovider(Request $request)
     {
         $user = auth()->guard('flnancial_group')->user();
         $id = $user->id;
@@ -125,26 +128,30 @@ class orgcontroller extends Controller
         return redirect()->back()->with('success', 'Profile updated successfully.');
     } //end
 
+
+
+
+
     // about button
-    public function about($id)
+    public function aboutloanprovider($id)
     {
         // Fetch the ingo_financial_grup record associated with the specified user id
         $user = flnancial_group::findOrFail($id);
         $about = $user->ingoFinancialGrup()->first();
-        return view('website.users.agri_org.about', ['about' => $about]);
+        return view('website.users.agri_org.loan_provider.about.about', ['about' => $about]);
     } //end
 
 
     // About section
 
     // Display the form to add new information
-    public function addAbout()
+    public function addAboutloanprovider()
     {
-        return view('website.users.agri_org.addabout');
+        return view('website.users.agri_org.loan_provider.about.addabout');
     }
 
     // Store the new information
-    public function storeAbout(Request $request)
+    public function storeAboutloanprovider(Request $request)
     {
         // Validate input
         $request->validate([
@@ -171,18 +178,18 @@ class orgcontroller extends Controller
     }
 
     // Edit about
-    public function editAbout()
+    public function editAboutloanprovider()
     {
         // Get the ID of the currently authenticated user
         $userId = Auth::guard('flnancial_group')->id();
 
         // Find the organization record associated with the authenticated user
         $organization = ingo_financial_grup::where('Organization_id', $userId)->firstOrFail();
-        return view('website.users.agri_org.updateabout', ['organization' => $organization]);
+        return view('website.users.agri_org.loan_provider.about.updateabout', ['organization' => $organization]);
     }
 
     // about Edit about
-    public function updateAbout(Request $request, string $id)
+    public function updateAboutloanprovider(Request $request, string $id)
     {
         // Find the organization record by its ID
         $organization = ingo_financial_grup::findOrFail($id);

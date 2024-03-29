@@ -1,5 +1,5 @@
-@extends('website.layout.webpage')
-@section('content')
+@extends('website.users.agri_org.investing_org.deashboard')
+@section('scontent.dashboard')
     <div class="col-md-9 pb-5">
         <div class="form-container pb-5">
             <h2>Edit Profile</h2>

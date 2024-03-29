@@ -1,22 +1,12 @@
-@extends('website.layout.webpage')
-@section('content')
-    {{--  include alirt  --}}
-    @include('website.include.alirt')
+@extends('website.users.agri_org.loan_provider.deashboad')
+@section('scontent.dashboard')
     <div class="container mt-4">
-        <div class="col-md-9">
-            <div class="">
-                <h4 class="mb-4">Loan provider Dashboard</h4>
-            </div>
-        </div>
-
         <div class="row">
-            {{--  include sideber  --}}
-            @include('website.users.agri_org.loan_provider.include.sidebar')
             <div class="col-md-9 pb-3">
                 <div class="aboutcontainer">
                     <h1>Update About Details</h1>
                     {{--  <!-- Form -->  --}}
-                    <form id="microloan-form" action="{{ route('org.updateAbout', ['id' => $organization->id]) }}"
+                    <form id="microloan-form" action="{{ route('loanprovider.updateAbout', ['id' => $organization->id]) }}"
                         method="POST">
                         @csrf
                         @method('PUT')
@@ -42,7 +32,7 @@
 
                         <button type="submit">Update</button>
                     </form>
-                    <a href="{{ route('org.about', ['id' => Auth::guard('flnancial_group')->id()]) }}">
+                    <a href="{{ route('loanprovider.about', ['id' => Auth::guard('flnancial_group')->id()]) }}">
                         <button type="button" class="mt-3 btn btn-secondary">Back</button>
                     </a>
 
@@ -66,13 +56,4 @@
                 console.error(error);
             });
     </script>
-
-    {{--  <!-- Bootstrap CSS -->  --}}
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-
-    {{--  <!-- jQuery -->  --}}
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-    {{--  <!-- Bootstrap JS -->  --}}
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 @endsection
