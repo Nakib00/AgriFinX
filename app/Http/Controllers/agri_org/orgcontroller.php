@@ -334,4 +334,127 @@ class orgcontroller extends Controller
         // Redirect back or to a specific route after updating the data
         return redirect()->back()->with('success', 'Data updated successfully.');
     }
+
+
+    // Edit Insurance Information
+    // edit profile
+    public function editprofileinsurance()
+    {
+        $user = auth()->guard('flnancial_group')->user();
+        return view('website.users.agri_org.insurance_org.about.editprofile', compact('user'));
+    } //end
+
+    //update profile
+    public function updateprofileinsurance(Request $request)
+    {
+        $user = auth()->guard('flnancial_group')->user();
+        $id = $user->id;
+
+        // Validate input
+        $request->validate([
+            'f_name' => 'required|string|max:255',
+            'l_name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:agricultural_officers,email,',
+            'phone' => 'required|string|max:15',
+            'address' => 'required|string|max:255',
+        ]);
+
+        // Find the team by ID
+        $agriorg = flnancial_group::findOrFail($id);
+
+        // Update user data
+        $agriorg->f_name = $request->input('f_name');
+        $agriorg->l_name = $request->input('l_name');
+        $agriorg->email = $request->input('email');
+        $agriorg->phone = $request->input('phone');
+        $agriorg->address = $request->input('address');
+
+        // Save the changes to the user object
+        $agriorg->save();
+
+        return redirect()->back()->with('success', 'Profile updated successfully.');
+    } //end
+
+
+    // about button
+    public function aboutinsurance($id)
+    {
+        // Fetch the ingo_financial_grup record associated with the specified user id
+        $user = flnancial_group::findOrFail($id);
+        $about = $user->ingoFinancialGrup()->first();
+        return view('website.users.agri_org.insurance_org.about.about', ['about' => $about]);
+    } //end
+
+
+    // About section
+
+    // Display the form to add new information
+    public function addAboutinsurance()
+    {
+        return view('website.users.agri_org.insurance_org.about.addabout');
+    }
+
+    // Store the new information
+    public function storeAboutinsurance(Request $request)
+    {
+        // Validate input
+        $request->validate([
+            'about' => 'required|string',
+            'loan_types' => 'required|string',
+            'team' => 'required|string',
+            'conditions' => 'nullable|string',
+        ]);
+
+        // Get the ID of the currently authenticated user
+        $organization_id = Auth::guard('flnancial_group')->id();
+
+        // Create a new organization record with the provided data and the user's ID
+        ingo_financial_grup::create([
+            'about' => $request->input('about'),
+            'type_of_service' => $request->input('loan_types'),
+            'team' => $request->input('team'),
+            'conditions' => $request->input('conditions'),
+            'Organization_id' => $organization_id,
+        ]);
+
+        // Redirect back or to a specific route after storing the data
+        return redirect()->back()->with('success', 'About details added successfully.');
+    }
+
+    // Edit about
+    public function editAboutinsurance()
+    {
+        // Get the ID of the currently authenticated user
+        $userId = Auth::guard('flnancial_group')->id();
+
+        // Find the organization record associated with the authenticated user
+        $organization = ingo_financial_grup::where('Organization_id', $userId)->firstOrFail();
+        return view('website.users.agri_org.insurance_org.about.updateabout', ['organization' => $organization]);
+    }
+
+    // about Edit about
+    public function updateAboutinsurance(Request $request, string $id)
+    {
+        // Find the organization record by its ID
+        $organization = ingo_financial_grup::findOrFail($id);
+
+        // Validate input
+        $request->validate([
+            'about' => 'required|string',
+            'loan_types' => 'required|string',
+            'team' => 'required|string',
+            'conditions' => 'required|string',
+        ]);
+
+        // Update the organization data
+        $organization->update([
+            'about' => $request->input('about'),
+            'type_of_service' => $request->input('loan_types'),
+            'team' => $request->input('team'),
+            'conditions' => $request->input('conditions'),
+        ]);
+
+        // Redirect back or to a specific route after updating the data
+        return redirect()->back()->with('success', 'Data updated successfully.');
+    }
 }

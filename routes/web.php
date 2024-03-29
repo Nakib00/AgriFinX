@@ -171,6 +171,18 @@ Route::prefix('flnancial_groups')->group(function () {
                 Route::get('/editAbout', [orgcontroller::class, 'editAboutinvesting'])->name('investing.editabout');
                 Route::put('/updateAbout/{id}', [orgcontroller::class, 'updateAboutinvesting'])->name('investing.updateAbout');
             });
+
+            // Insurance user routes
+            Route::prefix('investingorg')->group(function () {
+                // About and profile routes
+                Route::get('/editprofile', [orgcontroller::class, 'editprofileinsurance'])->name('insurance.editprofile');
+                Route::put('/update', [orgcontroller::class, 'updateprofileinsurance'])->name('insurance.profile.update');
+                Route::get('/about/{id}', [orgcontroller::class, 'aboutinsurance'])->name('insurance.about');
+                Route::get('/addAbout', [orgcontroller::class, 'addAboutinsurance'])->name('insurance.addAbout');
+                Route::post('/storeAbout', [orgcontroller::class, 'storeAboutinsurance'])->name('insurance.storeAbout');
+                Route::get('/editAbout', [orgcontroller::class, 'editAboutinsurance'])->name('insurance.editabout');
+                Route::put('/updateAbout/{id}', [orgcontroller::class, 'updateAboutinsurance'])->name('insurance.updateAbout');
+            });
         });
         //end
     });
