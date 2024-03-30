@@ -6,11 +6,13 @@
             <p>profile update</p>
         </a>
         <ul class="list-group">
-            <li class="list-group-item"><a href="{{ route('investing.about', ['id' => Auth::guard('flnancial_group')->id()]) }}"
+            <li class="list-group-item"><a
+                    href="{{ route('investing.about', ['id' => Auth::guard('flnancial_group')->id()]) }}"
                     class="btn btn-primary btn-block">About</a>
             </li>
-            <li class="list-group-item"><a href="{{ route('investing.show.project') }}" class="btn btn-primary btn-block">Invest in project</a></li>
-            <li class="list-group-item"><a href="#" class="btn btn-primary btn-block">All investor list</a></li>
+            <li class="list-group-item"><a href="#" class="btn btn-primary btn-block">Invest in project</a></li>
+            <li class="list-group-item"><a href="{{ route('investing.show.investor') }}"
+                    class="btn btn-primary btn-block">Investor's</a></li>
             <li class="list-group-item"><a href="{{ route('org.logout') }}" class="btn btn-danger btn-block">Logout</a>
             </li>
         </ul>

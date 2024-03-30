@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use App\Models\{ingo_financial_grup, flnancial_group};
+use App\Models\{ingo_financial_grup, flnancial_group, investing_track_Organization};
 
 class investingorg extends Controller
 {
@@ -21,7 +22,16 @@ class investingorg extends Controller
     } //end
 
 
-    public function showproject(){
-        return view('website.users.agri_org.investing_org.invest.invest');
+    // shwo investor info
+    public function showinvestor()
+    {
+
+        // login loan investing org id
+        $investingorg_id = Auth::guard('flnancial_group')->id();
+
+        // Retrieve investment data for the logged-in financial group
+        $investments = investing_track_Organization::where('Organization_id', $investingorg_id)->get();
+
+        return view('website.users.agri_org.investing_org.invest.invest', compact('investments'));;
     }
 }

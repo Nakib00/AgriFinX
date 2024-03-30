@@ -172,7 +172,7 @@ Route::prefix('flnancial_groups')->group(function () {
                 Route::put('/updateAbout/{id}', [orgcontroller::class, 'updateAboutinvesting'])->name('investing.updateAbout');
 
                 // invest
-                Route::get('/editAbout', [investingorg::class, 'showproject'])->name('investing.show.project');
+                Route::get('/showinvestor', [investingorg::class, 'showinvestor'])->name('investing.show.investor');
             });
 
             // Insurance user routes
