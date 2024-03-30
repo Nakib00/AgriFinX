@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 # AgriFinX - Agricultural Finance Management Platform
 
 AgriFinX is a fintech platform specifically designed to cater to the needs of the agricultural sector. It provides comprehensive solutions for managing various aspects of agricultural finance, including user management, crop insurance, loan processing, investment management, and data analytics. This README file serves as a guide to understand the project structure, installation process, and usage of AgriFinX.
@@ -12,11 +10,10 @@ When migrating a table to the database, follow these steps:
 
     ```sh
     php artisan migrate --path="database\migrations\2024_03_15_062836_create_crops_table.php"
-
     ```
 
    ```sh
-     php artisan migrate --path="database\migrations\2024_03_15_070801_create_flnancial_groups_table.php"
+   php artisan migrate --path="database\migrations\2024_03_15_070801_create_flnancial_groups_table.php"
     ```
 
    ```sh
