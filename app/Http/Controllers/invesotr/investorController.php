@@ -31,7 +31,7 @@ class investorController extends Controller
 
         // Total investing organization amount
         $totalOrgInvestment = investing_track_Organization::where('investor_id', $investor_id)->sum('investing_amount');
-        
+
 
         return view('website.users.investor.deashboad', compact('totalCropInvestment', 'totalOrgInvestment'));
     } //end

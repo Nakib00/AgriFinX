@@ -11,10 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('investing_tracks', function (Blueprint $table) {
+        Schema::create('investingorg_tracks', function (Blueprint $table) {
             $table->id();
             $table->foreignId('project_id')->constrained('cropprojects');
-            $table->foreignId('investor_id')->constrained('investors');
             $table->foreignId('investingorg_id')->constrained('flnancial_groups');
             $table->string('investing_amount');
             $table->date('investing_date');
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('investing_tracks');
+        Schema::dropIfExists('investingorg_tracks');
     }
 };

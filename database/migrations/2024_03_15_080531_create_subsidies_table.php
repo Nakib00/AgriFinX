@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('subsidies', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('farmer_id')->constrained('farmers')->null();
-            $table->foreignId('agri_officer_id')->constrained('agricultural_officers')->null();
+            $table->foreignId('farmer_id')->constrained('farmers');
+            $table->foreignId('agri_officer_id')->constrained('agricultural_officers');
             $table->longText('reason_of_taking_subsidies');
             $table->string('farm_size');
             $table->string('amount');
-            $table->boolean('approvel_status');
+            $table->boolean('approvel_status')->nullable();
             $table->timestamps();
         });
     }
