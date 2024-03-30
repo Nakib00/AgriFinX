@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('investing_tracks', function (Blueprint $table) {
             $table->id();
             $table->foreignId('project_id')->constrained('cropprojects');
-            $table->foreignId('investor_id')->constrained('investors');
+            $table->foreignId('investor_id')->constrained('investors')->NULL();
+            $table->foreignId('investingorg_id')->constrained('flnancial_groups')->NULL();
             $table->string('investing_amount');
             $table->date('investing_date');
             $table->string('percentage_rate');
