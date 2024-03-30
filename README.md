@@ -17,15 +17,13 @@ When migrating a table to the database, follow these steps:
 
    ```sh
      php artisan migrate --path="database\migrations\2024_03_15_070801_create_flnancial_groups_table.php"
-
     ```
 
-      ```sh
+   ```sh
     php artisan migrate --path="database\migrations\2024_03_15_082501_create_agricultural_officers_table.php"
-
     ```
 
-    This command will execute the migration specifically for the `crops` table using the migration file `2024_03_15_062836_create_crops_table.php`.
+   This command will execute the migration specifically for the `crops` table using the migration file `2024_03_15_062836_create_crops_table.php`.
 
 1. After migrating the specific table, migrate all tables by running the following command:
 
@@ -33,6 +31,5 @@ When migrating a table to the database, follow these steps:
     php artisan migrate
     ```
 
-    This command will migrate all pending migrations, including the one for the `crops` table and any other tables defined in your migration files.
+This command will migrate all pending migrations, including the one for the `crops` table and any other tables defined in your migration files.
 jani naa
->>>>>>> de491d045eddf6506be0ecec176b78cf13081ab5
