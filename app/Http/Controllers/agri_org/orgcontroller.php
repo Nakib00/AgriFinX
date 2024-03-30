@@ -299,7 +299,7 @@ class orgcontroller extends Controller
     }
 
     // Edit about
-    public function editAboutinvesting()
+    public function editaboutinvesting()
     {
         // Get the ID of the currently authenticated user
         $userId = Auth::guard('flnancial_group')->id();

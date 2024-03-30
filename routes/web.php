@@ -168,7 +168,7 @@ Route::prefix('flnancial_groups')->group(function () {
                 Route::get('/about/{id}', [orgcontroller::class, 'aboutinvesting'])->name('investing.about');
                 Route::get('/addAbout', [orgcontroller::class, 'addAboutinvesting'])->name('investing.addAbout');
                 Route::post('/storeAbout', [orgcontroller::class, 'storeAboutinvesting'])->name('investing.storeAbout');
-                Route::get('/editAbout', [orgcontroller::class, 'editAboutinvesting'])->name('investing.editabout');
+                Route::get('/editabout', [orgcontroller::class, 'editaboutinvesting'])->name('investingorg.editabout');
                 Route::put('/updateAbout/{id}', [orgcontroller::class, 'updateAboutinvesting'])->name('investing.updateAbout');
 
                 // invest
@@ -176,7 +176,7 @@ Route::prefix('flnancial_groups')->group(function () {
             });
 
             // Insurance user routes
-            Route::prefix('investingorg')->group(function () {
+            Route::prefix('insuranceorg')->group(function () {
                 // About and profile routes
                 Route::get('/editprofile', [orgcontroller::class, 'editprofileinsurance'])->name('insurance.editprofile');
                 Route::put('/update', [orgcontroller::class, 'updateprofileinsurance'])->name('insurance.profile.update');

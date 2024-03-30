@@ -1,7 +1,5 @@
 @extends('website.users.agri_org.investing_org.deashboad')
 @section('scontent.dashboard')
-    {{--  include alirt  --}}
-    @include('website.include.alirt')
     <div class="container mt-4">
         <div class="row">
             <div class="col-md-9 pb-3">
@@ -20,7 +18,7 @@
                         <h1>Conditions</h1>
                         <p>{!! $about->conditions !!}</p>
 
-                        <a href="{{ route('investing.editabout') }}"><button type="submit">Make update</button></a>
+                        <a href="{{ route('investingorg.editabout') }}"><button type="submit">Make update</button></a>
                     @else
                         <p>No about information available.</p>
 
