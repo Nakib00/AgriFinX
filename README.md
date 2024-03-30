@@ -12,9 +12,18 @@ When migrating a table to the database, follow these steps:
     php artisan migrate --path="database\migrations\2024_03_15_062836_create_crops_table.php"
 
     ```
-
+ php artisan migrate --path="database\migrations\2024_03_15_070801_create_flnancial_groups_table.php"
     ```sh
-    php artisan migrate --path="database\migrations\2024_03_15_070801_create_flnancial_groups_table.php"
+   
+<<<<<<< HEAD
+    
+    ```
+php artisan migrate --path="database\migrations\2024_03_15_082501_create_agricultural_officers_table.php"
+     ```sh
+    
+    
+=======
+>>>>>>> 8b91aa7571e4a9f69e1e2f4d535c2f4e98ba8986
     ```
 
     ```sh
