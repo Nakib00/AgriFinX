@@ -173,6 +173,11 @@ Route::prefix('flnancial_groups')->group(function () {
 
                 // invest
                 Route::get('/showinvestor', [investingorg::class, 'showinvestor'])->name('investing.show.investor');
+                // crop projects
+                Route::get('/showcropproject', [investingorg::class, 'showproject'])->name('investing.show.crop.project');
+                Route::get('/cropproject/view/{id}', [investingorg::class, 'projectview'])->name('investing.cropproject.view');
+                // invest in crop project
+                Route::post('/invest/crop/{id}', [investingorg::class, 'investcrop'])->name('investing.crop.invest');
             });
 
             // Insurance user routes

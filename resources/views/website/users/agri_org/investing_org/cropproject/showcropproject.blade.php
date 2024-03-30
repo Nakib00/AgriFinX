@@ -1,5 +1,5 @@
-@extends('website.users.investor.layout.investorlayout')
-@section('agriofficer.dashboard')
+@extends('website.users.agri_org.investing_org.deashboad')
+@section('scontent.dashboard')
     <section class="section-padding" id="section_3">
         <div class="container">
             <div class="row">
@@ -30,7 +30,7 @@
                                     <td>{{ $cropproject->corp_quality }}</td>
                                     <td>
                                         {{-- View Icon --}}
-                                        <a href="{{ route('investor.cropproject.view', ['id' => $cropproject->id]) }}"
+                                        <a href="{{ route('investing.cropproject.view', ['id' => $cropproject->id]) }}"
                                             class="btn btn-info" title="View">
                                             <i class="far fa-eye">Invest</i>
                                         </a>

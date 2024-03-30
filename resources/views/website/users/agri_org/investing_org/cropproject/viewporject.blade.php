@@ -1,5 +1,5 @@
-@extends('website.users.investor.layout.investorlayout')
-@section('agriofficer.dashboard')
+@extends('website.users.agri_org.investing_org.deashboad')
+@section('scontent.dashboard')
     <section class="" id="section_3">
         <div class="container">
             <div class="row">
@@ -60,7 +60,7 @@
                                 <strong>Updated At:</strong> {{ $cropproject->updated_at }}
                             </div>
                             {{--  <!-- Back button -->  --}}
-                            <a href="{{ route('investor.cropproject.show') }}" class="btn btn-secondary">Back</a>
+                            <a href="{{ route('investing.show.crop.project') }}" class="btn btn-secondary">Back</a>
                         </div>
                         {{--  Investing button  --}}
                         <div class="mb-3">
@@ -108,7 +108,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="{{ route('investor.crop.invest', ['id' => $cropproject->id]) }}" method="POST">
+                        <form action="{{ route('investing.crop.invest', ['id' => $cropproject->id]) }}" method="POST">
                             @csrf
                             <div class="form-group">
                                 <label for="investing_amount">Investing Amount:</label>
