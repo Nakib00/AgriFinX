@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->foreignId('project_id')->constrained('cropprojects');
             $table->foreignId('investor_id')->constrained('investors');
-            $table->foreignId('investingorg_id')->constrained('flnancial_groups');
             $table->string('investing_amount');
             $table->date('investing_date');
             $table->string('percentage_rate');
