@@ -20,8 +20,6 @@ When migrating a table to the database, follow these steps:
     php artisan migrate --path="database\migrations\2024_03_15_082501_create_agricultural_officers_table.php"
     ```
 
-   This command will execute the migration specifically for the `crops` table using the migration file `2024_03_15_062836_create_crops_table.php`.
-
 1. After migrating the specific table, migrate all tables by running the following command:
 
     ```sh
