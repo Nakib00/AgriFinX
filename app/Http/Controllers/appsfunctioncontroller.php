@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Models\flnancial_group;
 use App\Models\{farmer, cropproject, crop};
 
@@ -13,27 +14,28 @@ class appsfunctioncontroller extends Controller
     public function mindex()
     {
         // Fetch all loan provider type users from the database
-        $loanProviders = flnancial_group::where('Orgnization_type', 'loan_provider')->get();
+        $loanProviders = DB::select("SELECT * FROM flnancial_groups WHERE Orgnization_type = 'loan_provider'");
         return view('website.microloan.mindex', compact('loanProviders'));
     }
     // show insurance provider
     public function iindex()
     {
         // Fetch all loan insurance type users from the database
-        $insuranceProviders = flnancial_group::where('Orgnization_type', 'insurance_organization')->get();
+        $insuranceProviders = DB::select("SELECT * FROM flnancial_groups WHERE Orgnization_type = 'insurance_organization'");
         return view('website.insurance.iindex', compact('insuranceProviders'));
     }
     // show investing organizations
     public function ivesindex()
     {
         // Fetch all loan investing type users from the database
-        $investingorg = flnancial_group::where('Orgnization_type', 'investing_organization')->get();
+        $investingorg = DB::select("SELECT * FROM flnancial_groups WHERE Orgnization_type = 'investing_organization'");
         return view('website.investinggroup.investindex', compact('investingorg'));
     }
     // shwo agri project
     public function agropindex()
     {
-        $cropprojects = Cropproject::all();
+        // fetch all project
+        $cropprojects = DB::select("SELECT * FROM cropprojects");
         return view('website.agroproject.agropindex', compact('cropprojects'));
     }
 
