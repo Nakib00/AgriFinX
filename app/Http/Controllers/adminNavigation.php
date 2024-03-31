@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\{Crop, crop_marcket_price};
+use App\Models\{Crop, crop_marcket_price,farmer};
 
 class adminNavigation extends Controller
 {
@@ -33,7 +33,9 @@ class adminNavigation extends Controller
     public function showfarmer()
     {
 
-        return view('admin.farmer.farmershow');
+        $farmer = farmer::all();
+
+        return view('admin.farmer.farmershow',compact('farmer'));
     }
 
     // invistor show
