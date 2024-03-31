@@ -4,17 +4,35 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Http\Request;
-use App\Models\{Crop, crop_marcket_price, farmer, investor};
 
 class adminNavigation extends Controller
 {
+    // index open admin page
+    public function index()
+    {
+        // total project number
+        $totalCropProjects = DB::table('cropprojects')->count();
+        // total loan applications
+        $totalLoans = DB::table('micro_loans')->count();
+
+
+        // Total invesment by agriginx
+        // Sum of investing amount from investing_tracks table
+        $investingAmountTracks = DB::table('investing_tracks')->sum('investing_amount');
+
+        // Sum of investing amount from investingorg_tracks table
+        $investingAmountOrgTracks = DB::table('investingorg_tracks')->sum('investing_amount');
+
+        // Total investment amount across all tables
+        $totalInvestmentAmount = $investingAmountTracks + $investingAmountOrgTracks;
+
+        return view('admin.dashboard', compact('totalCropProjects', 'totalLoans', 'totalInvestmentAmount'));
+    }
     //Crop page
     public function crop()
     {
-
         // Fetch all crops from the database
-        $crops = Crop::all();
+        $crops = DB::select("SELECT * FROM crops");
 
         // Pass the crops data to the view
         return view('admin.crop.crop', ['crops' => $crops]);
@@ -24,8 +42,15 @@ class adminNavigation extends Controller
     public function marckerprice()
     {
         // Fetch all crop market prices with their associated crop information
-        $cropMarketPrices = crop_marcket_price::with('crop')->get();
-        $crop = Crop::all();
+        $cropMarketPrices = DB::select("
+        SELECT crop_marcket_prices.*, crops.name AS crop_name
+        FROM crop_marcket_prices
+        JOIN crops ON crop_marcket_prices.crop_id = crops.id
+    ");
+
+
+        $crop = DB::select("SELECT * FROM crops");
+
 
         return view('admin.crop.cropmarcketprice', ['cropMarketPrices' => $cropMarketPrices], ['crop' => $crop]);
     }
@@ -33,7 +58,7 @@ class adminNavigation extends Controller
     // farmer show
     public function showfarmer()
     {
-
+        // fatch all farmer
         $farmer = DB::select('SELECT * FROM farmers');
 
         return view('admin.farmer.farmershow', compact('farmer'));
@@ -49,18 +74,30 @@ class adminNavigation extends Controller
     // loanprovider show
     public function showloanprovider()
     {
-        return view('admin.fin_org.loanprovidershow');
+        // Fetch all loan provider type users from the database
+        $loanProviders = DB::select("SELECT * FROM flnancial_groups WHERE Orgnization_type = 'loan_provider'");
+
+
+        return view('admin.fin_org.loanprovidershow', compact('loanProviders'));
     }
 
     // investingorg show
     public function showinvestingorg()
     {
-        return view('admin.fin_org.investingorgshow');
+        // Fetch all loan investing type users from the database
+        $investingorg = DB::select("SELECT * FROM flnancial_groups WHERE Orgnization_type = 'investing_organization'");
+
+
+        return view('admin.fin_org.investingorgshow', compact('investingorg'));
     }
 
     // insurance show
     public function showinsurance()
     {
-        return view('admin.fin_org.insuranceshow');
+        // Fetch all loan insurance type users from the database
+        $insurance = DB::select("SELECT * FROM flnancial_groups WHERE Orgnization_type = 'insurance_organization'");
+
+
+        return view('admin.fin_org.insuranceshow', compact('insurance'));
     }
 }

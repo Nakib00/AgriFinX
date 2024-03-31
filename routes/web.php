@@ -199,9 +199,7 @@ Route::prefix('flnancial_groups')->group(function () {
 
 
 // admin routes start
-Route::get('/dashboard', function () {
-    return view('admin.dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard',[adminNavigation::class,'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     // profile edit

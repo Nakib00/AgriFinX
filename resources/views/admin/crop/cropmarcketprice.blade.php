@@ -22,7 +22,7 @@
             <tbody>
                 @foreach ($cropMarketPrices as $cropMarketPrice)
                     <tr>
-                        <td>{{ $cropMarketPrice->crop->name }}</td>
+                        <td>{{ $cropMarketPrice->crop_name }}</td>
                         <td>{{ $cropMarketPrice->Current_Price }}</td>
                         <td>{{ $cropMarketPrice->price_date }}</td>
                         <td>

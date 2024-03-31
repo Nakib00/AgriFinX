@@ -46,7 +46,7 @@
     {{--  Invistor officer  --}}
     <li class="nav-item">
         <a class="nav-link" href="{{ route('invistor.show') }}">
-            <span><b>Invistor</b></span></a>
+            <span><b>Investor</b></span></a>
     </li>
     {{--  Agri org  --}}
     <li class="nav-item">
