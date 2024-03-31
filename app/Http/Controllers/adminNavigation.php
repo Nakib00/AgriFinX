@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-use App\Models\{Crop, crop_marcket_price,farmer};
+use App\Models\{Crop, crop_marcket_price, farmer, investor};
 
 class adminNavigation extends Controller
 {
@@ -33,15 +34,16 @@ class adminNavigation extends Controller
     public function showfarmer()
     {
 
-        $farmer = farmer::all();
+        $farmer = DB::select('SELECT * FROM farmers');
 
-        return view('admin.farmer.farmershow',compact('farmer'));
+        return view('admin.farmer.farmershow', compact('farmer'));
     }
 
     // invistor show
     public function showinvistor()
     {
-        return view('admin.invistor.invistorshow');
+        $investor = DB::select('SELECT * FROM investors');
+        return view('admin.invistor.invistorshow', compact('investor'));
     }
 
     // loanprovider show
