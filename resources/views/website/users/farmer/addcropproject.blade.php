@@ -44,13 +44,6 @@
                 <label for="labour_cost">Labour Cost:</label>
                 <input type="number" class="form-control" id="labour_cost" name="labour_cost" required>
             </div>
-            <div class="form-group">
-                <label for="funding_status">Funding Status:</label>
-                <select class="form-control" id="funding_status" name="funding_status" required>
-                    <option value="1">Funded</option>
-                    <option value="0">Not Funded</option>
-                </select>
-            </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
