@@ -15,6 +15,9 @@
                             <strong>Description:</strong> {{ $cropproject->description }}
                         </div>
                         <div class="mb-3">
+                            <strong>Crop Name:</strong> {{ $crop->name }}
+                        </div>
+                        <div class="mb-3">
                             <strong>Launch Date:</strong> {{ $cropproject->launch_date }}
                         </div>
                         <div class="mb-3">
@@ -46,7 +49,25 @@
                         <div class="mb-3">
                             <strong>Updated At:</strong> {{ $cropproject->updated_at }}
                         </div>
-                        {{--  <!-- Back button -->  --}}
+
+                        {{--  Risk assment  --}}
+                        <div class="card-header">
+                            <h5 class="card-title">Risk assment Details</h5>
+                        </div>
+                        <div class="mb-3">
+                            <strong>Message:</strong>
+                            @if ($cropStartMonthDay !== $launchMonthDay || $cropEndMonthDay !== $endMonthDay)
+                                The launch and end dates of the project do not match the cultivation start and end dates of
+                                the crop.
+                            @else
+                                No message
+                            @endif
+                        </div>
+
+
+
+
+                        {{--  Back button  --}}
                         <a href="{{ route('farmer.cropproject') }}" class="btn btn-secondary">Back</a>
                     </div>
                 </div>

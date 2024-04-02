@@ -180,8 +180,20 @@ class farmerController extends Controller
         // Retrieve the crop project based on the provided ID
         $cropproject = Cropproject::findOrFail($id);
 
+        // Retrieve crop details
+        $crop = $cropproject->crop;
+
+        // Get month and day of crop cultivation start and end dates
+        $cropStartMonthDay = Carbon::parse($crop->cultivation_start)->format('m-d');
+        $cropEndMonthDay = Carbon::parse($crop->cultivation_end)->format('m-d');
+
+        // Get month and day of project launch and end dates
+        $launchMonthDay = Carbon::parse($cropproject->launch_date)->format('m-d');
+        $endMonthDay = Carbon::parse($cropproject->end_date)->format('m-d');
+
+
         // Pass the crop project data to the view
-        return view('website.users.farmer.showcropproject', ['cropproject' => $cropproject]);
+        return view('website.users.farmer.showcropproject', compact('cropproject', 'crop', 'cropStartMonthDay', 'cropEndMonthDay', 'launchMonthDay', 'endMonthDay'));
     }
 
     // Open edit crop project page
@@ -253,7 +265,7 @@ class farmerController extends Controller
         // Fetch all loan provider type users from the database
         $loanProviders = flnancial_group::where('Orgnization_type', 'loan_provider')->get();
 
-        return view('website.users.farmer.loan.loanprovider', compact('loanProviders','loanApplications'));
+        return view('website.users.farmer.loan.loanprovider', compact('loanProviders', 'loanApplications'));
     }
     // shwo loan provider profile
     public function viewloanprovider($id)
