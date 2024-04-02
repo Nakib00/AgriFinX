@@ -60,7 +60,7 @@
                                 The launch and end dates of the project do not match the cultivation start and end dates of
                                 the crop.
                             @else
-                                No message
+                             
                             @endif
                         </div>
 
