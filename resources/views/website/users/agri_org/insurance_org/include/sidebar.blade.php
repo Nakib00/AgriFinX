@@ -9,7 +9,13 @@
             <li class="list-group-item"><a href="{{ route('insurance.about', ['id' => Auth::guard('flnancial_group')->id()]) }}"
                     class="btn btn-primary btn-block">About</a>
             </li>
-            <li class="list-group-item"><a href="#" class="btn btn-primary btn-block">Button 2</a></li>
+            <li class="list-group-item">
+                <a href="{{ route('org.insurance.insuranceshow') }}" class="btn btn-primary btn-block ">Insurance
+                    Application</a>
+            </li>
+            <li class="list-group-item">
+                <a href="{{ route('org.insurance.approvelloan') }}" class="btn btn-primary btn-block ">Approved Insurance  Application</a>
+            </li>
             <li class="list-group-item"><a href="{{ route('org.logout') }}" class="btn btn-danger btn-block">Logout</a>
             </li>
         </ul>

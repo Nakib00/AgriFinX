@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
-use App\Models\{farmer, cropproject, crop, investing_track, flnancial_group, ingo_financial_grup, micro_loan};
+use App\Models\{farmer, cropproject, crop, investing_track, flnancial_group, ingo_financial_grup, micro_loan,insurance};
 
 class farmerController extends Controller
 {
@@ -184,8 +184,8 @@ class farmerController extends Controller
         $crop = $cropproject->crop;
 
         // Get month and day of crop cultivation start and end dates
-        $cropStartMonthDay = Carbon::parse($crop->cultivation_start)->format('m-d');
-        $cropEndMonthDay = Carbon::parse($crop->cultivation_end)->format('m-d');
+        $cropStartMonthDay = Carbon::parse($crop->cultavation_start)->format('m-d');
+        $cropEndMonthDay = Carbon::parse($crop->cultavation_end)->format('m-d');
 
         // Get month and day of project launch and end dates
         $launchMonthDay = Carbon::parse($cropproject->launch_date)->format('m-d');
@@ -298,5 +298,56 @@ class farmerController extends Controller
         $loan->save();
 
         return back()->with('success', 'Loan application submitted successfully!');
+    }
+
+
+
+    //insurance
+    public function showinsuranceprovider()
+    {
+        // find out login farmer id
+        $userid = auth()->guard('farmer')->user()->id;
+        // Retrieve all loan applications
+        
+
+        // Fetch all loan provider type users from the database
+        $Insuranceroviders = flnancial_group::where('Orgnization_type', 'insurance_organization')->get();
+
+        return view('website.users.farmer.insurance.insuranceprovider', compact('Insuranceroviders'));
+    }
+    
+    // shwo insurance provider profile
+    public function viewinsuranceprovider($id)
+    {
+        // Find the organization record by its ID
+        $about = ingo_financial_grup::findOrFail($id);
+
+        // Fetch additional information from the flnancial_groups table
+        $organization = flnancial_group::findOrFail($about->Organization_id);
+
+        return view('website.users.farmer.insurance.viewinsuranceprovider', ['about' => $about, 'organization' => $organization]);
+    }
+
+    
+
+    // apply insurance
+    public function applyinsurance(Request $request, $id)
+    {
+       //dd($request->all());
+       // insuranceprovider id
+       $insuranceprovider = $id;
+       // find out login farmer id
+       $userid = auth()->guard('farmer')->user()->id;
+
+       $insurance = new insurance();
+       $insurance->Organization_id =  $insuranceprovider;
+       $insurance->farmer_id =  $userid;
+       $insurance->claim_amount= $request["claim_amount"];
+       $insurance->crop_amount = $request["crop_amount"];
+       $insurance->insurance_premium = $request->input('claim_amount') * 0.02;
+       $insurance->approvel_status = 0;
+       $insurance->save();
+       return back()->with('success', 'Insurance application submitted successfully!');
+
     }
 }

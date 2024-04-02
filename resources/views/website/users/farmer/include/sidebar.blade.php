@@ -9,7 +9,7 @@
             <li class="list-group-item"><a href="{{ route('farmer.cropproject') }}" class="btn btn-primary btn-block">Crop
                     Project</a></li>
             <li class="list-group-item"><a href="{{ route('farmer.microloan') }}" class="btn btn-primary btn-block">Loan Apply</a></li>
-            <li class="list-group-item"><a href="" class="btn btn-primary btn-block">Insurance Apply</a></li>
+            <li class="list-group-item"><a href=" {{ route('farmer.insurance') }}"class="btn btn-primary btn-block">Insurance Apply</a></li>
             <li class="list-group-item"><a href="{{ route('farmer.logout') }}"
                     class="btn btn-danger btn-block">Logout</a></li>
         </ul>

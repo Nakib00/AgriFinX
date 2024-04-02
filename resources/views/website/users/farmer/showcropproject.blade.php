@@ -52,16 +52,20 @@
 
                         {{--  Risk assment  --}}
                         <div class="card-header">
-                            <h5 class="card-title">Risk assment Details</h5>
+                            <h5 class="card-title">Risk assessment Details</h5>
                         </div>
                         <div class="mb-3">
                             <strong>Message:</strong>
-                            @if ($cropStartMonthDay !== $launchMonthDay || $cropEndMonthDay !== $endMonthDay)
+                            @if ($cropStartMonthDay <= $launchMonthDay && $cropEndMonthDay >= $endMonthDay)
+                            Start your crop project with confidence - our comprehensive risk assessment guarantees zero risk for your farm's success!
+                            @else
+
                                 The launch and end dates of the project do not match the cultivation start and end dates of
                                 the crop.
                             @else
-                             
+                                No message
                             @endif
+
                         </div>
 
 

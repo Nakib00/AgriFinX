@@ -91,6 +91,12 @@ Route::prefix('farmer')->group(function () {
                 Route::get('/profile/{id}', [farmerController::class, 'viewloanprovider'])->name('viewloanprovider');
                 Route::post('/applyloan/{id}', [farmerController::class, 'applyloan'])->name('farmer.applyloan');
             });
+            //insurance
+            Route::prefix('insurance')->group(function () {
+                Route::get('/insurance', [farmerController::class, 'showinsuranceprovider'])->name('farmer.insurance');
+                Route::get('/profile/{id}', [farmerController::class, 'viewinsuranceprovider'])->name('viewinsuranceprovider');
+                Route::post('/applyinsurance/{id}', [farmerController::class, 'applyinsurance'])->name('farmer.applyinsurance'); 
+            });
         });
         //end
     });
@@ -191,6 +197,15 @@ Route::prefix('flnancial_groups')->group(function () {
                 Route::get('/editAbout', [orgcontroller::class, 'editAboutinsurance'])->name('insurance.editabout');
                 Route::put('/updateAbout/{id}', [orgcontroller::class, 'updateAboutinsurance'])->name('insurance.updateAbout');
             });
+
+
+            //Insurance loan
+            Route::get('/insuranceloan', [insuranceController::class, 'showinsurance'])->name('org.insurance.insuranceshow');
+            Route::get('/insuranceloan/{id}', [insuranceController::class, 'viewinsurance'])->name('org.insurance.insuranceview');
+            Route::post('/insuranceloan/status/{id}', [insuranceController::class, 'insurancestatus'])->name('org.insurance.status');
+            Route::get('/insuranceapproveloan', [insuranceController::class, 'approveinsurance'])->name('org.insurance.approvelloan');
+             
+
         });
         //end
     });
