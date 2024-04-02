@@ -184,8 +184,8 @@ class farmerController extends Controller
         $crop = $cropproject->crop;
 
         // Get month and day of crop cultivation start and end dates
-        $cropStartMonthDay = Carbon::parse($crop->cultivation_start)->format('m-d');
-        $cropEndMonthDay = Carbon::parse($crop->cultivation_end)->format('m-d');
+        $cropStartMonthDay = Carbon::parse($crop->cultavation_start)->format('m-d');
+        $cropEndMonthDay = Carbon::parse($crop->cultavation_end)->format('m-d');
 
         // Get month and day of project launch and end dates
         $launchMonthDay = Carbon::parse($cropproject->launch_date)->format('m-d');
