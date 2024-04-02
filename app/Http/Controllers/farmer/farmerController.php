@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
-use App\Models\{farmer, cropproject, crop, investing_track, flnancial_group, ingo_financial_grup, micro_loan,insurance};
+use App\Models\{farmer, cropproject, crop, investing_track, flnancial_group, ingo_financial_grup, micro_loan, insurance};
 
 class farmerController extends Controller
 {
@@ -308,14 +308,14 @@ class farmerController extends Controller
         // find out login farmer id
         $userid = auth()->guard('farmer')->user()->id;
         // Retrieve all loan applications
-        
+
 
         // Fetch all loan provider type users from the database
         $Insuranceroviders = flnancial_group::where('Orgnization_type', 'insurance_organization')->get();
 
         return view('website.users.farmer.insurance.insuranceprovider', compact('Insuranceroviders'));
     }
-    
+
     // shwo insurance provider profile
     public function viewinsuranceprovider($id)
     {
@@ -328,26 +328,25 @@ class farmerController extends Controller
         return view('website.users.farmer.insurance.viewinsuranceprovider', ['about' => $about, 'organization' => $organization]);
     }
 
-    
+
 
     // apply insurance
     public function applyinsurance(Request $request, $id)
     {
-       //dd($request->all());
-       // insuranceprovider id
-       $insuranceprovider = $id;
-       // find out login farmer id
-       $userid = auth()->guard('farmer')->user()->id;
+        //dd($request->all());
+        // insuranceprovider id
+        $insuranceprovider = $id;
+        // find out login farmer id
+        $userid = auth()->guard('farmer')->user()->id;
 
-       $insurance = new insurance();
-       $insurance->Organization_id =  $insuranceprovider;
-       $insurance->farmer_id =  $userid;
-       $insurance->claim_amount= $request["claim_amount"];
-       $insurance->crop_amount = $request["crop_amount"];
-       $insurance->insurance_premium = $request->input('claim_amount') * 0.02;
-       $insurance->approvel_status = 0;
-       $insurance->save();
-       return back()->with('success', 'Insurance application submitted successfully!');
-
+        $insurance = new insurance();
+        $insurance->Organization_id =  $insuranceprovider;
+        $insurance->farmer_id =  $userid;
+        $insurance->claim_amount = $request["claim_amount"];
+        $insurance->crop_amount = $request["crop_amount"];
+        $insurance->insurance_premium = $request->input('claim_amount') * 0.02;
+        $insurance->approvel_status = 0;
+        $insurance->save();
+        return back()->with('success', 'Insurance application submitted successfully!');
     }
 }
