@@ -201,6 +201,11 @@ class investorController extends Controller
             'investing_date' => $investing_date,
         ]);
 
+        // Change funding status
+        $cropproject = Cropproject::findOrFail($project_id);
+        $cropproject->funding_status = '1';
+        $cropproject->save();
+
         // Optionally, you can redirect the user to a specific page after the investment is made
         return redirect()->back()->with('success', 'Investment successful.');
     }

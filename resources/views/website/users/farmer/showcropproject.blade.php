@@ -64,12 +64,7 @@
                                 the crop.
                                 No message
                             @endif
-
                         </div>
-
-
-
-
                         {{--  Back button  --}}
                         <a href="{{ route('farmer.cropproject') }}" class="btn btn-secondary">Back</a>
                     </div>

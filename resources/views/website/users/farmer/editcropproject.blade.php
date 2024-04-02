@@ -54,13 +54,6 @@
                 <input type="number" class="form-control" id="labour_cost" name="labour_cost"
                     value="{{ $cropproject->labour_cost }}" required>
             </div>
-            <div class="form-group">
-                <label for="funding_status">Funding Status:</label>
-                <select class="form-control" id="funding_status" name="funding_status" required>
-                    <option value="1" @if ($cropproject->funding_status == 1) selected @endif>Funded</option>
-                    <option value="0" @if ($cropproject->funding_status == 0) selected @endif>Not Funded</option>
-                </select>
-            </div>
             <button type="submit" class="btn btn-primary">Update</button>
         </form>
         {{--  <!-- Back button -->  --}}

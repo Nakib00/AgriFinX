@@ -224,7 +224,6 @@ class farmerController extends Controller
         $cropproject->corp_quality = $request['corp_quality'];
         $cropproject->pesticide_cost = $request['pesticide_cost'];
         $cropproject->labour_cost = $request['labour_cost'];
-        $cropproject->funding_status = $request['funding_status'];
 
         // Save the updated crop project
         $cropproject->save();
