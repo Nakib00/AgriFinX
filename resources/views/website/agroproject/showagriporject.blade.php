@@ -6,66 +6,86 @@
             <div class="row">
                 <div class="col-md-8 offset-md-2">
                     <div class="card">
-                        <div class="card-header">
-                            <h5 class="card-title">Crop Project Details</h5>
+                        <div class="card-header text-center">
+                            <h3 class="card-title font-weight-bold">Crop Project Details</h3>
                         </div>
                         <div class="card-body">
-                            <div class="mb-3">
-                                <strong>Project Name:</strong> {{ $cropproject->project_name }}
-                            </div>
-                            <div class="mb-3">
-                                <strong>Description:</strong> {{ $cropproject->description }}
-                            </div>
-                            <div class="mb-3">
-                                <strong>Launch Date:</strong> {{ $cropproject->launch_date }}
-                            </div>
-                            <div class="mb-3">
-                                <strong>End Date:</strong> {{ $cropproject->end_date }}
-                            </div>
-                            <div class="mb-3">
-                                <strong>Farm Size:</strong> {{ $cropproject->farm_size }}
-                            </div>
-                            <div class="mb-3">
-                                <strong>Crop Quality:</strong> {{ $cropproject->corp_quality }} KG
-                            </div>
-                            <div class="mb-3">
-                                <strong>Pesticide Cost:</strong> {{ $cropproject->pesticide_cost }} TK
-                            </div>
-                            <div class="mb-3">
-                                <strong>Labour Cost:</strong> {{ $cropproject->labour_cost }} TK
-                            </div>
-
-                            <div class="mb-3">
-                                <strong>Total expance:</strong>
-                                {{ $cropproject->labour_cost + $cropproject->pesticide_cost }} TK
-                            </div>
-
-                            <div class="mb-3">
-                                <strong>Funding Status:</strong>
-                                {{ $cropproject->funding_status ? 'Funded' : 'Not Funded' }}
-                            </div>
-
-                            <div class="mb-3">
-                                <strong>Farmer:</strong>
-                                <a href="#" data-toggle="modal"
-                                    data-target="#farmerModal">{{ $cropproject->farmer->f_name }}
-                                    {{ $cropproject->farmer->l_name }}</a>
-                            </div>
-                            <div class="mb-3">
-                                <strong>Crop:</strong> {{ $cropproject->crop->name }}
-                            </div>
-                            <div class="mb-3">
-                                <strong>Created At:</strong> {{ $cropproject->created_at }}
-                            </div>
-                            <div class="mb-3">
-                                <strong>Updated At:</strong> {{ $cropproject->updated_at }}
-                            </div>
-                            {{--  <!-- Back button -->  --}}
-                            <a href="{{ route('agropindex') }}" class="btn btn-secondary">Back</a>
+                            <table class="table table-striped table-bordered">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th style="width: 30%;">Project Information</th>
+                                        <th>Values</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Project Name</strong></td>
+                                        <td>{{ $cropproject->project_name }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Description</strong></td>
+                                        <td>{{ $cropproject->description }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Launch Date</strong></td>
+                                        <td>{{ $cropproject->launch_date }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>End Date</strong></td>
+                                        <td>{{ $cropproject->end_date }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Farm Size</strong></td>
+                                        <td>{{ $cropproject->farm_size }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Crop Quality</strong></td>
+                                        <td>{{ $cropproject->corp_quality }} KG</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Pesticide Cost</strong></td>
+                                        <td>{{ $cropproject->pesticide_cost }} TK</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Labour Cost</strong></td>
+                                        <td>{{ $cropproject->labour_cost }} TK</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Total Expence</strong></td>
+                                        <td>{{ $cropproject->labour_cost + $cropproject->pesticide_cost }} TK</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Funding Status</strong></td>
+                                        <td>{{ $cropproject->funding_status ? 'Funded' : 'Not Funded' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Farmer</strong></td>
+                                        <td><a href="#" data-toggle="modal"
+                                                data-target="#farmerModal">{{ $cropproject->farmer->f_name }}
+                                                {{ $cropproject->farmer->l_name }}</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Crop</strong></td>
+                                        <td>{{ $cropproject->crop->name }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Created At</strong></td>
+                                        <td>{{ $cropproject->created_at }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Updated At</strong></td>
+                                        <td>{{ $cropproject->updated_at }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
-                        {{--  Investing button  --}}
-                        <div class="mb-3">
-                            <a href="{{ route('login_investor') }}"><button type="button" class="btn btn-primary btn-lg m-3">Invest</button></a>
+                        
+                        <div class="mb-3 p-3">
+                            {{-- Back button --}}
+                            <a href="{{ route('agropindex') }}" class="btn btn-secondary btn-lg mr-3">Back</a>
+
+                            <a href="{{ route('login_investor') }}"><button type="button"
+                                    class="btn btn-outline-success btn-lg">Invest</button></a>
                         </div>
                     </div>
                 </div>

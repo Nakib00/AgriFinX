@@ -199,7 +199,6 @@ Route::prefix('flnancial_groups')->group(function () {
                 Route::put('/updateAbout/{id}', [orgcontroller::class, 'updateAboutinsurance'])->name('insurance.updateAbout');
             });
 
-
             //Insurance loan
             Route::get('/insuranceloan', [insuranceController::class, 'showinsurance'])->name('org.insurance.insuranceshow');
             Route::get('/insuranceloan/{id}', [insuranceController::class, 'viewinsurance'])->name('org.insurance.insuranceview');

@@ -4,90 +4,161 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">
-                        <h5 class="card-title">Crop Project Details</h5>
+                    <div class="card-header text-center">
+                        <h3 class="card-title font-weight-bold">Crop Project Details</h3>
                     </div>
+
                     <div class="card-body">
-                        <div class="mb-3">
-                            <strong>Project Name:</strong> {{ $cropproject->project_name }}
-                        </div>
-                        <div class="mb-3">
-                            <strong>Description:</strong> {{ $cropproject->description }}
-                        </div>
-                        <div class="mb-3">
-                            <strong>Crop Name:</strong> {{ $crop->name }}
-                        </div>
-                        <div class="mb-3">
-                            <strong>Launch Date:</strong> {{ $cropproject->launch_date }}
-                        </div>
-                        <div class="mb-3">
-                            <strong>End Date:</strong> {{ $cropproject->end_date }}
-                        </div>
-                        <div class="mb-3">
-                            <strong>Farm Size:</strong> {{ $cropproject->farm_size }}
-                        </div>
-                        <div class="mb-3">
-                            <strong>Crop Quality:</strong> {{ $cropproject->corp_quality }} KG
-                        </div>
-                        <div class="mb-3">
-                            <strong>Pesticide Cost:</strong> {{ $cropproject->pesticide_cost }} TK
-                        </div>
-                        <div class="mb-3">
-                            <strong>Labour Cost:</strong> {{ $cropproject->labour_cost }} TK
-                        </div>
-
-                        <div class="mb-3">
-                            <strong>Total expance:</strong>
-                            {{ $cropproject->labour_cost + $cropproject->pesticide_cost }} TK
-                        </div>
-
-                        @if (isset($cropproject->sells) && $cropproject->sells !== null)
-                            <div class="mb-3">
-                                <strong>Total sells:</strong>
-                                {{ $cropproject->sells * $cropproject->corp_quality }} TK
-                            </div>
-                        @endif
-
-                        <div class="mb-3">
-                            <strong>Funding Status:</strong> {{ $cropproject->funding_status ? 'Funded' : 'Not Funded' }}
-                        </div>
-                        <div class="mb-3">
-                            <strong>Created At:</strong> {{ $cropproject->created_at }}
-                        </div>
-                        <div class="mb-3">
-                            <strong>Updated At:</strong> {{ $cropproject->updated_at }}
-                        </div>
-
+                        <table class="table table-striped table-bordered">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th style="width: 30%;">Project Information</th>
+                                    <th>Values</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Project Name</td>
+                                    <td>{{ $cropproject->project_name }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Description</td>
+                                    <td>{{ $cropproject->description }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Crop Name</td>
+                                    <td>{{ $crop->name }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Launch Date</td>
+                                    <td>{{ $cropproject->launch_date }}</td>
+                                </tr>
+                                <tr>
+                                    <td>End Date</td>
+                                    <td>{{ $cropproject->end_date }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Farm Size</td>
+                                    <td>{{ $cropproject->farm_size }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Crop Quality</td>
+                                    <td>{{ $cropproject->corp_quality }} KG</td>
+                                </tr>
+                                <tr>
+                                    <td>Pesticide Cost</td>
+                                    <td>{{ $cropproject->pesticide_cost }} TK</td>
+                                </tr>
+                                <tr>
+                                    <td>Labour Cost</td>
+                                    <td> {{ $cropproject->labour_cost }} TK</td>
+                                </tr>
+                                <tr>
+                                    <td>Total Expence</td>
+                                    <td> {{ $cropproject->labour_cost + $cropproject->pesticide_cost }} TK</td>
+                                </tr>
+                                <tr>
+                                    @if (isset($cropproject->sells) && $cropproject->sells !== null)
+                                        <td>Total Sells</td>
+                                        <td>{{ $cropproject->sells * $cropproject->corp_quality }} TK</td>
+                                    @endif
+                                </tr>
+                                <tr>
+                                    <td>Funding Status</td>
+                                    <td>{{ $cropproject->funding_status ? 'Funded' : 'Not Funded' }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Created At</td>
+                                    <td>{{ $cropproject->created_at }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Updated At</td>
+                                    <td>{{ $cropproject->updated_at }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
 
                         {{--  <!-- Sell Amount Button -->  --}}
-                        <button type="button" class="btn btn-primary mb-3" data-toggle="modal"
-                            data-target="#sellAmountModal">
-                            Sell Amount
-                        </button>
+                        <div class="text-center mb-4 mt-3">
+                            <button type="button" class="btn btn-outline-success" data-toggle="modal"
+                                data-target="#sellAmountModal">
+                                Sell Amount
+                            </button>
+                        </div>
 
                         {{--  Risk assment  --}}
-                        <div class="card-header">
-                            <h5 class="card-title">Risk assessment Details</h5>
+                        <div class="card-header text-center">
+                            <h3 class="card-title font-weight-bold">Risk assessment Details</h3>
                         </div>
-                        <div class="mb-3">
-                            <strong>Message:</strong>
+                        <div class="mb-3"><br><br>
+                            <strong class="pt-5">Cultavation Time feedback:</strong>
                             @if ($cropStartMonthDay <= $launchMonthDay && $cropEndMonthDay >= $endMonthDay)
-                                Start your crop project with confidence - our comprehensive risk assessment guarantees zero
-                                risk for your farms success!
+                                <p style="text-align: center; color: green;">Start your crop project with confidence - our
+                                    comprehensive risk assessment guarantees zero risk for your farm's success!</p>
                             @else
-                                The launch and end dates of the project do not match the cultivation start and end dates of
-                                the crop.
+                                <p style="text-align: center; color: red;"><strong>The launch and end dates of the project
+                                        do not
+                                        match the cultivation start and end dates of the crop.</strong></p>
                             @endif
+
                         </div>
 
-                        <div class="mb-3">
-                            <strong>Project Status:</strong>
+                        <div class="mb-3"><br>
+                            <strong>Profit Analysis:</strong>
+                            <table class="table table-striped table-bordered">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th>Total Expence</th>
+                                        <th>Total crop sells</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>{{ $cropproject->labour_cost + $cropproject->pesticide_cost }} TK</td>
+                                        <td>{{ $cropproject->sells * $cropproject->corp_quality }} TK<i class="fa fa-tasks"
+                                                aria-hidden="true"></i></td>
+                                    </tr>
+                                </tbody>
+                            </table>
                             @if ($cropproject->labour_cost + $cropproject->pesticide_cost < $cropproject->sells * $cropproject->corp_quality)
-                                Congratulations! This crop project is expected to yield profit.
+                                <p style="text-align: center; color: green;"><strong>Congratulations! This crop project is
+                                        expected
+                                        to yield profit.</strong></p>
                             @else
-                                Unfortunately, this crop project is not projected to yield profit.
+                                <p style="text-align: center; color: red;"><strong>Unfortunately, this crop project is not
+                                        projected
+                                        to yield profit.</strong></p>
                             @endif
+
                         </div>
+                        <div class="mb-3 mt-4"><br>
+                            <strong>Price Comparison:</strong>
+
+                            <table class="table table-striped table-bordered">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th>Crop Current Price</th>
+                                        <th>Crop sell amount</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>{{ $crop->Current_Price }} TK</td>
+                                        <td>{{ $cropproject->sells }} TK</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            @if ($crop->Current_Price < $cropproject->sells)
+                                <p style="text-align: center; color: green;"><strong>Congratulations! This crop project is
+                                        expected
+                                        to yield profit.</strong></p>
+                            @else
+                                <p style="text-align: center; color: red;"><strong>Unfortunately, this crop project is not
+                                        projected
+                                        to yield profit.</strong></p>
+                            @endif
+
+                        </div><br>
 
 
                         {{--  Back button  --}}

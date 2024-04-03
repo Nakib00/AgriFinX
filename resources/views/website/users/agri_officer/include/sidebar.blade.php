@@ -6,11 +6,11 @@
             <p>profile update</p>
         </a>
         <ul class="list-group">
-            <li class="list-group-item"><a href="{{ route('agri_officer.button') }}"
-                    class="btn btn-primary btn-block">Button 1</a></li>
-            <li class="list-group-item"><a href="#" class="btn btn-primary btn-block">Button 2</a></li>
-            <li class="list-group-item"><a href="{{ route('agri_officer.logout') }}"
-                    class="btn btn-danger btn-block">Logout</a></li>
+            <li class="list-group p-3"><a href="{{ route('agri_officer.button') }}"
+                    class="btn btn-outline-success btn-block">Button 1</a></li>
+            <li class="list-group p-3"><a href="#" class="btn btn-outline-success btn-block">Button 2</a></li>
+            <li class="list-group p-3"><a href="{{ route('agri_officer.logout') }}"
+                    class="btn btn-outline-danger btn-block">Logout</a></li>
         </ul>
     </div>
 </div>

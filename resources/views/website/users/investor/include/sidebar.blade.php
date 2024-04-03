@@ -7,10 +7,10 @@
         </a>
         <ul class="list-group">
 
-            <li class="list-group-item"><a href="{{ route('investor.cropproject.show') }}" class="btn btn-primary btn-block">Crop Project</a></li>
-            <li class="list-group-item"><a href="{{ route('investor.investingorg.show') }}" class="btn btn-primary btn-block">Investing org</a></li>
-            <li class="list-group-item"><a href="{{ route('investor.logout') }}"
-                    class="btn btn-danger btn-block">Logout</a></li>
+            <li class="list-group p-3"><a href="{{ route('investor.cropproject.show') }}" class="btn btn-outline-success btn-block">Crop Project</a></li>
+            <li class="list-group p-3"><a href="{{ route('investor.investingorg.show') }}" class="btn btn-outline-success btn-block">Investing org</a></li>
+            <li class="list-group p-3"><a href="{{ route('investor.logout') }}"
+                    class="btn btn-outline-danger btn-block">Logout</a></li>
         </ul>
     </div>
 </div>
