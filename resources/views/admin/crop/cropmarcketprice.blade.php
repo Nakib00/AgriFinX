@@ -57,7 +57,7 @@
                 </div>
                 <div class="modal-body">
                     {{--  <!-- Add Form -->  --}}
-                    <form action="{{ route('crop.marcketprice.store') }}" method="POST">
+                    <form action="{{ route('crop.marcketprice.store', ['id' => $crop->id]) }}" method="POST">
                         @csrf
                         <div class="form-group">
                             <label for="cropName">Crop Name</label>

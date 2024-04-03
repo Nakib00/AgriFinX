@@ -15,7 +15,10 @@
                     <th>Crop Name</th>
                     <th>Cultivation Start Time</th>
                     <th>Cultivation End Time</th>
+                    <th>Current Price</th>
+                    <th>price Date</th>
                     <th>Action</th>
+                    <th>Marcket price</th>
                 </tr>
             </thead>
             <tbody>
@@ -23,7 +26,8 @@
                     <tr>
                         <td>{{ $crop->name }}</td>
                         <td>{{ $crop->cultavation_start }}</td>
-                        <td>{{ $crop->cultavation_end }}</td>
+                        <td>{{ $crop->Current_Price }}</td>
+                        <td>{{ $crop->price_date }}</td>
                         <td>
                             {{-- Edit Icon with data-toggle for modal --}}
                             <a href="{{ route('crop.editpage', ['id' => $crop->id]) }}" class="edit-btn">
@@ -38,6 +42,11 @@
                                     <i class="fas fa-trash-alt"></i>
                                 </button>
                             </form>
+                        </td>
+                        <td>
+                            <a href="{{ route('crop.marcketprice.editpage', ['id' => $crop->id]) }}" class="edit-btn">
+                                <i class="fas fa-edit mr-2"></i>
+                            </a>
                         </td>
                     </tr>
                 @endforeach

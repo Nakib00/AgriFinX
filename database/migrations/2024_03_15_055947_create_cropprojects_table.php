@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('pesticide_cost');
             $table->string('labour_cost');
             $table->boolean('funding_status');
+            $table->string('sells')->nullable();
             $table->timestamps();
         });
     }

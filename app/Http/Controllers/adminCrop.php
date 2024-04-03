@@ -80,53 +80,23 @@ class adminCrop extends Controller
     // Crop pricing information
 
     // price stroe
-    public function priceStore(Request $request)
+    public function pricupdate(Request $request, $id)
     {
-        // Validate input
-        $request->validate([
-            'cropid' => 'required|exists:crops,id',
-            'currentprice' => 'required|numeric',
-            'pricingdate' => 'required|date',
-        ]);
+        // Find the crop record by ID
+        $crop = Crop::findOrFail($id);
 
-        // Create a new crop market price record with the provided data
-        crop_marcket_price::create([
-            'crop_id' => $request->input('cropid'),
-            'Current_Price' => $request->input('currentprice'),
-            'price_date' => $request->input('pricingdate'),
-        ]);
+        $crop->Current_Price = $request['Current_Price'];
+        $crop->price_date = $request['price_date'];
+        $crop->save();
 
-        // Redirect back or to a specific route after storing the data
-        return redirect()->back()->with('success', 'Crop market price added successfully.');
+        return redirect()->back()->with('success', 'Add Crop price successfully.');
     }
 
     // Show edit page
     public function mpedit($id)
     {
-        $cropMarketPrice = crop_marcket_price::findOrFail($id);
+        $crop = Crop::findOrFail($id);
 
-        return view('admin.crop.marcketpriceedit', compact('cropMarketPrice'));
-    }
-
-    // Update a crop market price
-    public function pricupdate(Request $request, $id)
-    {
-        // Validate input
-        $request->validate([
-            'Current_Price' => 'required|numeric',
-            'price_date' => 'required|date',
-        ]);
-
-        // Find the crop market price record by ID
-        $cropMarketPrice = crop_marcket_price::findOrFail($id);
-
-        // Update the crop market price record with the provided data
-        $cropMarketPrice->update([
-            'Current_Price' => $request->input('Current_Price'),
-            'price_date' => $request->input('price_date'),
-        ]);
-
-        // Redirect back or to a specific route after updating the data
-        return redirect()->back()->with('success', 'Crop market price updated successfully.');
+        return view('admin.crop.marcketpriceedit', compact('crop'));
     }
 }

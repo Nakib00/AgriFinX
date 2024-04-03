@@ -191,7 +191,6 @@ class farmerController extends Controller
         $launchMonthDay = Carbon::parse($cropproject->launch_date)->format('m-d');
         $endMonthDay = Carbon::parse($cropproject->end_date)->format('m-d');
 
-
         // Pass the crop project data to the view
         return view('website.users.farmer.showcropproject', compact('cropproject', 'crop', 'cropStartMonthDay', 'cropEndMonthDay', 'launchMonthDay', 'endMonthDay'));
     }
@@ -230,6 +229,19 @@ class farmerController extends Controller
 
         // Redirect the user back or to any specific route after successful update
         return redirect()->back()->with('success', 'Crop project updated successfully.');
+    }
+
+    // update sell information
+    public function updatesell($id, Request $request)
+    {
+        // Find the crop project by ID
+        $cropproject = Cropproject::findOrFail($id);
+
+        $cropproject->sells = $request['sell'];
+        $cropproject->save();
+
+        // Redirect the user back or to any specific route after successful update
+        return redirect()->back()->with('success', 'Crop project sell updated successfully.');
     }
 
     // Delete the crop project

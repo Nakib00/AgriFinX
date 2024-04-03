@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('name');
             $table->date('cultavation_start');
             $table->date('cultavation_end');
+            $table->string('Current_Price');
+            $table->date('price_date');
             $table->timestamps();
         });
     }

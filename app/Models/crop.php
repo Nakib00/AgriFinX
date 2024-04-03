@@ -10,6 +10,6 @@ class crop extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'name', 'cultavation_start', 'cultavation_end'
+        'name', 'cultavation_start', 'cultavation_end','Current_Price','price_date'
     ];
 }

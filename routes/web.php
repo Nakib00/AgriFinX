@@ -83,6 +83,7 @@ Route::prefix('farmer')->group(function () {
                 Route::get('/showproject/{id}', [farmerController::class, 'showproject'])->name('farmer.cropproject.show');
                 Route::get('/editproject/{id}', [farmerController::class, 'editproject'])->name('farmer.cropproject.edit');
                 Route::put('/updateproject/{id}', [farmerController::class, 'updateproject'])->name('farmer.cropproject.update');
+                Route::put('/updatesell/{id}', [farmerController::class, 'updatesell'])->name('farmer.sell.update');
                 Route::delete('/deleteproject/{id}', [farmerController::class, 'deleteproject'])->name('farmer.deleteproject.update');
             });
             // microloan
@@ -95,7 +96,7 @@ Route::prefix('farmer')->group(function () {
             Route::prefix('insurance')->group(function () {
                 Route::get('/insurance', [farmerController::class, 'showinsuranceprovider'])->name('farmer.insurance');
                 Route::get('/profile/{id}', [farmerController::class, 'viewinsuranceprovider'])->name('viewinsuranceprovider');
-                Route::post('/applyinsurance/{id}', [farmerController::class, 'applyinsurance'])->name('farmer.applyinsurance'); 
+                Route::post('/applyinsurance/{id}', [farmerController::class, 'applyinsurance'])->name('farmer.applyinsurance');
             });
         });
         //end
@@ -204,8 +205,6 @@ Route::prefix('flnancial_groups')->group(function () {
             Route::get('/insuranceloan/{id}', [insuranceController::class, 'viewinsurance'])->name('org.insurance.insuranceview');
             Route::post('/insuranceloan/status/{id}', [insuranceController::class, 'insurancestatus'])->name('org.insurance.status');
             Route::get('/insuranceapproveloan', [insuranceController::class, 'approveinsurance'])->name('org.insurance.approvelloan');
-             
-
         });
         //end
     });
@@ -214,7 +213,7 @@ Route::prefix('flnancial_groups')->group(function () {
 
 
 // admin routes start
-Route::get('/dashboard',[adminNavigation::class,'index'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [adminNavigation::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     // profile edit
@@ -236,11 +235,8 @@ Route::middleware('auth')->group(function () {
         // End
         // Crop marcket Price
         Route::prefix('/crop/marcketprice')->group(function () {
-            Route::get('/', [adminNavigation::class, 'marckerprice'])->name('crop.marcketprice');
-            Route::post('/storecrop', [adminCrop::class, 'priceStore'])->name('crop.marcketprice.store');
             Route::get('/editpage/{id}', [adminCrop::class, 'mpedit'])->name('crop.marcketprice.editpage');
             Route::put('/editcrop/{id}', [adminCrop::class, 'pricupdate'])->name('crop.marcketprice.edit');
-            Route::delete('/deletecrop/{id}', [adminCrop::class, 'pricdelete'])->name('crop.marcketprice.delete');
         });
         // end
         // farmer section

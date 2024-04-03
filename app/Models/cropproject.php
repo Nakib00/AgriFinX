@@ -9,7 +9,7 @@ class cropproject extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'farmer_id', 'project_name', 'description', 'launch_date', 'end_date', 'farm_size', 'corp_quality', 'pesticide_cost', 'labour_cost', 'funding_status'
+        'farmer_id', 'project_name', 'description', 'launch_date', 'end_date', 'farm_size', 'corp_quality', 'pesticide_cost', 'labour_cost', 'funding_status', 'sells'
     ];
 
     // Define relationships if needed
@@ -20,6 +20,6 @@ class cropproject extends Model
 
     public function crop()
     {
-        return $this->belongsTo(Crop::class); 
+        return $this->belongsTo(Crop::class);
     }
 }
