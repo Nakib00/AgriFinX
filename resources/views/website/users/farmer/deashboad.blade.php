@@ -24,7 +24,7 @@
                                 <tbody>
                                     @foreach ($investedProjects as $investment)
                                         <tr>
-                                            <td>{{ $investment->project->project_name }}</td>
+                                            <td>{{ $investment->project_name }}</td>
                                             <td>{{ $investment->investing_amount }}</td>
                                             <td>{{ $investment->investing_date }}</td>
                                             <td>{{ $investment->percentage_rate }}%</td>
@@ -58,7 +58,7 @@
         var projectNames = [];
         var investedAmounts = [];
         @foreach ($investedProjects as $investment)
-            projectNames.push("{{ $investment->project->project_name }}");
+            projectNames.push("{{ $investment->project_name }}");
             investedAmounts.push({{ $investment->investing_amount }});
         @endforeach
 

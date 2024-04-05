@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
 use App\Models\{farmer, cropproject, crop, investing_track, flnancial_group, ingo_financial_grup, micro_loan, insurance};
+use Illuminate\Support\Facades\DB;
 
 class farmerController extends Controller
 {
@@ -24,14 +25,13 @@ class farmerController extends Controller
         // Find the ID of the logged-in farmer
         $userId = auth()->guard('farmer')->user()->id;
 
-        // Find all crop projects associated with the logged-in farmer
-        $cropProjects = Cropproject::where('farmer_id', $userId)->get();
-
-        // Extract IDs of crop projects associated with the logged-in farmer
-        $cropProjectIds = $cropProjects->pluck('id')->toArray();
-
-        // Find investment details for the extracted crop project IDs
-        $investedProjects = investing_track::whereIn('project_id', $cropProjectIds)->get();
+        // Find investment details for the extracted crop project
+        $investedProjects = DB::select("SELECT cp.*, it.investing_amount, it.investing_date, it.percentage_rate
+            FROM cropprojects cp
+            INNER JOIN investing_tracks it ON cp.id = it.project_id
+            WHERE cp.farmer_id = $userId
+        ");
+        // dd($investedProjects);
 
         return view('website.users.farmer.deashboad', ['investedProjects' => $investedProjects]);
     } //end
@@ -136,7 +136,9 @@ class farmerController extends Controller
         $userId = auth()->guard('farmer')->user()->id;
 
         // Retrieve all crop projects created by the logged-in farmer
-        $cropprojects = Cropproject::where('farmer_id', $userId)->get();
+        $cropprojects = DB::select("SELECT * FROM cropprojects
+            WHERE farmer_id = $userId
+        ",);
 
         return view('website.users.farmer.croppeoject', ['cropprojects' => $cropprojects]);
     }
@@ -144,7 +146,7 @@ class farmerController extends Controller
     // add crop project
     public function addproject()
     {
-        $crop = Crop::all();
+        $crop = DB::select("SELECT * FROM crops");
         return view('website.users.farmer.addcropproject', ['crop' => $crop]);
     }
     // stroe project
@@ -178,21 +180,21 @@ class farmerController extends Controller
     public function showproject($id)
     {
         // Retrieve the crop project based on the provided ID
-        $cropproject = Cropproject::findOrFail($id);
+        $cropproject = DB::selectOne("SELECT cp.*, c.*
+            FROM cropprojects cp
+            INNER JOIN crops c ON cp.crop_id = c.id
+            WHERE cp.id = $id
+        ");
 
-        // Retrieve crop details
-        $crop = $cropproject->crop;
-
-        // Get month and day of crop cultivation start and end dates
-        $cropStartMonthDay = Carbon::parse($crop->cultavation_start)->format('m-d');
-        $cropEndMonthDay = Carbon::parse($crop->cultavation_end)->format('m-d');
-
-        // Get month and day of project launch and end dates
-        $launchMonthDay = Carbon::parse($cropproject->launch_date)->format('m-d');
-        $endMonthDay = Carbon::parse($cropproject->end_date)->format('m-d');
+        // Convert dates to month and day format using Carbon
+        $cropproject->cropStartMonthDay = Carbon::parse($cropproject->cultavation_start)->format('m-d');
+        $cropproject->cropEndMonthDay = Carbon::parse($cropproject->cultavation_end)->format('m-d');
+        $cropproject->launchMonthDay = Carbon::parse($cropproject->launch_date)->format('m-d');
+        $cropproject->endMonthDay = Carbon::parse($cropproject->end_date)->format('m-d');
 
         // Pass the crop project data to the view
-        return view('website.users.farmer.showcropproject', compact('cropproject', 'crop', 'cropStartMonthDay', 'cropEndMonthDay', 'launchMonthDay', 'endMonthDay'));
+        // dd($cropproject);
+        return view('website.users.farmer.showcropproject', compact('cropproject'));
     }
 
     // Open edit crop project page
@@ -201,7 +203,7 @@ class farmerController extends Controller
         // Retrieve the crop project based on the provided ID
         $cropproject = Cropproject::findOrFail($id);
 
-        $crop = Crop::all();
+        $crop = DB::select("SELECT * FROM crops");;
 
         // Pass the crop project data to the view
         return view('website.users.farmer.editcropproject', ['cropproject' => $cropproject], ['crop' => $crop]);

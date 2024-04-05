@@ -27,7 +27,7 @@
                                 </tr>
                                 <tr>
                                     <td>Crop Name</td>
-                                    <td>{{ $crop->name }}</td>
+                                    <td>{{ $cropproject->name }}</td>
                                 </tr>
                                 <tr>
                                     <td>Launch Date</td>
@@ -92,7 +92,7 @@
                         </div>
                         <div class="mb-3"><br><br>
                             <strong class="pt-5">Cultavation Time feedback:</strong>
-                            @if ($cropStartMonthDay <= $launchMonthDay && $cropEndMonthDay >= $endMonthDay)
+                            @if ($cropproject->cropStartMonthDay <= $cropproject->launchMonthDay && $cropproject->cropEndMonthDay >= $cropproject->endMonthDay)
                                 <p style="text-align: center; color: green;">Start your crop project with confidence - our
                                     comprehensive risk assessment guarantees zero risk for your farm's success!</p>
                             @else
@@ -143,12 +143,12 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>{{ $crop->Current_Price }} TK</td>
+                                        <td>{{ $cropproject->Current_Price }} TK</td>
                                         <td>{{ $cropproject->sells }} TK</td>
                                     </tr>
                                 </tbody>
                             </table>
-                            @if ($crop->Current_Price < $cropproject->sells)
+                            @if ($cropproject->Current_Price < $cropproject->sells)
                                 <p style="text-align: center; color: green;"><strong>Congratulations! This crop project is
                                         expected
                                         to yield profit.</strong></p>
