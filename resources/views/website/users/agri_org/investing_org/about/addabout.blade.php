@@ -19,7 +19,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="team">Team</label>
+                            <label for="team">Terms</label>
                             <textarea id="team" name="team" required></textarea>
                         </div>
 

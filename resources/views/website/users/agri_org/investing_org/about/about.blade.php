@@ -12,7 +12,7 @@
                         <h1>Loan Providing Types</h1>
                         <p>{!! $about->type_of_service !!}</p>
 
-                        <h1>Team</h1>
+                        <h1>Terms</h1>
                         <p>{{ $about->team }}</p>
 
                         <h1>Conditions</h1>

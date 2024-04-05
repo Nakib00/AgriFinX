@@ -17,7 +17,7 @@
                         </div>
 
                         <div class="about-section">
-                            <h1 class="section-title">Team</h1>
+                            <h1 class="section-title">Terms</h1>
                             <p class="section-content">{{ $about->team }}</p>
                         </div>
 
