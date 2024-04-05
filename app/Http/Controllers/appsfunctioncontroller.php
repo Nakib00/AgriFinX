@@ -41,7 +41,6 @@ class appsfunctioncontroller extends Controller
         LEFT JOIN investing_tracks it ON cp.id = it.project_id
     ");
 
-
         return view('website.agroproject.agropindex', compact('cropprojects'));
     }
 
@@ -49,7 +48,9 @@ class appsfunctioncontroller extends Controller
     public function showagriproject($id)
     {
         // Find the project by its ID
-        $cropproject = Cropproject::findOrFail($id);
+        $cropproject = DB::select("SELECT cp.project_name, cp.description, cp.launch_date, cp.end_date, cp.farm_size, cp.corp_quality, cp.pesticide_cost, cp.labour_cost, (cp.labour_cost + cp.pesticide_cost) AS total_expense, CASE WHEN cp.funding_status = 1 THEN 'Funded' ELSE 'Not Funded' END AS funding_status, CONCAT(f.f_name, ' ', f.l_name) AS farmer_name,f.email AS farmer_email,f.phone AS farmer_phone, f.address AS farmer_address, c.name AS crop_name, cp.created_at, cp.updated_at FROM cropprojects AS cp INNER JOIN farmers AS f ON cp.farmer_id = f.id INNER JOIN crops AS c ON cp.crop_id = c.id WHERE cp.id = $id");
+        
+        // dd($cropproject);
         return view('website.agroproject.showagriporject', compact('cropproject'));
     }
 }

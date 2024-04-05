@@ -20,66 +20,65 @@
                                 <tbody>
                                     <tr>
                                         <td><strong>Project Name</strong></td>
-                                        <td>{{ $cropproject->project_name }}</td>
+                                        <td>{{ $cropproject[0]->project_name }}</td>
                                     </tr>
                                     <tr>
                                         <td><strong>Description</strong></td>
-                                        <td>{{ $cropproject->description }}</td>
+                                        <td>{{ $cropproject[0]->description }}</td>
                                     </tr>
                                     <tr>
                                         <td><strong>Launch Date</strong></td>
-                                        <td>{{ $cropproject->launch_date }}</td>
+                                        <td>{{ $cropproject[0]->launch_date }}</td>
                                     </tr>
                                     <tr>
                                         <td><strong>End Date</strong></td>
-                                        <td>{{ $cropproject->end_date }}</td>
+                                        <td>{{ $cropproject[0]->end_date }}</td>
                                     </tr>
                                     <tr>
                                         <td><strong>Farm Size</strong></td>
-                                        <td>{{ $cropproject->farm_size }}</td>
+                                        <td>{{ $cropproject[0]->farm_size }}</td>
                                     </tr>
                                     <tr>
                                         <td><strong>Crop Quality</strong></td>
-                                        <td>{{ $cropproject->corp_quality }} KG</td>
+                                        <td>{{ $cropproject[0]->corp_quality }} KG</td>
                                     </tr>
                                     <tr>
                                         <td><strong>Pesticide Cost</strong></td>
-                                        <td>{{ $cropproject->pesticide_cost }} TK</td>
+                                        <td>{{ $cropproject[0]->pesticide_cost }} TK</td>
                                     </tr>
                                     <tr>
                                         <td><strong>Labour Cost</strong></td>
-                                        <td>{{ $cropproject->labour_cost }} TK</td>
+                                        <td>{{ $cropproject[0]->labour_cost }} TK</td>
                                     </tr>
                                     <tr>
                                         <td><strong>Total Expence</strong></td>
-                                        <td>{{ $cropproject->labour_cost + $cropproject->pesticide_cost }} TK</td>
+                                        <td>{{ $cropproject[0]->labour_cost + $cropproject[0]->pesticide_cost }} TK</td>
                                     </tr>
                                     <tr>
                                         <td><strong>Funding Status</strong></td>
-                                        <td>{{ $cropproject->funding_status ? 'Funded' : 'Not Funded' }}</td>
+                                        <td>{{ $cropproject[0]->funding_status ? 'Funded' : 'Not Funded' }}</td>
                                     </tr>
                                     <tr>
                                         <td><strong>Farmer</strong></td>
                                         <td><a href="#" data-toggle="modal"
-                                                data-target="#farmerModal">{{ $cropproject->farmer->f_name }}
-                                                {{ $cropproject->farmer->l_name }}</a></td>
+                                                data-target="#farmerModal">{{ $cropproject[0]->farmer_name }}</a></td>
                                     </tr>
                                     <tr>
                                         <td><strong>Crop</strong></td>
-                                        <td>{{ $cropproject->crop->name }}</td>
+                                        <td>{{ $cropproject[0]->crop_name }}</td>
                                     </tr>
                                     <tr>
                                         <td><strong>Created At</strong></td>
-                                        <td>{{ $cropproject->created_at }}</td>
+                                        <td>{{ $cropproject[0]->created_at }}</td>
                                     </tr>
                                     <tr>
                                         <td><strong>Updated At</strong></td>
-                                        <td>{{ $cropproject->updated_at }}</td>
+                                        <td>{{ $cropproject[0]->updated_at }}</td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
-                        
+
                         <div class="mb-3 p-3">
                             {{-- Back button --}}
                             <a href="{{ route('agropindex') }}" class="btn btn-secondary btn-lg mr-3">Back</a>
@@ -105,11 +104,10 @@
                     </div>
                     <div class="modal-body">
                         <ul>
-                            <li><strong>First Name:</strong> {{ $cropproject->farmer->f_name }}</li>
-                            <li><strong>Last Name:</strong> {{ $cropproject->farmer->l_name }}</li>
-                            <li><strong>Email:</strong> {{ $cropproject->farmer->email }}</li>
-                            <li><strong>Phone:</strong> {{ $cropproject->farmer->phone }}</li>
-                            <li><strong>Address:</strong> {{ $cropproject->farmer->address }}</li>
+                            <li><strong>Name:</strong> {{ $cropproject[0]->farmer_name }}</li>
+                            <li><strong>Email:</strong> {{ $cropproject[0]->farmer_email }}</li>
+                            <li><strong>Phone:</strong> {{ $cropproject[0]->farmer_phone }}</li>
+                            <li><strong>Address:</strong> {{ $cropproject[0]->farmer_address }}</li>
                         </ul>
                     </div>
                     <div class="modal-footer">
