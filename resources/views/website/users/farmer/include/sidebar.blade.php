@@ -14,6 +14,9 @@
             <li class="list-group p-3"><a
                     href=" {{ route('farmer.insurance') }}"class="btn btn-outline-success btn-block">Insurance Apply</a>
             </li>
+            <li class="list-group p-3"><a
+                    href=" {{ route('farmer.subsidy') }}"class="btn btn-outline-success btn-block">Subsidy Apply</a>
+            </li>
             <li class="list-group p-3"><a href="{{ route('farmer.logout') }}"
                     class="btn btn-outline-danger btn-block">Logout</a></li>
         </ul>

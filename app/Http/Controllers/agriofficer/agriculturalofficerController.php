@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
 
-use App\Models\agricultural_officer;
+use App\Models\{agricultural_officer, subsidies};
 
 
 class agriculturalofficerController extends Controller
@@ -23,7 +23,13 @@ class agriculturalofficerController extends Controller
     //dashboard
     public function dashboard()
     {
-        return view('website.users.agri_officer.deashboad');
+
+        // login agri officer id
+        $agriofficer_id = Auth::guard('agricultural_officer')->id();
+        // Fetch microloan applications
+        $subsides = subsidies::where('agri_officer_id', $agriofficer_id)->with('farmer')->get();
+
+        return view('website.users.agri_officer.deashboad', compact('subsides'));
     } //end
 
     // login
@@ -97,17 +103,6 @@ class agriculturalofficerController extends Controller
         $user = auth()->guard('agricultural_officer')->user();
         $id = $user->id;
 
-        // Validate input
-        $request->validate([
-            'f_name' => 'required|string|max:255',
-            'l_name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:agricultural_officers,email,',
-            'phone' => 'required|string|max:15',
-            'address' => 'required|string|max:255',
-            'dateofbirth' => 'required|date',
-            'password' => 'nullable|string|min:8|confirmed',
-        ]);
-
         // Find the team by ID
         $agriofficer = agricultural_officer::findOrFail($id);
 
@@ -125,9 +120,4 @@ class agriculturalofficerController extends Controller
         return redirect()->back()->with('success', 'Profile updated successfully.');
     } //end
 
-    // try
-    public function button()
-    {
-        return view('website.users.agri_officer.button');
-    }
 }

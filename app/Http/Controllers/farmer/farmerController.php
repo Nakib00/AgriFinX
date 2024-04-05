@@ -109,18 +109,18 @@ class farmerController extends Controller
 
 
         // Find the team by ID
-        $agriofficer = farmer::findOrFail($id);
+        $farmer = farmer::findOrFail($id);
 
         // Update user data
-        $agriofficer->f_name = $request->input('f_name');
-        $agriofficer->l_name = $request->input('l_name');
-        $agriofficer->email = $request->input('email');
-        $agriofficer->phone = $request->input('phone');
-        $agriofficer->address = $request->input('address');
-        $agriofficer->dateofbirth = $request->input('dateofbirth');
+        $farmer->f_name = $request->input('f_name');
+        $farmer->l_name = $request->input('l_name');
+        $farmer->email = $request->input('email');
+        $farmer->phone = $request->input('phone');
+        $farmer->address = $request->input('address');
+        $farmer->dateofbirth = $request->input('dateofbirth');
 
         // Save the changes to the user object
-        $agriofficer->save();
+        $farmer->save();
 
         return redirect()->back()->with('success', 'Profile updated successfully.');
     } //end

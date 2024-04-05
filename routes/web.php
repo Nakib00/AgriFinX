@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\{ProfileController, appsfunctioncontroller, microloneController, insuranceController, investingorg, adminNavigation, adminCrop};
+use App\Http\Controllers\{ProfileController, appsfunctioncontroller, microloneController, insuranceController, investingorg, adminNavigation, adminCrop,subsidy};
 use Illuminate\Support\Facades\Route;
 use App\Models\Cropproject;
 use App\Http\Controllers\agriofficer\agriculturalofficerController;
@@ -54,7 +54,6 @@ Route::prefix('agriculture_office')->group(function () {
             Route::get('/', [agriculturalofficerController::class, 'dashboard'])->name('agri_officer.dashboard');
             Route::get('/edit', [agriculturalofficerController::class, 'editprofile'])->name('agri_officer.profile.edit');
             Route::put('/update', [agriculturalofficerController::class, 'updateprofile'])->name('agri_officer.profile.update');
-            Route::get('/button', [agriculturalofficerController::class, 'button'])->name('agri_officer.button');
         });
         //end
     });
@@ -97,6 +96,14 @@ Route::prefix('farmer')->group(function () {
                 Route::get('/insurance', [farmerController::class, 'showinsuranceprovider'])->name('farmer.insurance');
                 Route::get('/profile/{id}', [farmerController::class, 'viewinsuranceprovider'])->name('viewinsuranceprovider');
                 Route::post('/applyinsurance/{id}', [farmerController::class, 'applyinsurance'])->name('farmer.applyinsurance');
+            });
+
+            //subsidy routes
+            Route::prefix('subsidy')->group(function () {
+                Route::get('',[subsidy::class,'indexsubsidy'])->name('farmer.subsidy');
+                Route::get('apply/{id}',[subsidy::class, 'apply'])->name('farmer.subsidy.openapply');
+                Route::post('/subsidyapply/{id}', [subsidy::class, 'subsidyapply'])->name('farmer.subsidy.apply');
+                Route::get('subside/{id}/status/change/{status}', [subsidy::class, 'subsidestatus'])->name('subside.status.change');
             });
         });
         //end
