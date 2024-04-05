@@ -11,13 +11,16 @@ use Illuminate\Support\Facades\DB;
 
 // index page route start
 Route::get('/', function () {
+    // Cropproject
     $cropprojects = $cropprojects = DB::select("
         SELECT cp.*, it.investing_amount
         FROM cropprojects cp
         LEFT JOIN investing_tracks it ON cp.id = it.project_id LIMIT 3");
 
+    // Total cropprojects
     $totalcroppeoject = DB::select("SELECT COUNT(*) AS totalcroppeoject FROM cropprojects")[0]->totalcroppeoject;
 
+    // Total investor count
     $totalinvestor = DB::select("SELECT COUNT(*) AS total_investors FROM investors")[0]->total_investors;
     return view('index', compact('cropprojects', 'totalcroppeoject', 'totalinvestor'));
 });
