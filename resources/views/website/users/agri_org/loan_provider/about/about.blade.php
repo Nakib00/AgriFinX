@@ -5,25 +5,31 @@
     <div class="container mt-4">
         <div class="row">
             <div class="col-md-9 pb-3">
-                <div class="aboutcontainer">
+                <div class="about-container">
                     {{-- Check if $about is not empty --}}
                     @if ($about)
-                        <h1>About Details</h1>
-                        <p>{{ $about->about }}</p>
+                        <div class="about-section">
+                            <h1 class="section-title">About Details</h1>
+                            <p class="section-content">{{ $about->about }}</p>
+                        </div>
 
-                        <h1>Loan Providing Types</h1>
-                        <p>{!! $about->type_of_service !!}</p>
+                        <div class="about-section">
+                            <h1 class="section-title">Loan Providing Types</h1>
+                            <p class="section-content">{!! $about->type_of_service !!}</p>
+                        </div>
 
-                        <h1>Team</h1>
-                        <p>{{ $about->team }}</p>
+                        <div class="about-section">
+                            <h1 class="section-title">Team</h1>
+                            <p class="section-content">{{ $about->team }}</p>
+                        </div>
 
-                        <h1>Conditions</h1>
-                        <p>{!! $about->conditions !!}</p>
-
-                        <a href="{{ route('loanprovider.editabout') }}"><button type="submit">Make update</button></a>
+                        <div class="about-section">
+                            <h1 class="section-title">Conditions</h1>
+                            <p class="section-content">{!! $about->conditions !!}</p>
+                        </div>
+                        <a href="{{ route('loanprovider.editabout') }}" class="btn btn-success">Make Update</a>
                     @else
-                        <p>No about information available.</p>
-
+                        <p class="no-info-message">No about information available.</p>
                         {{-- Button to add new information --}}
                         <a href="{{ route('loanprovider.addAbout') }}" class="btn btn-primary">Add Information</a>
                     @endif
