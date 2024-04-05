@@ -12,10 +12,7 @@
                             <div class="custom-block">
                                 <div class="custom-block-body">
                                     <h5 class="mb-3">{{ $project->project_name }}</h5>
-
-                                    <p>
-                                        {{ $project->description }}
-                                    </p>
+                                    <p>{{ $project->description }}</p>
 
                                     <div class="progress mt-4">
                                         <div class="progress-bar w-75" role="progressbar" aria-valuenow="75"
@@ -23,19 +20,23 @@
                                     </div>
 
                                     <div class="d-flex align-items-center my-2">
-                                        <p class="ms-auto mb-0">
-                                            <strong>Total Investment:</strong>
-                                            0 TK
-                                        </p>
+                                        @if ($project->investing_amount)
+                                            <p class="ms-auto mb-0">
+                                                <strong>Total Investment:</strong>
+                                                {{ $project->investing_amount }} TK
+                                            </p>
+                                        @else
+                                            <p class="ms-auto mb-0">No investing amount available</p>
+                                        @endif
                                     </div>
                                 </div>
-
                                 <a href="{{ route('agriproject.show', ['id' => $project->id]) }}"
                                     class="custom-btn btn">Invest now</a>
                             </div>
                         </div>
                     </div>
                 @endforeach
+
             </div>
         </div>
     </section>

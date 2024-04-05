@@ -1,17 +1,25 @@
 <?php
 
-use App\Http\Controllers\{ProfileController, appsfunctioncontroller, microloneController, insuranceController, investingorg, adminNavigation, adminCrop,subsidy};
+use App\Http\Controllers\{ProfileController, appsfunctioncontroller, microloneController, insuranceController, investingorg, adminNavigation, adminCrop, subsidy};
 use Illuminate\Support\Facades\Route;
-use App\Models\Cropproject;
+use App\Models\{Cropproject, investor};
 use App\Http\Controllers\agriofficer\agriculturalofficerController;
 use App\Http\Controllers\agri_org\orgcontroller;
 use App\Http\Controllers\farmer\farmerController;
 use App\Http\Controllers\invesotr\investorController;
+use Illuminate\Support\Facades\DB;
 
 // index page route start
 Route::get('/', function () {
-    $cropprojects = Cropproject::take(3)->get();
-    return view('index', compact('cropprojects'));
+    $cropprojects = $cropprojects = DB::select("
+        SELECT cp.*, it.investing_amount
+        FROM cropprojects cp
+        LEFT JOIN investing_tracks it ON cp.id = it.project_id LIMIT 3");
+
+    $totalcroppeoject = DB::select("SELECT COUNT(*) AS totalcroppeoject FROM cropprojects")[0]->totalcroppeoject;
+
+    $totalinvestor = DB::select("SELECT COUNT(*) AS total_investors FROM investors")[0]->total_investors;
+    return view('index', compact('cropprojects', 'totalcroppeoject', 'totalinvestor'));
 });
 // index page route end
 
@@ -100,8 +108,8 @@ Route::prefix('farmer')->group(function () {
 
             //subsidy routes
             Route::prefix('subsidy')->group(function () {
-                Route::get('',[subsidy::class,'indexsubsidy'])->name('farmer.subsidy');
-                Route::get('apply/{id}',[subsidy::class, 'apply'])->name('farmer.subsidy.openapply');
+                Route::get('', [subsidy::class, 'indexsubsidy'])->name('farmer.subsidy');
+                Route::get('apply/{id}', [subsidy::class, 'apply'])->name('farmer.subsidy.openapply');
                 Route::post('/subsidyapply/{id}', [subsidy::class, 'subsidyapply'])->name('farmer.subsidy.apply');
                 Route::get('subside/{id}/status/change/{status}', [subsidy::class, 'subsidestatus'])->name('subside.status.change');
             });

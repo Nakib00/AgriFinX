@@ -35,7 +35,13 @@ class appsfunctioncontroller extends Controller
     public function agropindex()
     {
         // fetch all project
-        $cropprojects = DB::select("SELECT * FROM cropprojects");
+        $cropprojects = DB::select("
+        SELECT cp.*, it.investing_amount
+        FROM cropprojects cp
+        LEFT JOIN investing_tracks it ON cp.id = it.project_id
+    ");
+
+
         return view('website.agroproject.agropindex', compact('cropprojects'));
     }
 

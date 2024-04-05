@@ -157,9 +157,9 @@
                             <div class="custom-text-box d-flex flex-wrap d-lg-block mb-lg-0">
                                 <div class="counter-thumb">
                                     <div class="d-flex">
-                                        <span class="counter-number" data-from="1" data-to="860"
+                                        <span class="counter-number" data-from="1" data-to=""
                                             data-speed="1000"></span>
-                                        <span class="counter-number-text"></span>
+                                        <span class="counter-number-text">{{ $totalinvestor }}</span>
                                     </div>
 
                                     <span class="counter-text">Investor</span>
@@ -167,12 +167,11 @@
 
                                 <div class="counter-thumb mt-4">
                                     <div class="d-flex">
-                                        <span class="counter-number" data-from="1" data-to="18"
+                                        <span class="counter-number" data-from="1" data-to=""
                                             data-speed="1000"></span>
-                                        <span class="counter-number-text">k</span>
+                                        <span class="counter-number-text">{{ $totalcroppeoject }}</span>
                                     </div>
-
-                                    <span class="counter-text">Agro project</span>
+                                    <span class="counter-text">Agriculture projects</span>
                                 </div>
                             </div>
                         </div>
@@ -207,14 +206,19 @@
                                     </div>
 
                                     <div class="d-flex align-items-center my-2">
-                                        <p class="ms-auto mb-0">
-                                            <strong>Total Investment:</strong>
-                                            0 TK
-                                        </p>
+                                        @if ($project->investing_amount)
+                                            <p class="ms-auto mb-0">
+                                                <strong>Total Investment:</strong>
+                                                {{ $project->investing_amount }} TK
+                                            </p>
+                                        @else
+                                            <p class="ms-auto mb-0">No investing amount available</p>
+                                        @endif
                                     </div>
                                 </div>
 
-                                <a href="{{ route('agriproject.show', ['id' => $project->id]) }}" class="custom-btn btn">Invest now</a>
+                                <a href="{{ route('agriproject.show', ['id' => $project->id]) }}"
+                                    class="custom-btn btn">Invest now</a>
                             </div>
                         </div>
                     </div>

@@ -22,7 +22,7 @@
                     </li>
 
                     <li class="footer-menu-item">
-                        <a href="#" class="footer-menu-link">Become a Investor</a>
+                        <a href="{{ route('login_investor') }}" class="footer-menu-link">Become a Investor</a>
                     </li>
 
                     <li class="footer-menu-item">
