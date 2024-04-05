@@ -5,12 +5,12 @@
             <div class="col-lg-12 col-12 text-center mb-4">
                 <h2>Insurance Provider Organization Profile</h2>
             </div>
-            
+
             {{--  <!-- About section -->  --}}
             <div class="profile-section">
                 <h2>About</h2>
                 @if ($about)
-                    <p>{{ $about->about }}</p>
+                    <p>{{ $about[0]->about }}</p>
                 @else
                     <p>No information available</p>
                 @endif
@@ -20,7 +20,7 @@
             <div class="profile-section">
                 <h2>Loan Providing Types</h2>
                 @if ($about)
-                    <p>{!! $about->type_of_service !!}</p>
+                    <p>{!! $about[0]->type_of_service !!}</p>
                 @else
                     <p>No information available</p>
                 @endif
@@ -30,7 +30,7 @@
             <div class="profile-section">
                 <h2>Team</h2>
                 @if ($about)
-                    <p>{{ $about->team }}</p>
+                    <p>{{ $about[0]->team }}</p>
                 @else
                     <p>No information available</p>
                 @endif
@@ -40,7 +40,7 @@
             <div class="profile-section">
                 <h2>Conditions</h2>
                 @if ($about)
-                    <p>{!! $about->conditions !!}</p>
+                    <p>{!! $about[0]->conditions !!}</p>
                 @else
                     <p>No information available</p>
                 @endif
@@ -51,9 +51,9 @@
                 <h2>Contact</h2>
                 <p>If you have any questions or inquiries, please feel free to contact us:</p>
                 <ul>
-                    <li>Email: {{ $organization->email }}</li>
-                    <li>Phone: {{ $organization->phone }}</li>
-                    <li>Address: {{ $organization->address }}</li>
+                    <li>Email: {{ $organization[0]->email }}</li>
+                    <li>Phone: {{ $organization[0]->phone }}</li>
+                    <li>Address: {{ $organization[0]->address }}</li>
                 </ul>
             </div>
         </div>

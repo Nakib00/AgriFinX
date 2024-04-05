@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\{ingo_financial_grup, flnancial_group, micro_loan};
+use Illuminate\Support\Facades\DB;
 
 class microloneController extends Controller
 {
@@ -14,10 +15,12 @@ class microloneController extends Controller
     {
 
         // Find the organization record by its ID
-        $about = ingo_financial_grup::findOrFail($id);
+        $organization = DB::select("SELECT * FROM flnancial_groups WHERE id = $id");
 
         // Fetch additional information from the flnancial_groups table
-        $organization = flnancial_group::findOrFail($about->Organization_id);
+        $about = DB::select("SELECT * FROM ingo_financial_grups WHERE Organization_id = $id");
+
+        // dd($organization);
 
         return view('website.microloan.view', ['about' => $about, 'organization' => $organization]);
     } //end

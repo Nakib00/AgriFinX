@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\{ProfileController, appsfunctioncontroller, microloneController, insuranceController, investingorg, adminNavigation, adminCrop, subsidy};
 use Illuminate\Support\Facades\Route;
-use App\Models\{Cropproject, investor};
 use App\Http\Controllers\agriofficer\agriculturalofficerController;
 use App\Http\Controllers\agri_org\orgcontroller;
 use App\Http\Controllers\farmer\farmerController;
