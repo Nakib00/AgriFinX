@@ -42,11 +42,10 @@ class adminNavigation extends Controller
     public function marckerprice()
     {
         // Fetch all crop market prices with their associated crop information
-        $cropMarketPrices = DB::select("
-        SELECT crop_marcket_prices.*, crops.name AS crop_name
-        FROM crop_marcket_prices
-        JOIN crops ON crop_marcket_prices.crop_id = crops.id
-    ");
+        $cropMarketPrices = DB::select("SELECT crop_marcket_prices.*, crops.name AS crop_name
+            FROM crop_marcket_prices
+            JOIN crops ON crop_marcket_prices.crop_id = crops.id
+        ");
 
 
         $crop = DB::select("SELECT * FROM crops");

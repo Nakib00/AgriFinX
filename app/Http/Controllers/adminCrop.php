@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\{Crop, crop_marcket_price};
+use App\Models\Crop;
 
 class adminCrop extends Controller
 {

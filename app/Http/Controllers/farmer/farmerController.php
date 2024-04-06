@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
-use App\Models\{farmer, cropproject, crop, investing_track, flnancial_group, ingo_financial_grup, micro_loan, insurance};
+use App\Models\{farmer, cropproject, micro_loan, insurance};
 use Illuminate\Support\Facades\DB;
 
 class farmerController extends Controller
