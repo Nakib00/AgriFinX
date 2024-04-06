@@ -32,7 +32,7 @@
 
         {{--  Loan application list  --}}
         <div class="row">
-            <div class="col-lg-12 col-12 text-center mb-4">
+            <div class="col-lg-12 col-12 text-center mt-4">
                 <h2>Loan application list</h2>
             </div>
             {{-- Table start --}}
@@ -53,8 +53,7 @@
                         <tbody>
                             @foreach ($loanApplications as $loanApplication)
                                 <tr>
-                                    <td>{{ $loanApplication->financialGroup->f_name }}
-                                        {{ $loanApplication->financialGroup->l_name }}</td>
+                                    <td>{{ $loanApplication->financial_group_name }}</td>
                                     <td>{{ $loanApplication->reason_of_taking_loan }}</td>
                                     <td>{{ $loanApplication->amount }}</td>
                                     <td>{{ $loanApplication->interest_rate }}</td>

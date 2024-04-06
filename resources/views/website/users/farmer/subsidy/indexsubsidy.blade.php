@@ -56,8 +56,7 @@
                         <tbody>
                             @foreach ($subsideApplications as $Application)
                                 <tr>
-                                    <td>{{ $Application->agri_officer->f_name }}
-                                        {{ $Application->agri_officer->l_name }}</td>
+                                    <td>{{ $Application->agri_officer_name }}</td>
                                     <td>{{ $Application->reason_of_taking_subsidies }}</td>
                                     <td>{{ $Application->amount }}</td>
                                     <td>{{ $Application->farm_size }}</td>

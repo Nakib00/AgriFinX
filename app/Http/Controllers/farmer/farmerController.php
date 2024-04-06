@@ -271,12 +271,16 @@ class farmerController extends Controller
     {
         // find out login farmer id
         $userid = auth()->guard('farmer')->user()->id;
-        // Retrieve all loan applications
-        $loanApplications = micro_loan::where('farmer_id', $userid)->get();
-
 
         // Fetch all loan provider type users from the database
-        $loanProviders = flnancial_group::where('Orgnization_type', 'loan_provider')->get();
+        $loanProviders = DB::select("SELECT * FROM flnancial_groups WHERE Orgnization_type = 'loan_provider'");
+
+        // Retrieve all loan applications
+        $loanApplications = DB::select("SELECT ml.*, CONCAT(fg.f_name, ' ', fg.l_name) AS financial_group_name
+            FROM micro_loans ml
+            INNER JOIN flnancial_groups fg ON ml.Organization_id = fg.id
+            WHERE ml.farmer_id = $userid
+        ");
 
         return view('website.users.farmer.loan.loanprovider', compact('loanProviders', 'loanApplications'));
     }
@@ -284,10 +288,10 @@ class farmerController extends Controller
     public function viewloanprovider($id)
     {
         // Find the organization record by its ID
-        $about = ingo_financial_grup::findOrFail($id);
+        $about = DB::select("SELECT * FROM ingo_financial_grups WHERE Organization_id = $id");
 
         // Fetch additional information from the flnancial_groups table
-        $organization = flnancial_group::findOrFail($about->Organization_id);
+        $organization = DB::select("SELECT * FROM flnancial_groups WHERE id = $id");
 
         return view('website.users.farmer.loan.viewloanprovider', ['about' => $about, 'organization' => $organization]);
     }
@@ -324,7 +328,10 @@ class farmerController extends Controller
 
 
         // Fetch all loan provider type users from the database
-        $Insuranceroviders = flnancial_group::where('Orgnization_type', 'insurance_organization')->get();
+        $Insuranceroviders = DB::select("SELECT *
+            FROM flnancial_groups
+            WHERE Orgnization_type = 'insurance_organization'
+        ");
 
         return view('website.users.farmer.insurance.insuranceprovider', compact('Insuranceroviders'));
     }
@@ -333,10 +340,10 @@ class farmerController extends Controller
     public function viewinsuranceprovider($id)
     {
         // Find the organization record by its ID
-        $about = ingo_financial_grup::findOrFail($id);
+        $about =  DB::select("SELECT * FROM ingo_financial_grups WHERE Organization_id = $id");
 
         // Fetch additional information from the flnancial_groups table
-        $organization = flnancial_group::findOrFail($about->Organization_id);
+        $organization = DB::select("SELECT * FROM flnancial_groups WHERE id = $id");
 
         return view('website.users.farmer.insurance.viewinsuranceprovider', ['about' => $about, 'organization' => $organization]);
     }

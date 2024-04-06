@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\{agricultural_officer, subsidies};
-
+use Illuminate\Support\Facades\DB;
 
 class subsidy extends Controller
 {
@@ -17,12 +17,18 @@ class subsidy extends Controller
         $userid = auth()->guard('farmer')->user()->id;
 
         // Fetch all loan provider type users from the database
-        $agriofficer = agricultural_officer::all();
+        $agriofficer = DB::select("SELECT *
+            FROM agricultural_officers
+        ");
 
         // acceped subsidiary list
-        $subsideApplications = subsidies::where('farmer_id', $userid)->get();
+        $subsideApplications = DB::select("SELECT s.*, CONCAT(ao.f_name, ' ', ao.l_name) AS agri_officer_name
+            FROM subsidies s
+            INNER JOIN agricultural_officers ao ON s.agri_officer_id = ao.id
+            WHERE s.farmer_id = $userid
+        ");
 
-        return view('website.users.farmer.subsidy.indexsubsidy', compact('agriofficer','subsideApplications'));
+        return view('website.users.farmer.subsidy.indexsubsidy', compact('agriofficer', 'subsideApplications'));
     }
 
     // open subsidiary apply page

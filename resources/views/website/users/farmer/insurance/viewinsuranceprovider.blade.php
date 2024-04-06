@@ -10,7 +10,7 @@
                 <h3 class="info-heading">About</h3>
                 <div class="info-content">
                     @if ($about)
-                        <p>{{ $about->about }}</p>
+                        <p>{{ $about[0]->about }}</p>
                     @else
                         <p class="no-info">No information available</p>
                     @endif
@@ -23,7 +23,7 @@
                 <h3 class="info-heading">Insurance Providing Types</h3>
                 <div class="info-content">
                     @if ($about)
-                        <p>{!! $about->type_of_service !!}</p>
+                        <p>{!! $about[0]->type_of_service !!}</p>
                     @else
                         <p class="no-info">No information available</p>
                     @endif
@@ -36,7 +36,7 @@
                 <h3 class="info-heading">Team</h3>
                 <div class="info-content">
                     @if ($about)
-                        <p>{{ $about->team }}</p>
+                        <p>{{ $about[0]->team }}</p>
                     @else
                         <p class="no-info">No information available</p>
                     @endif
@@ -49,7 +49,7 @@
                 <h3 class="info-heading">Conditions</h3>
                 <div class="info-content">
                     @if ($about)
-                        <p>{!! $about->conditions !!}</p>
+                        <p>{!! $about[0]->conditions !!}</p>
                     @else
                         <p class="no-info">No information available</p>
                     @endif
@@ -62,9 +62,9 @@
                 <div class="info-content">
                     <p>If you have any questions or inquiries, please feel free to contact us:</p>
                     <ul class="contact-info">
-                        <li>Email: {{ $organization->email }}</li>
-                        <li>Phone: {{ $organization->phone }}</li>
-                        <li>Address: {{ $organization->address }}</li>
+                        <li>Email: {{ $organization[0]->email }}</li>
+                        <li>Phone: {{ $organization[0]->phone }}</li>
+                        <li>Address: {{ $organization[0]->address }}</li>
                     </ul>
                 </div>
             </div>
@@ -88,7 +88,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="{{ route('farmer.applyinsurance', ['id' => $organization->id]) }}" method="post">
+                        <form action="{{ route('farmer.applyinsurance', ['id' => $organization[0]->id]) }}" method="post">
                             @csrf
                             <div class="form-group">
                                 <label for="reason">Claim Amount</label>
@@ -100,9 +100,9 @@
                                 <input type="number" class="form-control" id="amount" name="crop_amount"
                                     placeholder="Enter Crop Amount">
                             </div>
-                            
-                                
-                          
+
+
+
                             <button type="submit" class="btn btn-primary">Apply</button>
                         </form>
                     </div>
