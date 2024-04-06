@@ -60,7 +60,9 @@
                                     <td>{{ $insu->crop_amount }}</td>
                                     <td>{{ $insu->approvel_status == 1 ? 'Approved' : 'Not Approved' }}</td>
                                     <td>{{ $insu->issue_date }}</td>
-                            
+                                    <td><a href="{{ route('farmer.reportcroploss', ['id' => $insu->id]) }}" ><button
+                                        type="button" class="btn btn-primary btn-sm">Report Crop Loss</button>
+                                    </a></td>
                                 </tr>
                             @endforeach
                         </tbody>

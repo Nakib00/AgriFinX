@@ -15,9 +15,13 @@ return new class extends Migration
             $table->id();
             $table->foreignId('Organization_id')->constrained('flnancial_groups');
             $table->foreignId('farmer_id')->constrained('farmers');
-            $table->string('insurance_premium');
-            $table->string('claim_amount');
-            $table->string('crop_amount');
+            $table->foreignId('crop_projectId')->constrained('cropprojects');
+            $table->string('insurance_premium')->nullable();
+            $table->string('minimum_sellamount');
+            $table->string('disaster_type')->nullable();
+            $table->string('reason')->nullable();
+            $table->string('claim_amount')->nullable();
+            $table->string('loss_amount')->nullable();
             $table->boolean('approvel_status');
             $table->date('issue_date')->nullable();
             $table->timestamps();

@@ -9,7 +9,7 @@ class insurance extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'Organization_id', 'farmer_id', 'insurance_premium', 'claim_amount', 'crop_amount', 'approvel_status', 'issue_date',
+        'Organization_id', 'farmer_id', 'crop_projectId','insurance_premium','minimum_sellamountt','disaster_type','reason', 'claim_amount', 'loss_amount', 'approvel_status', 'issue_date',
     ];
 
     // Define relationships if needed

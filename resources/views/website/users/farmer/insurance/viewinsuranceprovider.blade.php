@@ -112,11 +112,7 @@
                 </div>
             </div>
         </div>
-        {{-- <div class="text-center">
-        <a href="#" data-toggle="modal" data-target="#cropLossModal">
-            <button type="button" class="btn btn-primary btn-lg">Report Crop Loss</button>
-        </a>
-        <div>
+        {{-- report croploss
         <div class="modal fade" id="cropLossModal" tabindex="-1" role="dialog" aria-labelledby="cropLossModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -133,11 +129,11 @@
                                 <label for="reason">Reason for Crop Loss</label>
                                 <input type="text" class="form-control" id="reason" name="disaster_type" placeholder="Enter Disaster Type">
                             </div>
-                            {{-- <div class="form-group">
+                            <div class="form-group">
                                 <label for="amount">Estimated Crop Loss Amount</label>
-                                <input type="number" class="form-control" id="amount" name="crop_amount" placeholder="Enter Amount">
-                            </div> --}}
-                            {{-- <button type="submit" class="btn btn-primary">Report</button>
+                                <input type="number" class="form-control" id="amount" name="loss_amount" placeholder="Enter Amount">
+                            </div> 
+                           <button type="submit" class="btn btn-primary">Report</button>
                         </form>
                     </div>
                 </div>
@@ -149,7 +145,8 @@
         </div>
     </div>
             
-    </div> --}} 
+    </div>  --}}
+        
     
     </section>
 @endsection
