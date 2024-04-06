@@ -375,6 +375,12 @@ class farmerController extends Controller
         $insurance->save();
         return back()->with('success', 'Insurance application submitted successfully!');
     }
+    public function claiminsurance($id)
+    {
+        $insuranceprovider = $id;
+
+        return view('website.users.farmer.insurance.reportCropLoss', compact('insuranceprovider'));
+    }
 
      public function reportcroploss(Request $request, $id)
     {     
@@ -383,18 +389,21 @@ class farmerController extends Controller
         $insuranceprovider = $id;
     //     // find out login farmer id
         $userid = auth()->guard('farmer')->user()->id;
-        //$cropid = auth()->guard('crop_projectId')->user()->id;
+        $latestCropProject = CropProject::where('farmer_id', $userid)->latest()->first();
+
+        $cropid = $latestCropProject->id;
+        
 
          $insurance = new insurance();
          $insurance->Organization_id =  $insuranceprovider;
          $insurance->farmer_id =  $userid;
-         $insurance->crop_projectId =1;
+         $insurance->crop_projectId =  $cropid;
         $insurance->disaster_type = $request["disaster_type"];
         $insurance->minimum_sellamountt = $request["minimum_sellamountt"];
         //$insurance->crop_amount = $request["crop_amount"];
         $insurance->approvel_status = 0;
          $insurance->save();
-         return view('website.users.farmer.insurance.reportCropLoss', compact('insurancerovider'));
+         
         return back()->with('success', 'Report crop loss application submitted successfully!');
      }
 }

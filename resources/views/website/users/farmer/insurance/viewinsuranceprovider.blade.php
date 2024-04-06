@@ -106,7 +106,7 @@
 
 
 
-                            <button type="submit" class="btn btn-primary">Apply</button>
+                            <button type="submit" class="btn btn-success">Apply</button>
                         </form>
                     </div>
                 </div>
