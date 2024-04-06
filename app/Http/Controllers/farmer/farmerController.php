@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
-use App\Models\{farmer, cropproject, micro_loan, insurance};
+use App\Models\{farmer, cropproject, micro_loan, insurance,insurance_claim_reason};
 use Illuminate\Support\Facades\DB;
 
 class farmerController extends Controller
@@ -368,5 +368,23 @@ class farmerController extends Controller
         $insurance->approvel_status = 0;
         $insurance->save();
         return back()->with('success', 'Insurance application submitted successfully!');
+    }
+
+    public function reportcroploss(Request $request, $id)
+    {
+        //dd($request->all());
+        // insuranceprovider id
+        $insuranceprovider = $id;
+        // find out login farmer id
+        //$userid = auth()->guard('insurance_id')->user()->id;
+
+        $insurance = new insurance_claim_reason();
+        $insurance->Organization_id =  $insuranceprovider;
+        $insurance->insurance_id =  1;
+        $insurance->disaster_type = $request["disaster_type"];
+        //$insurance->crop_amount = $request["crop_amount"];
+        $insurance->status = 0;
+        $insurance->save();
+        return back()->with('success', 'Report crop loss application submitted successfully!');
     }
 }
