@@ -332,8 +332,14 @@ class farmerController extends Controller
             FROM flnancial_groups
             WHERE Orgnization_type = 'insurance_organization'
         ");
+           // Retrieve all loan applications
+           $insuApplications = DB::select("SELECT ins.*, CONCAT(fg.f_name, ' ', fg.l_name) AS financial_group_name
+           FROM insurances ins
+           INNER JOIN flnancial_groups fg ON ins.Organization_id = fg.id
+           WHERE ins.farmer_id = $userid
+       ");
 
-        return view('website.users.farmer.insurance.insuranceprovider', compact('Insuranceroviders'));
+        return view('website.users.farmer.insurance.insuranceprovider', compact('Insuranceroviders','insuApplications'));
     }
 
     // shwo insurance provider profile
@@ -370,21 +376,21 @@ class farmerController extends Controller
         return back()->with('success', 'Insurance application submitted successfully!');
     }
 
-    public function reportcroploss(Request $request, $id)
-    {
-        //dd($request->all());
-        // insuranceprovider id
-        $insuranceprovider = $id;
-        // find out login farmer id
-        //$userid = auth()->guard('insurance_id')->user()->id;
+    // public function reportcroploss(Request $request, $id)
+    // {
+    //     //dd($request->all());
+    //     // insuranceprovider id
+    //     $insuranceprovider = $id;
+    //     // find out login farmer id
+    //     //$userid = auth()->guard('insurance_id')->user()->id;
 
-        $insurance = new insurance_claim_reason();
-        $insurance->Organization_id =  $insuranceprovider;
-        $insurance->insurance_id =  1;
-        $insurance->disaster_type = $request["disaster_type"];
-        //$insurance->crop_amount = $request["crop_amount"];
-        $insurance->status = 0;
-        $insurance->save();
-        return back()->with('success', 'Report crop loss application submitted successfully!');
-    }
+    //     $insurance = new insurance_claim_reason();
+    //     $insurance->Organization_id =  $insuranceprovider;
+    //     $insurance->insurance_id =  1;
+    //     $insurance->disaster_type = $request["disaster_type"];
+    //     //$insurance->crop_amount = $request["crop_amount"];
+    //     $insurance->status = 0;
+    //     $insurance->save();
+    //     return back()->with('success', 'Report crop loss application submitted successfully!');
+    // }
 }

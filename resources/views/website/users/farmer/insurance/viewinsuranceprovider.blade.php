@@ -112,7 +112,7 @@
                 </div>
             </div>
         </div>
-        <div class="text-center">
+        {{-- <div class="text-center">
         <a href="#" data-toggle="modal" data-target="#cropLossModal">
             <button type="button" class="btn btn-primary btn-lg">Report Crop Loss</button>
         </a>
@@ -137,7 +137,7 @@
                                 <label for="amount">Estimated Crop Loss Amount</label>
                                 <input type="number" class="form-control" id="amount" name="crop_amount" placeholder="Enter Amount">
                             </div> --}}
-                            <button type="submit" class="btn btn-primary">Report</button>
+                            {{-- <button type="submit" class="btn btn-primary">Report</button>
                         </form>
                     </div>
                 </div>
@@ -149,6 +149,7 @@
         </div>
     </div>
             
-    </div>
+    </div> --}} 
+    
     </section>
 @endsection

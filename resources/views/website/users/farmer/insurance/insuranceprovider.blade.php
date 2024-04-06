@@ -47,11 +47,22 @@
                                 <th>Crop Amount</th>
                                 <th>Approval Status</th>
                                 <th>Issue Date</th>
-                                <th>Insurance_Claim</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             {{--  add insurance  --}}
+                            @foreach ($insuApplications as $insu)
+                                <tr>
+                                    <td>{{ $insu->financial_group_name }}</td>
+                                    <td>{{ $insu->insurance_premium }}</td>
+                                    <td>{{ $insu->claim_amount }}</td>
+                                    <td>{{ $insu->crop_amount }}</td>
+                                    <td>{{ $insu->approvel_status == 1 ? 'Approved' : 'Not Approved' }}</td>
+                                    <td>{{ $insu->issue_date }}</td>
+                            
+                                </tr>
+                            @endforeach
                         </tbody>
 
                     </table>
