@@ -60,12 +60,11 @@
                                     <tr>
                                         <td><strong>Farmer</strong></td>
                                         <td><a href="#" data-toggle="modal"
-                                                data-target="#farmerModal">{{ $cropproject->farmer->f_name }}
-                                                {{ $cropproject->farmer->l_name }}</a></td>
+                                                data-target="#farmerModal">{{ $cropproject->farmer_name }}</a></td>
                                     </tr>
                                     <tr>
                                         <td><strong>Crop</strong></td>
-                                        <td>{{ $cropproject->crop->name }}</td>
+                                        <td>{{ $cropproject->crop_name }}</td>
                                     </tr>
                                     <tr>
                                         <td><strong>Created At</strong></td>
@@ -107,11 +106,10 @@
                     </div>
                     <div class="modal-body">
                         <ul>
-                            <li><strong>First Name:</strong> {{ $cropproject->farmer->f_name }}</li>
-                            <li><strong>Last Name:</strong> {{ $cropproject->farmer->l_name }}</li>
-                            <li><strong>Email:</strong> {{ $cropproject->farmer->email }}</li>
-                            <li><strong>Phone:</strong> {{ $cropproject->farmer->phone }}</li>
-                            <li><strong>Address:</strong> {{ $cropproject->farmer->address }}</li>
+                            <li><strong>Name:</strong> {{ $cropproject->farmer_name }}</li>
+                            <li><strong>Email:</strong> {{ $cropproject->farmer_email }}</li>
+                            <li><strong>Phone:</strong> {{ $cropproject->farmer_phone }}</li>
+                            <li><strong>Address:</strong> {{ $cropproject->farmer_address }}</li>
                         </ul>
                     </div>
                 </div>

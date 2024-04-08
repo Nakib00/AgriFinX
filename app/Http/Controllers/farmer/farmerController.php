@@ -383,7 +383,7 @@ class farmerController extends Controller
     }
 
      public function reportcroploss(Request $request, $id)
-    {     
+    {
          //dd($request->all());
         // insuranceprovider id
         $insuranceprovider = $id;
@@ -392,7 +392,7 @@ class farmerController extends Controller
         $latestCropProject = CropProject::where('farmer_id', $userid)->latest()->first();
 
         $cropid = $latestCropProject->id;
-        
+
 
          $insurance = new insurance();
          $insurance->Organization_id =  $insuranceprovider;
@@ -403,7 +403,7 @@ class farmerController extends Controller
         //$insurance->crop_amount = $request["crop_amount"];
         $insurance->approvel_status = 0;
          $insurance->save();
-         
+
         return back()->with('success', 'Report crop loss application submitted successfully!');
      }
 }

@@ -12,7 +12,7 @@
                             <div class="d-flex align-items-center">
                                 {{--  <!-- Total investment amount -->  --}}
                                 <h1 class="display-4 mb-0">Total Investment:
-                                    ৳{{ $totalCropInvestment + $totalOrgInvestment }}</h1>
+                                    ৳{{ $totalCropInvestment[0]->total_amount + $totalOrgInvestment[0]->total_amount}}</h1>
                             </div>
                         </div>
                     </div>
@@ -28,8 +28,8 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Fetch data for the chart
-            const cropProjectInvestmentData = [{{ $totalCropInvestment }}]; // Total crop project investment amount
-            const organizationInvestmentData = [{{ $totalOrgInvestment }}]; // Total organization investment amount
+            const cropProjectInvestmentData = [{{ $totalCropInvestment[0]->total_amount }}]; // Total crop project investment amount
+            const organizationInvestmentData = [{{ $totalOrgInvestment[0]->total_amount }}]; // Total organization investment amount
             const labels = ['Total Investment']; // Label for the total investment
 
             // Create the chart

@@ -32,7 +32,7 @@
 
             {{-- Team section --}}
             <div class="profile-info">
-                <h3 class="info-heading">Team</h3>
+                <h3 class="info-heading">Terms</h3>
                 <div class="info-content">
                     @if ($about)
                         <p>{{ $about[0]->team }}</p>

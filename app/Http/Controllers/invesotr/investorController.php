@@ -10,7 +10,8 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
 use App\Models\investor;
 use App\Models\{cropproject};
-use App\Models\{ingo_financial_grup, flnancial_group, investing_track, investing_track_Organization};
+use App\Models\{investing_track, investing_track_Organization};
+use Illuminate\Support\Facades\DB;
 
 class investorController extends Controller
 {
@@ -27,12 +28,17 @@ class investorController extends Controller
         $investor_id = Auth::guard('investor')->id();
 
         // Total crop project investment amount
-        $totalCropInvestment = investing_track::where('investor_id', $investor_id)->sum('investing_amount');
+        $totalCropInvestment = DB::select("SELECT SUM(investing_amount) AS total_amount
+            FROM investing_tracks
+            WHERE investor_id = $investor_id"
+        );
 
         // Total investing organization amount
-        $totalOrgInvestment = investing_track_Organization::where('investor_id', $investor_id)->sum('investing_amount');
-
-
+        $totalOrgInvestment = DB::select("SELECT SUM(investing_amount) AS total_amount
+            FROM investing_track__organizations
+            WHERE investor_id = $investor_id;
+        ");
+;
         return view('website.users.investor.deashboad', compact('totalCropInvestment', 'totalOrgInvestment'));
     } //end
 
@@ -107,8 +113,6 @@ class investorController extends Controller
         $user = auth()->guard('investor')->user();
         $id = $user->id;
 
-
-
         // Find the team by ID
         $agriofficer = investor::findOrFail($id);
 
@@ -131,49 +135,67 @@ class investorController extends Controller
     public function cropproject()
     {
         // show all crop projects
-        $cropproject = Cropproject::all();
+        $cropproject = DB::select("SELECT *
+            FROM cropprojects
+        ");
 
         // get investor id
         $investor_id = auth()->guard('investor')->user()->id;
 
         // Fetch the investments made by the logged-in investor
-        $investments = investing_track::where('investor_id', $investor_id)->with('project')->get();
+        $investments = DB::select("SELECT cp.project_name, it.      investing_amount, it.investing_date, it.percentage_rate
+            FROM investing_tracks it
+            INNER JOIN cropprojects cp ON it.project_id = cp.id
+            WHERE it.investor_id = $investor_id
+        ");
 
-        return view('website.users.investor.cropproject.showcropproject', ['cropproject' => $cropproject], ['investments' => $investments]);
+        return view('website.users.investor.cropproject.showcropproject', compact('cropproject','investments'));
     }
 
     // view project information
     public function projectview($id)
     {
         // Retrieve the crop project based on the provided ID
-        $cropproject = Cropproject::findOrFail($id);
-
+        $cropproject = DB::selectOne("SELECT cp.*, CONCAT(f.f_name, ' ', f. l_name) AS farmer_name,
+        f.email AS farmer_email,
+        f.phone AS farmer_phone,
+        f.address AS farmer_address,
+        c.name AS crop_name
+            FROM cropprojects AS cp
+            INNER JOIN farmers AS f ON cp.farmer_id = f.id
+            INNER JOIN crops AS c ON cp.crop_id = c.id
+            WHERE cp.id = $id
+        ");
         return view('website.users.investor.cropproject.viewporject', ['cropproject' => $cropproject]);
     }
 
     // Display investing organizations
     public function investingorg()
     {
-        // show all projects
-        $investingorg = flnancial_group::where('Orgnization_type', 'investing_organization')->get();
+        // show all investing org
+        $investingorg = DB::select("SELECT * FROM flnancial_groups WHERE Orgnization_type = 'investing_organization'");
 
         // get investor id
         $investor_id = auth()->guard('investor')->user()->id;
 
         // Fetch the investments made by the logged-in investor
-        $investments = investing_track_Organization::where('investor_id', $investor_id)->with('organization')->get();
+        $investments = DB::select("SELECT ito.*, CONCAT(fg.f_name, ' ', fg.l_name) AS organization_name
+            FROM investing_track__organizations ito
+            INNER JOIN flnancial_groups fg ON ito.Organization_id = fg.id
+            WHERE ito.investor_id = $investor_id;
+        ");
 
-        return view('website.users.investor.investingorg.investingorg', ['investingorg' => $investingorg], ['investments' => $investments]);
+        return view('website.users.investor.investingorg.investingorg', compact('investingorg','investments'));
     }
 
     // view inveting organizations
     public function investingorgshow($id)
     {
         // Find the organization record by its ID
-        $about = ingo_financial_grup::findOrFail($id);
+        $organization = DB::select("SELECT * FROM flnancial_groups WHERE id = $id");
 
         // Fetch additional information from the flnancial_groups table
-        $organization = flnancial_group::findOrFail($about->Organization_id);
+        $about = DB::select("SELECT * FROM ingo_financial_grups WHERE Organization_id = $id");
 
         return view('website.users.investor.investingorg.viewinvestingorg', ['about' => $about, 'organization' => $organization]);
     }

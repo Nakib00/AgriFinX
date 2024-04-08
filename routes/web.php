@@ -109,7 +109,6 @@ Route::prefix('farmer')->group(function () {
                 Route::post('/reportlosscrop/{id}', [farmerController::class, 'reportcroploss'])->name('farmer.reportcroploss');
                 Route::get('apply/{id}', [farmerController::class, 'claiminsurance'])->name('farmer.claiminsurance');
             });
-          
             //subsidy routes
             Route::prefix('subsidy')->group(function () {
                 Route::get('', [subsidy::class, 'indexsubsidy'])->name('farmer.subsidy');
