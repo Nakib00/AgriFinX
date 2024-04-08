@@ -9,6 +9,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use App\Models\{flnancial_group, ingo_financial_grup};
+use Illuminate\Support\Facades\DB;
 
 class orgcontroller extends Controller
 {
@@ -135,7 +136,7 @@ class orgcontroller extends Controller
         // Fetch the ingo_financial_grup record associated with the specified user id
         $user = flnancial_group::findOrFail($id);
         $about = $user->ingoFinancialGrup()->first();
-        return view('website.users.agri_org.loan_provider.about.about', ['about' => $about]);
+        return view('website.users.agri_org.loan_provider.about.about', compact('about'));
     } //end
 
 

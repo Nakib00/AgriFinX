@@ -22,7 +22,7 @@ class microloneController extends Controller
 
         // dd($organization);
 
-        return view('website.microloan.view', ['about' => $about, 'organization' => $organization]);
+        return view('website.microloan.view', compact('organization','about'));
     } //end
 
 
@@ -30,23 +30,29 @@ class microloneController extends Controller
     // show apply loan
     public function showloan()
     {
-
         // login loan provider id
         $loanprovider_id = Auth::guard('flnancial_group')->id();
 
         // Fetch microloan applications
-        $microloans = micro_loan::where('Organization_id', $loanprovider_id)->with('farmer')->get();
+        $microloans = DB::select("SELECT ml.id, ml.reason_of_taking_loan, ml.amount, ml.interest_rate, ml.installment_period, CONCAT(f.f_name, ' ', f.l_name) AS farmer_name
+            FROM micro_loans ml
+            INNER JOIN farmers f ON ml.farmer_id = f.id
+            WHERE ml.Organization_id = $loanprovider_id
+        ",);
 
-        return view('website.users.agri_org.loan_provider.loanapply.loanapply', ['microloans' => $microloans]);
+        return view('website.users.agri_org.loan_provider.loanapply.loanapply', compact('microloans'));
     }
 
     // show loan
     public function viewloan($id)
     {
+        $microloan = DB::selectOne("SELECT ml.*,f.*, CONCAT(f.f_name, ' ', f.l_name) AS farmer_name
+            FROM micro_loans ml
+            INNER JOIN farmers f ON ml.farmer_id = f.id
+            WHERE ml.id = $id
+        ");
 
-        $microloan = micro_loan::findOrFail($id);
-
-        return view('website.users.agri_org.loan_provider.loanapply.viewloan', ['microloan' => $microloan]);
+        return view('website.users.agri_org.loan_provider.loanapply.viewloan', compact('microloan'));
     }
 
     // loan status change
@@ -76,10 +82,13 @@ class microloneController extends Controller
         $loanprovider_id = Auth::guard('flnancial_group')->id();
 
         // all approved loans
-        $approvedLoans = Micro_loan::where('Organization_id', $loanprovider_id)
-            ->where('approval_status', 1)
-            ->get();
+        $approvedLoans = DB::select("SELECT ml.id, ml.reason_of_taking_loan, ml.amount, ml.interest_rate, CONCAT(f.f_name, ' ', f.l_name) AS farmer_name
+            FROM micro_loans ml
+            INNER JOIN farmers f ON ml.farmer_id = f.id
+            WHERE ml.Organization_id = $loanprovider_id
+            AND ml.approval_status = 1
+        ");
 
-        return view('website.users.agri_org.loan_provider.loanapply.approveloan', ['approvedLoans' => $approvedLoans]);
+        return view('website.users.agri_org.loan_provider.loanapply.approveloan', compact('approvedLoans'));
     }
 }

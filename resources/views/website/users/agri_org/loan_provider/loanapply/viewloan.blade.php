@@ -16,33 +16,30 @@
         <tbody>
             <tr>
                 <td><a href="" data-toggle="modal"
-                        data-target="#farmerModal{{ $microloan->farmer->id }}">{{ $microloan->farmer->f_name }}
-                        {{ $microloan->farmer->l_name }}</a></td>
+                        data-target="#farmerModal{{ $microloan->id }}">{{ $microloan->farmer_name }}</a></td>
                 <td>{{ $microloan->reason_of_taking_loan }}</td>
                 <td>{{ $microloan->amount }}</td>
                 <td>{{ $microloan->interest_rate }}</td>
                 <td>{{ $microloan->installment_period }}</td>
-
             </tr>
         </tbody>
     </table>
 
     {{--  <!-- Farmer Info Modal -->  --}}
-    <div class="modal fade" id="farmerModal{{ $microloan->farmer->id }}" tabindex="-1" role="dialog"
+    <div class="modal fade" id="farmerModal{{ $microloan->id }}" tabindex="-1" role="dialog"
         aria-labelledby="farmerModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="farmerModalLabel">{{ $microloan->farmer->f_name }}
-                        {{ $microloan->farmer->l_name }} Info</h5>
+                    <h5 class="modal-title" id="farmerModalLabel">{{ $microloan->farmer_name }} Info</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p>Email: {{ $microloan->farmer->email }}</p>
-                    <p>Phone: {{ $microloan->farmer->phone }}</p>
-                    <p>Address: {{ $microloan->farmer->address }}</p>
+                    <p>Email: {{ $microloan->email }}</p>
+                    <p>Phone: {{ $microloan->phone }}</p>
+                    <p>Address: {{ $microloan->address }}</p>
                 </div>
             </div>
         </div>

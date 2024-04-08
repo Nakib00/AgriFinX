@@ -23,7 +23,7 @@
                                 <tbody>
                                     @foreach ($microloans as $microloan)
                                         <tr>
-                                            <td>{{ $microloan->farmer->f_name }} {{ $microloan->farmer->l_name }}</td>
+                                            <td>{{ $microloan->farmer_name }}</td>
                                             <td>{{ $microloan->reason_of_taking_loan }}</td>
                                             <td>{{ $microloan->amount }}</td>
                                             <td>{{ $microloan->interest_rate }}</td>

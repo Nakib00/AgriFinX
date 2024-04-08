@@ -22,7 +22,7 @@
                                 <tbody>
                                     @foreach ($approvedLoans as $loan)
                                         <tr>
-                                            <td>{{ $loan->farmer->f_name }} {{ $loan->farmer->l_name }}</td>
+                                            <td>{{ $loan->farmer_name }}</td>
                                             <td>{{ $loan->reason_of_taking_loan }}</td>
                                             <td>{{ $loan->amount }}</td>
                                             <td>{{ $loan->interest_rate }}</td>
