@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
-
+use Illuminate\Support\Facades\DB;
 use App\Models\{agricultural_officer, subsidies};
 
 
@@ -27,7 +27,11 @@ class agriculturalofficerController extends Controller
         // login agri officer id
         $agriofficer_id = Auth::guard('agricultural_officer')->id();
         // Fetch microloan applications
-        $subsides = subsidies::where('agri_officer_id', $agriofficer_id)->with('farmer')->get();
+        $subsides = DB::select("SELECT s.*, CONCAT(f.f_name, ' ', f.l_name) AS farmer_name
+            FROM subsidies s
+            INNER JOIN farmers f ON s.farmer_id = f.id
+            WHERE s.agri_officer_id = $agriofficer_id"
+        );
 
         return view('website.users.agri_officer.deashboad', compact('subsides'));
     } //end

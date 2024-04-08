@@ -5,8 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Models\flnancial_group;
-use App\Models\{farmer, cropproject, crop};
+
 
 class appsfunctioncontroller extends Controller
 {

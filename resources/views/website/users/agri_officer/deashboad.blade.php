@@ -5,7 +5,7 @@
             <div class="col-md-12">
                 <div class="row mt-3">
                     <div class="col-lg-12 col-12 text-center mb-4">
-                        <h2>Loan application</h2>
+                        <h2>Subsidy application</h2>
                     </div>
                     {{--  Table start  --}}
                     <div class="table-responsive">
@@ -13,7 +13,7 @@
                             <thead class="thead-dark">
                                 <tr>
                                     <th>Farmer Name</th>
-                                    <th>Reason of taking loan</th>
+                                    <th>Reason of taking subsidy</th>
                                     <th>Amount</th>
                                     <th>Status</th>
                                 </tr>
@@ -21,7 +21,7 @@
                             <tbody>
                                 @foreach ($subsides as $subside)
                                     <tr>
-                                        <td>{{ $subside->farmer->f_name }} {{ $subside->farmer->l_name }}</td>
+                                        <td>{{ $subside->farmer_name }}</td>
                                         <td>{{ $subside->reason_of_taking_subsidies }}</td>
                                         <td>{{ $subside->amount }}</td>
                                         <td>
