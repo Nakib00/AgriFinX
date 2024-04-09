@@ -14,8 +14,8 @@
                     @else
                         <p class="no-info">No information available</p>
                     @endif
+                </div>
             </div>
-        </div>
 
 
             {{--  <!-- Loan providing types section -->  --}}
@@ -27,8 +27,8 @@
                     @else
                         <p class="no-info">No information available</p>
                     @endif
+                </div>
             </div>
-        </div>
 
 
             {{--  <!-- Team section -->  --}}
@@ -40,8 +40,8 @@
                     @else
                         <p class="no-info">No information available</p>
                     @endif
+                </div>
             </div>
-        </div>
 
 
             {{--  <!-- Conditions section -->  --}}
@@ -71,82 +71,47 @@
 
             {{--  apply for microloan  --}}
             <div class="text-center">
-            <a href="#" data-toggle="modal" data-target="#microloanModal">
-                <button type="button" class="btn btn-primary btn-lg">Apply Insurance</button>
-            </a>
-        </div>
-           
-        </div>
+                <a href="#" data-toggle="modal" data-target="#microloanModal">
+                    <button type="button" class="btn btn-primary btn-lg">Apply Insurance</button>
+                </a>
+            </div>
 
 
-        {{--  <!-- Modal -->  --}}
-        <div class="modal fade" id="microloanModal" tabindex="-1" role="dialog" aria-labelledby="microloanModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="microloanModalLabel">Apply for Insurance</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form action="{{ route('farmer.applyinsurance', ['id' => $organization[0]->id]) }}" method="post">
-                            @csrf
-                            <div class="form-group">
-                                <label for="reason">Claim Amount</label>
-                                <input type="number" class="form-control" id="reason" name="claim_amount"
-                                    placeholder="Enter Claim Amount">
-                            </div>
-                            <div class="form-group">
-                                <label for="amount">Crop Amount</label>
-                                <input type="number" class="form-control" id="amount" name="crop_amount"
-                                    placeholder="Enter Crop Amount">
-                            </div>
+            {{--  <!-- Modal -->  --}}
+            <div class="modal fade" id="microloanModal" tabindex="-1" role="dialog" aria-labelledby="microloanModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="microloanModalLabel">Apply for Insurance</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="{{ route('farmer.applyinsurance', ['id' => $organization[0]->id]) }}"
+                                method="post">
+                                @csrf
+                                <div class="form-group">
+                                    <label for="reason">Claim Amount</label>
+                                    <input type="number" class="form-control" id="reason" name="claim_amount"
+                                        placeholder="Enter Claim Amount">
+                                </div>
+                                <div class="form-group">
+                                    <label for="crop_project">Crop Project</label>
+                                    <select class="form-control" id="crop_project" name="crop_project">
+                                        <option value="">Select Crop Project</option>
+                                        @foreach ($cropprojects as $cropproject)
+                                            <option value="{{ $cropproject->id }}">{{ $cropproject->project_name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
 
-
-
-                            <button type="submit" class="btn btn-success">Apply</button>
-                        </form>
+                                <button type="submit" class="btn btn-success">Apply</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        {{-- report croploss
-        <div class="modal fade" id="cropLossModal" tabindex="-1" role="dialog" aria-labelledby="cropLossModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="cropLossModalLabel">Report Crop Loss</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form action="{{ route('farmer.reportcroploss', ['id' => $organization[0]->id]) }}" method="post">
-                            @csrf
-                            <div class="form-group">
-                                <label for="reason">Reason for Crop Loss</label>
-                                <input type="text" class="form-control" id="reason" name="disaster_type" placeholder="Enter Disaster Type">
-                            </div>
-                            <div class="form-group">
-                                <label for="amount">Estimated Crop Loss Amount</label>
-                                <input type="number" class="form-control" id="amount" name="loss_amount" placeholder="Enter Amount">
-                            </div> 
-                           <button type="submit" class="btn btn-primary">Report</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-                </div>
-            </div>
-        </div>
-    </div>
-            
-    </div>  --}}
-        
-    
     </section>
 @endsection

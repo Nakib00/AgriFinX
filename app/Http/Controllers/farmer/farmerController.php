@@ -332,12 +332,12 @@ class farmerController extends Controller
             FROM flnancial_groups
             WHERE Orgnization_type = 'insurance_organization'
         ");
-           // Retrieve all loan applications
-           $insuApplications = DB::select("SELECT ins.*, CONCAT(fg.f_name, ' ', fg.l_name) AS financial_group_name
-           FROM insurances ins
-           INNER JOIN flnancial_groups fg ON ins.Organization_id = fg.id
-           WHERE ins.farmer_id = $userid
-       ");
+        // Retrieve all loan applications
+        $insuApplications = DB::select("SELECT ins.*, CONCAT(fg.f_name, ' ', fg.l_name) AS financial_group_name
+        FROM insurances ins
+        INNER JOIN flnancial_groups fg ON ins.Organization_id = fg.id
+        WHERE ins.farmer_id = $userid
+        ");
 
         return view('website.users.farmer.insurance.insuranceprovider', compact('Insuranceroviders','insuApplications'));
     }
@@ -351,9 +351,15 @@ class farmerController extends Controller
         // Fetch additional information from the flnancial_groups table
         $organization = DB::select("SELECT * FROM flnancial_groups WHERE id = $id");
 
-        return view('website.users.farmer.insurance.viewinsuranceprovider', ['about' => $about, 'organization' => $organization]);
-    }
+        // Find the ID of the logged-in farmer
+        $userId = auth()->guard('farmer')->user()->id;
+        // fatch all crop project of the login farmer
+        $cropprojects = DB::select("SELECT * FROM cropprojects
+        WHERE farmer_id = $userId
+        ",);
 
+        return view('website.users.farmer.insurance.viewinsuranceprovider', compact('about','organization','cropprojects'));
+    }
 
 
     // apply insurance
