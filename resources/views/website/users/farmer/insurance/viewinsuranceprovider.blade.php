@@ -93,12 +93,7 @@
                                 method="post">
                                 @csrf
                                 <div class="form-group">
-                                    <label for="reason">Claim Amount</label>
-                                    <input type="number" class="form-control" id="reason" name="claim_amount"
-                                        placeholder="Enter Claim Amount">
-                                </div>
-                                <div class="form-group">
-                                    <label for="crop_project">Crop Project</label>
+                                    <label for="crop_project">Select Crop Project</label>
                                     <select class="form-control" id="crop_project" name="crop_project">
                                         <option value="">Select Crop Project</option>
                                         @foreach ($cropprojects as $cropproject)

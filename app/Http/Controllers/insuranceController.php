@@ -29,6 +29,7 @@ class insuranceController extends Controller
         return view('website.users.farmer.insurance.viewinsuranceprovider', compact('cropprojects'));
     } //end
 
+    // show insurance
     public function showinsurance()
     {
         // login insurance provider id
@@ -39,12 +40,15 @@ class insuranceController extends Controller
 
         return view('website.users.agri_org.insurance_org.insuranceapply.insuranceapply', compact("insurance"));
     }
+
+
     public function viewinsurance($id)
     {
         $insurance = insurance::findOrFail($id);
 
         return view('website.users.agri_org.insurance_org.insuranceapply.viewinsurance', compact("insurance"));
     }
+
     //insurance loan status change
     public function insurancestatus(Request $request, $id)
     {
@@ -61,7 +65,7 @@ class insuranceController extends Controller
         return redirect()->back()->with('success', 'Insurance status updated successfully');
     }
 
-
+    // approver
     public function approveinsurance()
     {
         //  login insurance provider id

@@ -365,22 +365,39 @@ class farmerController extends Controller
     // apply insurance
     public function applyinsurance(Request $request, $id)
     {
-        //dd($request->all());
         // insuranceprovider id
         $insuranceprovider = $id;
         // find out login farmer id
         $userid = auth()->guard('farmer')->user()->id;
 
+        // Find selected crop id
+        $cropproject_id = $request["crop_project"];
+
+        // Fatch crop project
+        $cropproject = DB::selectOne("SELECT *
+            FROM cropprojects
+            WHERE id = $cropproject_id
+        ");
+
+        // total project cost
+        $total_project_cost = ($cropproject->labour_cost + $cropproject->pesticide_cost);
+
+        // dd($insuranceprovider);
+        // save in database
         $insurance = new insurance();
-        $insurance->Organization_id =  $insuranceprovider;
-        $insurance->farmer_id =  $userid;
-        $insurance->claim_amount = $request["claim_amount"];
-        $insurance->crop_amount = $request["crop_amount"];
-        $insurance->insurance_premium = $request->input('claim_amount') * 0.02;
+        $insurance->Organization_id = $insuranceprovider;
+        $insurance->farmer_id = $userid;
+        $insurance->crop_projectId = $cropproject_id;
+        $insurance->claim_amount = $total_project_cost;
+        $insurance->crop_amount = $cropproject->corp_quality;
+        $insurance->insurance_premium = $total_project_cost * 0.05;
         $insurance->approvel_status = 0;
         $insurance->save();
+
         return back()->with('success', 'Insurance application submitted successfully!');
     }
+
+
     public function claiminsurance($id)
     {
         $insuranceprovider = $id;
@@ -388,8 +405,7 @@ class farmerController extends Controller
         return view('website.users.farmer.insurance.reportCropLoss', compact('insuranceprovider'));
     }
 
-     public function reportcroploss(Request $request, $id)
-    {
+    public function reportcroploss(Request $request, $id){
          //dd($request->all());
         // insuranceprovider id
         $insuranceprovider = $id;
