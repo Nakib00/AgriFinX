@@ -108,12 +108,11 @@
         </div>
     </div>
 
-    {{--  <!-- Insurance Approval Form -->  --}}
     <form action="{{ route('org.insurance.status', $insurance->id) }}" method="POST">
         @csrf
         <div class="form-group">
             <label for="approvel_status">Approval Status</label>
-            <select class="form-control" id="approval_status" name="approvel_status">
+            <select class="form-control" id="approval_status" name="approval_status">
                 <option value="1">Approved</option>
                 <option value="0">Rejected</option>
             </select>
@@ -121,4 +120,5 @@
 
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
+
 @endsection

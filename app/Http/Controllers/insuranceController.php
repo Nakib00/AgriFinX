@@ -59,20 +59,12 @@ class insuranceController extends Controller
     }
 
     //insurance loan status change
-    public function insurancestatus(Request $request, $id)
-    {
-        $request->validate([
-            'approvel_status' => 'required|in:0,1',
+public function insurancestatus(Request $request, $id)
+{
+    $insurance = insurance::findOrFail($id);
 
-        ]);
-        $insurance = insurance::findOrFail($id);
-
-        $insurance->approvel_status = $request->input('approvel_status');
-        //$ins->loan_issue_date = now();
-        $insurance->save();
-
-        return redirect()->back()->with('success', 'Insurance status updated successfully');
-    }
+    dd($request->all());
+}
 
     // approver
     public function approveinsurance()

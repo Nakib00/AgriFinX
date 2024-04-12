@@ -16,17 +16,14 @@
                                         <th>Farmer Name</th>
                                         <th>Insurance premium</th>
                                         <th>Crop amount</th>
-                                
-                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($approvedInsurance as $ins)
                                         <tr>
                                             <td>{{$ins->farmer->f_name }} {{ $ins->farmer->l_name }}</td>
-                                            <td>{{$ins->insurance_premium }}</td>
-                                            <td>{{$ins->claim_amount }}</td>
-                                            <td>{{$ins->crop_amount }}</td>
+                                            <td>{{$ins->insurance_premium }} TK</td>
+                                            <td>{{$ins->crop_amount }} KG</td>
                                         </tr>
                                     @endforeach
                                 </tbody>
