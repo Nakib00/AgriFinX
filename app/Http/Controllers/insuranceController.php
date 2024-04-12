@@ -36,16 +36,25 @@ class insuranceController extends Controller
         $insuranceloan_id = Auth::guard('flnancial_group')->id();
 
         // Fetch insurance applications
-        $insurance = insurance::where('Organization_id', $insuranceloan_id)->with('farmer')->get();
+        $insurance = DB::select("SELECT i.*, CONCAT(f.f_name, ' ', f.l_name) AS farmer_name
+            FROM insurances i
+            INNER JOIN farmers f ON i.farmer_id = f.id
+            WHERE i.Organization_id = $insuranceloan_id
+        ");
 
         return view('website.users.agri_org.insurance_org.insuranceapply.insuranceapply', compact("insurance"));
     }
 
-
+// View insurancec application data
     public function viewinsurance($id)
     {
-        $insurance = insurance::findOrFail($id);
-
+        $insurance = DB::selectOne("SELECT i.*, cp.*, CONCAT(f.f_name, ' ', f.l_name) AS farmer_name, f.*
+            FROM insurances i
+            INNER JOIN cropprojects cp ON i.crop_projectId = cp.id
+            INNER JOIN farmers f ON i.farmer_id = f.id
+            WHERE i.id = $id
+        ");
+        // dd($insurance);
         return view('website.users.agri_org.insurance_org.insuranceapply.viewinsurance', compact("insurance"));
     }
 

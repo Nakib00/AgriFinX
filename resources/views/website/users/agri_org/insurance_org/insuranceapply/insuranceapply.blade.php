@@ -16,17 +16,16 @@
                                         <th>Farmer Name</th>
                                         <th>Insurance premium</th>
                                         <th>Crop amount</th>
-                                
+
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($insurance as  $insu)
                                         <tr>
-                                            <td>{{$insu ->farmer->f_name }} {{  $insu ->farmer->l_name }}</td>
-                                            <td>{{$insu ->insurance_premium}}</td>
-                                            <td>{{$insu ->crop_amount}}</td>
-                                           
+                                            <td>{{$insu ->farmer_name }}</td>
+                                            <td>{{$insu ->insurance_premium}} TK</td>
+                                            <td>{{$insu ->crop_amount}} KG</td>
                                             <td>
                                                 <a href="{{ route('org.insurance.insuranceview',$insu->id) }}"
                                                     class="btn btn-primary">View Details</a>

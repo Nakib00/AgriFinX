@@ -1,54 +1,114 @@
 @extends('website.users.agri_org.insurance_org.deashboad')
 @section('scontent.dashboard')
-    <div class="col-lg-12 col-12 text-center mb-4">
-        <h2>View Insurance application</h2>
-    </div>
-    <table class="table table-bordered table-striped">
-        <thead class="thead-dark">
-            <tr>
-                <th>Farmer Name</th>
-                <th>Claim Amount</th>
-                <th>Crop Amount</th>
-                <th>Insurance Premium</th>
-               
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><a href="" data-toggle="modal"
-                        data-target="#farmerModal{{ $insurance->farmer->id }}">{{ $insurance->farmer->f_name }}
-                        {{ $insurance->farmer->l_name }}</a></td>
-                <td>{{ $insurance->crop_amount }}</td>
-                <td>{{ $insurance->claim_amount }}</td>
-                <td>{{ $insurance->isurance_premium }}</td>
-               
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header text-center">
+                <h3 class="card-title font-weight-bold">Insurance Application Details</h3>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped table-bordered">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th style="width: 30%;">Project Information</th>
+                            <th>Values</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Project Name</strong></td>
+                            <td>{{ $insurance->project_name }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Description</strong></td>
+                            <td>{{ $insurance->description }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Launch Date</strong></td>
+                            <td>{{ $insurance->launch_date }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>End Date</strong></td>
+                            <td>{{ $insurance->end_date }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Farm Size</strong></td>
+                            <td>{{ $insurance->farm_size }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Crop Quality</strong></td>
+                            <td>{{ $insurance->corp_quality }} KG</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pesticide Cost</strong></td>
+                            <td>{{ $insurance->pesticide_cost }} TK</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Labour Cost</strong></td>
+                            <td>{{ $insurance->labour_cost }} TK</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Total Expence</strong></td>
+                            <td>{{ $insurance->labour_cost + $insurance->pesticide_cost }} TK</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Funding Status</strong></td>
+                            <td>{{ $insurance->funding_status ? 'Funded' : 'Not Funded' }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Farmer</strong></td>
+                            <td><a href="#" data-toggle="modal"
+                                    data-target="#farmerModal">{{ $insurance->farmer_name }}</a></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Crop Amount</strong></td>
+                            <td>{{$insurance->crop_amount}} KG</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Insurance premium</strong></td>
+                            <td>{{$insurance->insurance_premium}} TK</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Total Project Cost</strong></td>
+                            <td>{{$insurance->claim_amount}} TK</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
-            </tr>
-        </tbody>
-    </table>
+            <div class="mb-3 p-3">
+                {{-- Back button --}}
+                <a href="{{ route('org.insurance.insuranceshow') }}" class="btn btn-secondary ">Back</a>
+            </div>
+        </div>
+    </div><br>
 
-    {{--  <!-- Farmer Info Modal -->  --}}
-    <div class="modal fade" id="farmerModal{{ $insurance->farmer->id }}" tabindex="-1" role="dialog"
-        aria-labelledby="farmerModalLabel" aria-hidden="true">
+    {{--  show farmer info  --}}
+    <div class="modal fade" id="farmerModal" tabindex="-1" role="dialog" aria-labelledby="farmerModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="farmerModalLabel">{{ $insurance->farmer->f_name }}
-                        {{ $insurance->farmer->l_name }} Info</h5>
+                    <h5 class="modal-title" id="farmerModalLabel">Farmer Information</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p>Email: {{ $insurance->farmer->email }}</p>
-                    <p>Phone: {{ $insurance->farmer->phone }}</p>
-                    <p>Address: {{ $insurance->farmer->address }}</p>
+                    <ul>
+                        <li><strong>Name:</strong> {{ $insurance->farmer_name }}</li>
+                        <li><strong>Email:</strong> {{ $insurance->email }}</li>
+                        <li><strong>Phone:</strong> {{ $insurance->phone }}</li>
+                        <li><strong>Address:</strong> {{ $insurance->address }}</li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
     </div>
 
-    {{--  <!-- Loan Approval Form -->  --}}
+    {{--  <!-- Insurance Approval Form -->  --}}
     <form action="{{ route('org.insurance.status', $insurance->id) }}" method="POST">
         @csrf
         <div class="form-group">
@@ -58,7 +118,7 @@
                 <option value="0">Rejected</option>
             </select>
         </div>
-       
+
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 @endsection
