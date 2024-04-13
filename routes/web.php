@@ -220,8 +220,9 @@ Route::prefix('flnancial_groups')->group(function () {
             //Insurance Application
             Route::get('/insuranceloan', [insuranceController::class, 'showinsurance'])->name('org.insurance.insuranceshow');
             Route::get('/insuranceloan/{id}', [insuranceController::class, 'viewinsurance'])->name('org.insurance.insuranceview');
-            Route::post('/insuranceloan/status/{id}', [insuranceController::class, 'insurancestatus'])->name('org.insurance.status');
+            Route::get('insuranceloan/status/change/{id}/{status}', [InsuranceController::class, 'changeStatus'])->name('insuranceloan.status.change');
             Route::get('/insuranceapproveloan', [insuranceController::class, 'approveinsurance'])->name('org.insurance.approvelloan');
+            Route::get('/insuranceloan/report/{id}', [insuranceController::class, 'viewinsurancereport'])->name('org.insurance.insuranceview.report');
         });
         //end
     });

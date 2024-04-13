@@ -16,7 +16,6 @@
                                         <th>Farmer Name</th>
                                         <th>Insurance premium</th>
                                         <th>Crop amount</th>
-
                                         <th>Action</th>
                                     </tr>
                                 </thead>

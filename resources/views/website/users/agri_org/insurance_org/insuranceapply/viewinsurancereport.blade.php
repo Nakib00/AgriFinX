@@ -3,7 +3,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header text-center">
-                <h3 class="card-title font-weight-bold">Insurance Application Details</h3>
+                <h3 class="card-title font-weight-bold">Insurance Application Report Details</h3>
             </div>
             <div class="card-body">
                 <table class="table table-striped table-bordered">
@@ -21,6 +21,22 @@
                         <tr>
                             <td><strong>Description</strong></td>
                             <td>{{ $insurance->description }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Reason for Crop Loss</strong></td>
+                            <td>{{ $insurance->reason }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Estimated Crop Loss Amount</strong></td>
+                            <td>{{ $insurance->loss_amount }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Disaster type</strong></td>
+                            <td>{{ $insurance->disaster_type }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Minimum Sell Amount</strong></td>
+                            <td>{{ $insurance->minimum_sellamountt }}</td>
                         </tr>
                         <tr>
                             <td><strong>Launch Date</strong></td>
@@ -71,24 +87,6 @@
                             <td><strong>Total Project Cost</strong></td>
                             <td>{{ $insurance->claim_amount }} TK</td>
                         </tr>
-
-                        <tr>
-                            <td>
-                                <strong>Status</strong>
-                            </td>
-                            <td>
-                                @if ($insurance->approvel_status == 1)
-                                    <a href="{{ route('insuranceloan.status.change', ['id' => $insurance->id, 'status' => '0']) }}">
-                                        <h5><span class="badge badge-info">Active</span></h5>
-                                    </a>
-                                @else
-                                    <a href="{{ route('insuranceloan.status.change', ['id' => $insurance->id, 'status' => '1']) }}">
-                                        <h5><span class="badge badge-danger">Inactive</span></h5>
-                                    </a>
-                                @endif
-                            </td>
-                        </tr>
-
                     </tbody>
                 </table>
             </div>

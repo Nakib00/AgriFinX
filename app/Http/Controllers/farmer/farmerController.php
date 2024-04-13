@@ -339,7 +339,7 @@ class farmerController extends Controller
         WHERE ins.farmer_id = $userid
         ");
 
-        return view('website.users.farmer.insurance.insuranceprovider', compact('Insuranceroviders','insuApplications'));
+        return view('website.users.farmer.insurance.insuranceprovider', compact('Insuranceroviders', 'insuApplications'));
     }
 
     // shwo insurance provider profile
@@ -358,7 +358,7 @@ class farmerController extends Controller
         WHERE farmer_id = $userId
         ",);
 
-        return view('website.users.farmer.insurance.viewinsuranceprovider', compact('about','organization','cropprojects'));
+        return view('website.users.farmer.insurance.viewinsuranceprovider', compact('about', 'organization', 'cropprojects'));
     }
 
 
@@ -405,27 +405,22 @@ class farmerController extends Controller
         return view('website.users.farmer.insurance.reportCropLoss', compact('insuranceprovider'));
     }
 
-    public function reportcroploss(Request $request, $id){
-         //dd($request->all());
-        // insuranceprovider id
-        $insuranceprovider = $id;
-    //     // find out login farmer id
-        $userid = auth()->guard('farmer')->user()->id;
-        $latestCropProject = CropProject::where('farmer_id', $userid)->latest()->first();
+    public function reportcroploss(Request $request, $id)
+    {
+        // Find the insurance record by ID
+        $insurance = insurance::findOrFail($id);
 
-        $cropid = $latestCropProject->id;
+        // Update the insurance record with the new data
+        $insurance->reason = $request->input('reason');
+        $insurance->disaster_type = $request->input('disaster_type');
+        $insurance->loss_amount = $request->input('loss_amount');
+        $insurance->minimum_sellamountt = $request->input('minimum_sellamountt');
 
+        // Save the changes to the database
+        $insurance->save();
 
-         $insurance = new insurance();
-         $insurance->Organization_id =  $insuranceprovider;
-         $insurance->farmer_id =  $userid;
-         $insurance->crop_projectId =  $cropid;
-        $insurance->disaster_type = $request["disaster_type"];
-        $insurance->minimum_sellamountt = $request["minimum_sellamountt"];
-        //$insurance->crop_amount = $request["crop_amount"];
-        $insurance->approvel_status = 0;
-         $insurance->save();
+        // dd($request->all());
 
         return back()->with('success', 'Report crop loss application submitted successfully!');
-     }
+    }
 }

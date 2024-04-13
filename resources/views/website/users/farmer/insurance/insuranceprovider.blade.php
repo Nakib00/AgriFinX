@@ -46,7 +46,6 @@
                                 <th>Claim Amount</th>
                                 <th>Crop Amount</th>
                                 <th>Approval Status</th>
-                                <th>Issue Date</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -59,7 +58,6 @@
                                     <td>{{ $insu->claim_amount }}</td>
                                     <td>{{ $insu->crop_amount }}</td>
                                     <td>{{ $insu->approvel_status == 1 ? 'Approved' : 'Not Approved' }}</td>
-                                    <td>{{ $insu->issue_date }}</td>
                                     <td><a href="{{ route('farmer.claiminsurance', ['id' => $insu->id]) }}" ><button
                                         type="button" class="btn btn-primary btn-sm">Report Crop Loss</button>
                                     </a></td>

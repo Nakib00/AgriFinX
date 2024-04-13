@@ -45,7 +45,7 @@ class insuranceController extends Controller
         return view('website.users.agri_org.insurance_org.insuranceapply.insuranceapply', compact("insurance"));
     }
 
-// View insurancec application data
+    // View insurancec application data
     public function viewinsurance($id)
     {
         $insurance = DB::selectOne("SELECT i.*, cp.*, CONCAT(f.f_name, ' ', f.l_name) AS farmer_name, f.*
@@ -59,12 +59,15 @@ class insuranceController extends Controller
     }
 
     //insurance loan status change
-public function insurancestatus(Request $request, $id)
-{
-    $insurance = insurance::findOrFail($id);
+    public function changestatus($id, $status)
+    {
 
-    dd($request->all());
-}
+        $insurance = insurance::findOrFail($id);
+        $insurance->approvel_status = $status;
+        $insurance->save();
+
+        return redirect()->back()->with('success', 'Category status changed successfully.');
+    }
 
     // approver
     public function approveinsurance()
@@ -78,5 +81,19 @@ public function insurancestatus(Request $request, $id)
             ->get();
 
         return view('website.users.agri_org.insurance_org.insuranceapply.approveinsurance', compact("approvedInsurance"));
+    }
+
+    // view insurance Report
+    public function viewinsurancereport($id)
+    {
+
+        $insurance = DB::selectOne("SELECT i.*, cp.*, CONCAT(f.f_name, ' ', f.l_name) AS farmer_name, f.*
+            FROM insurances i
+            INNER JOIN cropprojects cp ON i.crop_projectId = cp.id
+            INNER JOIN farmers f ON i.farmer_id = f.id
+            WHERE i.id = $id
+        ");
+
+        return view('website.users.agri_org.insurance_org.insuranceapply.viewinsurancereport', compact("insurance"));
     }
 }
