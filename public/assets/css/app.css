@@ -147,7 +147,7 @@ body {
     padding: 0;
 }
 
- .aboutcontainer {
+.aboutcontainer {
     max-width: 600px;
     margin: 0 auto;
     padding: 20px;
@@ -161,7 +161,7 @@ body {
     color: #333;
     margin-bottom: 20px;
     text-align: center;
-} 
+}
 
 .form-group {
     margin-bottom: 20px;
@@ -210,7 +210,7 @@ button[type="submit"]:hover {
     color: rgb(19, 92, 19);
     margin-bottom: 30px;
     font-size: 40px;
-    
+
 }
 
 .profile-info {
@@ -219,14 +219,14 @@ button[type="submit"]:hover {
     margin-bottom: 30px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    
+
 }
 
 .info-heading {
     color: rgb(10, 112, 10);
     margin-bottom: 20px;
     font-size: 24px;
-    
+
 }
 
 .info-content {
@@ -249,26 +249,28 @@ button[type="submit"]:hover {
 }
 
 /* Adjustments for smaller screens */
-@media (max-width: 768px) {
-    .profile-info {
-        padding: 20px;
-    }
-    .info-heading {
-        font-size: 20px;
-    }
-    .info-content {
-        font-size: 16px;
-    }
-    .contact-info li {
-        font-size: 16px;
-    }
-/* Greenish theme for about of insurance*/
-.section-title, .section-content {
-    font-family: Arial, Helvetica, sans-serif; /* Change to desired font family */
+
+.profile-info {
+    padding: 20px;
 }
 
+.info-heading {
+    font-size: 20px;
+}
+
+.info-content {
+    font-size: 16px;
+}
+
+.contact-info li {
+    font-size: 16px;
+}
+
+/* Greenish theme for about of insurance*/
+
 .about-container {
-    background-color: #f0f9eb; /* Light green background */
+    background-color: #f0f9eb;
+    /* Light green background */
     padding: 20px;
     border-radius: 10px;
 }
@@ -278,42 +280,34 @@ button[type="submit"]:hover {
 }
 
 .section-title {
-    color: #043a0d; /* Dark green title */
+    color: #000000;
+    /* Dark green title */
     font-size: 20px;
 }
 
 .section-content {
-    color: #055c19; /* Dark text color */
+    color: #000000;
+    /* Dark text color */
     font-size: 18px;
 }
 
 .btn-primary,
 .btn-success {
-    background-color: #4caf50; /* Green button */
-    border-color: #4caf50; /* Green border */
+    background-color: #4caf50;
+    /* Green button */
+    border-color: #4caf50;
+    /* Green border */
 }
 
 .btn-primary:hover,
 .btn-success:hover {
-    background-color: #388e3c; /* Darker green on hover */
-    border-color: #388e3c; /* Darker green border on hover */
+    background-color: #388e3c;
+    /* Darker green on hover */
+    border-color: #388e3c;
+    /* Darker green border on hover */
 }
 
 .no-info-message {
-    color: #777; /* Gray text for no information message */
-}
-
-/* Media queries for responsiveness */
-@media (max-width: 550px) {
-    .about-container {
-        padding: 10px;
-    }
-    .section-title {
-        font-size: 18px;
-    }
-    .section-content {
-        font-size: 14px;
-    }
-}
-
+    color: #777;
+    /* Gray text for no information message */
 }
