@@ -26,7 +26,8 @@ class agriculturalofficerController extends Controller
 
         // login agri officer id
         $agriofficer_id = Auth::guard('agricultural_officer')->id();
-        // Fetch microloan applications
+        
+        // Fetch subsidy applications
         $subsides = DB::select("SELECT s.*, CONCAT(f.f_name, ' ', f.l_name) AS farmer_name
             FROM subsidies s
             INNER JOIN farmers f ON s.farmer_id = f.id
