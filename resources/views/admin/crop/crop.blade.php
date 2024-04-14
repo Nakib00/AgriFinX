@@ -26,6 +26,7 @@
                     <tr>
                         <td>{{ $crop->name }}</td>
                         <td>{{ $crop->cultavation_start }}</td>
+                        <td>{{ $crop->cultavation_end }}</td>
                         <td>{{ $crop->Current_Price }}</td>
                         <td>{{ $crop->price_date }}</td>
                         <td>
