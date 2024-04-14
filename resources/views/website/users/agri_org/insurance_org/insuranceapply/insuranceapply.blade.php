@@ -6,7 +6,7 @@
                 <div class="dashboard-content">
                     <div class="row mt-3">
                         <div class="col-lg-12 col-12 text-center mb-4">
-                            <h2>Insurance application</h2>
+                            <h2>Insurance Application</h2>
                         </div>
                         {{--  Table start  --}}
                         <div class="table-responsive">
