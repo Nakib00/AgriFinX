@@ -33,7 +33,7 @@
         {{--  Loan application list  --}}
         <div class="row">
             <div class="col-lg-12 col-12 text-center mt-4">
-                <h2>Insurance application list</h2>
+                <h2> Insurance Application List</h2>
             </div>
             {{-- Table start --}}
             <div class="table-responsive">
