@@ -31,10 +31,10 @@ class investingorg extends Controller
         $investingorg_id = Auth::guard('flnancial_group')->id();
 
         // Retrieve investment data for the logged-in financial group
-        $investments = DB::select("SELECT ito.*, CONCAT(i.f_name, ' ', i.l_name) AS
-            FROM investing_track__organizations itoinvestor_name
-            INNER JOIN investors i ON ito.investor_id = i.id
-            WHERE ito.Organization_id = $investingorg_id
+        $investments = DB::select("SELECT i.f_name, i.l_name, it.investing_amount, it.investing_date, it.percentage_rate
+        FROM investing_track__organizations it
+        JOIN investors i ON it.investor_id  = i.id
+        WHERE it.Organization_id  = $investingorg_id;
         ");
 
         return view('website.users.agri_org.investing_org.invest.invest', compact('investments'));;
@@ -59,7 +59,7 @@ class investingorg extends Controller
         // show all crop projects
         $cropproject = DB::select("SELECT * FROM cropprojects");
 
-        return view('website.users.agri_org.investing_org.cropproject.showcropproject', compact('cropproject','investments'));
+        return view('website.users.agri_org.investing_org.cropproject.showcropproject', compact('cropproject', 'investments'));
     }
 
     // view crop projects

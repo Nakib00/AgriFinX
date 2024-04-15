@@ -21,7 +21,7 @@
                         <tbody>
                             @foreach ($investments as $investment)
                                 <tr>
-                                    <td>{{ $investment->investor_name }}</td>
+                                    <td>{{ $investment->f_name }}{{ $investment->l_name }}</td>
                                     <td>{{ $investment->investing_amount }}</td>
                                     <td>{{ $investment->investing_date }}</td>
                                     <td>{{ $investment->percentage_rate }}%</td>
