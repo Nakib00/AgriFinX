@@ -114,9 +114,15 @@ jani naa
 
 - Password: 12345678
 
-
 ## Investor
 - Email: [nakibulisalm54@gmail.com](mailto:nakibulisalm54@gmail.com)
 - Password: 12345678
+
+##Screenshot
+![AgriFinx Website](https://github.com/Nakib00/AgriFinX/blob/main/Website%20Image/screencapture-127-0-0-1-8000-2024-04-20-21_56_53.png?raw=true)
+![AgriFinx Website](https://github.com/Nakib00/AgriFinX/blob/main/Website%20Image/screencapture-127-0-0-1-8000-dashboard-2024-04-20-21_58_10.png?raw=true)
+![AgriFinx Website](https://github.com/Nakib00/AgriFinX/blob/main/Website%20Image/screencapture-127-0-0-1-8000-farmer-dashboard-2024-04-20-21_57_25.png?raw=true)
+![AgriFinx Website](https://github.com/Nakib00/AgriFinX/blob/main/Website%20Image/screencapture-127-0-0-1-8000-farmer-login-2024-04-20-21_57_38.png?raw=true)
+![AgriFinx Website](https://github.com/Nakib00/AgriFinX/blob/main/Website%20Image/screencapture-127-0-0-1-8000-investor-dashboard-2024-04-20-21_57_50.png?raw=true)
 
 
