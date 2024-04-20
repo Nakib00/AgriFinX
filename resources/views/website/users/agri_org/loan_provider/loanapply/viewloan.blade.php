@@ -46,7 +46,7 @@
     </div>
 
     {{--  <!-- Loan Approval Form -->  --}}
-    <form action="{{ route('org.loanprovider.status', $microloan->id) }}" method="POST">
+    <form action="{{ route('org.loanprovider.status', $microloanid) }}" method="POST">
         @csrf
         <div class="form-group">
             <label for="approval_status">Approval Status</label>

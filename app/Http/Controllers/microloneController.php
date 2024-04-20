@@ -52,12 +52,15 @@ class microloneController extends Controller
             WHERE ml.id = $id
         ");
 
-        return view('website.users.agri_org.loan_provider.loanapply.viewloan', compact('microloan'));
+        $microloanid = $id;
+
+        return view('website.users.agri_org.loan_provider.loanapply.viewloan', compact('microloan','microloanid'));
     }
 
     // loan status change
     public function loanstatus(Request $request, $id)
     {
+        // dd($id);
         $request->validate([
             'approval_status' => 'required|in:0,1',
             'debt_repayment_date' => 'required|date',

@@ -182,7 +182,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('farmer.sell.update', $cropproject->id) }}" method="POST">
+                    <form action="{{ route('farmer.sell.update', $cropproject_id) }}" method="POST">
                         @csrf
                         @method('PUT')
                         <div class="form-group">

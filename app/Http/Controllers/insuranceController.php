@@ -54,8 +54,10 @@ class insuranceController extends Controller
             INNER JOIN farmers f ON i.farmer_id = f.id
             WHERE i.id = $id
         ");
+
+        $insurance_id = $id;
         // dd($insurance);
-        return view('website.users.agri_org.insurance_org.insuranceapply.viewinsurance', compact("insurance"));
+        return view('website.users.agri_org.insurance_org.insuranceapply.viewinsurance', compact("insurance","insurance_id"));
     }
 
     //insurance loan status change

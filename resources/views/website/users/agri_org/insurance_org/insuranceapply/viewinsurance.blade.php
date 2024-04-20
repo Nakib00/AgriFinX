@@ -78,11 +78,11 @@
                             </td>
                             <td>
                                 @if ($insurance->approvel_status == 1)
-                                    <a href="{{ route('insuranceloan.status.change', ['id' => $insurance->id, 'status' => '0']) }}">
+                                    <a href="{{ route('insuranceloan.status.change', ['id' => $insurance_id, 'status' => '0']) }}">
                                         <h5><span class="badge badge-info">Active</span></h5>
                                     </a>
                                 @else
-                                    <a href="{{ route('insuranceloan.status.change', ['id' => $insurance->id, 'status' => '1']) }}">
+                                    <a href="{{ route('insuranceloan.status.change', ['id' => $insurance_id, 'status' => '1']) }}">
                                         <h5><span class="badge badge-danger">Inactive</span></h5>
                                     </a>
                                 @endif
