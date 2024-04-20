@@ -28,3 +28,39 @@ When migrating a table to the database, follow these steps:
 
 This command will migrate all pending migrations, including the one for the `crops` table and any other tables defined in your migration files.
 jani naa
+
+
+#User Email
+
+Insurance email
+zantech@gmail.com
+napver@gmail.com
+cisco@gmail.com
+napinsurance@gmail.com
+Keya@gmail.com
+Microloan Providers
+ahisan@gmail.com
+labello@gmail.com
+sunlite@gmail.com
+sesip@gmail.com
+living@gmail.com
+Investing Organizations
+microlab@gmail.com
+samsung@gmail.com
+formulae@gmail.com
+reo@gmail.com
+fantech@gmail.com
+
+
+Farmer
+rahim@gmail.com
+remu@gmail.com
+joymia@gmail.com
+
+Agricultural Officer
+dhaka@gmail.com
+pabna@gmail.com
+feni@gmail.com
+
+Pass: 12345678
+
