@@ -34,26 +34,26 @@
                                 {{-- View Icon --}}
                                 <a href="{{ route('farmer.cropproject.show', ['id' => $cropproject->id]) }}"
                                     class="btn btn-info" title="View">
-                                    <i class="far fa-eye"></i>
+                                    <i class="bi bi-eye-fill"></i>
                                 </a>
+
                                 {{-- Edit Icon --}}
                                 <a href="{{ route('farmer.cropproject.edit', ['id' => $cropproject->id]) }}"
                                     class="btn btn-primary" title="Edit">
-                                    <i class="far fa-edit"></i>
+                                    <i class="bi bi-pencil-square"></i>
                                 </a>
+
                                 {{-- Delete Icon --}}
                                 <form action="{{ route('farmer.deleteproject.update', ['id' => $cropproject->id]) }}"
                                     method="POST" style="display: inline;">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-sm" style="background-color: #ff0000; color: #ffffff;"
-                                        title="Delete"
+                                    <button type="submit" class="btn btn-sm"
+                                        style="background-color: #ff0000; color: #ffffff;" title="Delete"
                                         onclick="return confirm('Are you sure you want to delete this crop project?')">
-                                        <i class="far fa-trash-alt"></i>
+                                        <i class="bi bi-trash"></i>
                                     </button>
                                 </form>
-
-
                             </td>
                         </tr>
                     @endforeach
