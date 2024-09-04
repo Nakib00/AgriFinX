@@ -44,7 +44,7 @@
 
     <nav class="navbar navbar-expand-lg bg-light shadow-lg">
         <div class="container">
-            <a class="navbar-brand" href="/">
+            <a class="navbar-brand" href="{{ route('home') }}" wire:navigate>
                 <img src="{{ asset('assets/images/logo.png') }}" class="logo img-fluid" alt="Kind Heart Charity" />
                 <span>
                     AgriFinx
@@ -60,7 +60,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link click-scroll" href="/">Home</a>
+                        <a class="nav-link click-scroll" href="{{ route('home') }}">Home</a>
                     </li>
 
                     <li class="nav-item">
@@ -78,17 +78,19 @@
 
                         <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
                             <li>
-                                <a class="dropdown-item" href="{{ route('login_farmer') }}">Farmer</a>
+                                <a class="dropdown-item" href="{{ route('login_farmer') }}" wire:navigate>Farmer</a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="{{ route('login_investor') }}">Investor</a>
+                                <a class="dropdown-item" href="{{ route('login_investor') }}" wire:navigate>Investor</a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="{{ route('login_org') }}">Agri organization</a>
+                                <a class="dropdown-item" href="{{ route('login_org') }}" wire:navigate>Agri
+                                    organization</a>
                             </li>
                             @if (Auth::guard('agricultural_officer'))
                                 <li>
-                                    <a class="dropdown-item" href="{{ route('agri_officer.dashboard') }}">Agri
+                                    <a class="dropdown-item" href="{{ route('agri_officer.dashboard') }}"
+                                        wire:navigate>Agri
                                         officer</a>
                                 </li>
                             @endif

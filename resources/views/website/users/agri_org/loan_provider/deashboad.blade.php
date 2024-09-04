@@ -1,4 +1,4 @@
-@extends('website.layout.webpage')
+@extends('components.layouts.app')
 @section('content')
     {{--  include alirt  --}}
     @include('website.include.alirt')

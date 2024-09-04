@@ -13,12 +13,6 @@ use Illuminate\Support\Facades\DB;
 
 class farmerController extends Controller
 {
-    //login page and register page show
-    public function index()
-    {
-        return view('website.users.farmer.main');
-    } //end
-
     //dashboard
     public function dashboard()
     {

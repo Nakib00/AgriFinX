@@ -10,22 +10,6 @@ use Illuminate\Support\Facades\DB;
 
 class microloneController extends Controller
 {
-    //microlone view profile
-    public function mview($id)
-    {
-
-        // Find the organization record by its ID
-        $organization = DB::select("SELECT * FROM flnancial_groups WHERE id = $id");
-
-        // Fetch additional information from the flnancial_groups table
-        $about = DB::select("SELECT * FROM ingo_financial_grups WHERE Organization_id = $id");
-
-        // dd($organization);
-
-        return view('website.microloan.view', compact('organization','about'));
-    } //end
-
-
     // loan provider user controller
     // show apply loan
     public function showloan()

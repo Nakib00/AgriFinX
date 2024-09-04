@@ -6,45 +6,40 @@ use App\Http\Controllers\agriofficer\agriculturalofficerController;
 use App\Http\Controllers\agri_org\orgcontroller;
 use App\Http\Controllers\farmer\farmerController;
 use App\Http\Controllers\invesotr\investorController;
-use Illuminate\Support\Facades\DB;
+use App\Livewire\Index;
+use App\Livewire\Microloan\{Mindex, Mview};
+use App\Livewire\Insurance\{Iindex, Iview};
+use App\Livewire\InvestingGroup\{InvestingIndex, InvestingView};
+use App\Livewire\AgriProject\{ProjectIndex, ProjectView};
+use App\Livewire\Farmer\{Login};
+use App\Livewire\AgriOfficer\{AgriLogin};
+use App\Livewire\Investor\{InvertorLogin};
+use App\Livewire\FinancalGroup\{FinLogin};
 
 // index page route start
-Route::get('/', function () {
-    // Cropproject
-    $cropprojects = $cropprojects = DB::select("
-        SELECT cp.*, it.investing_amount
-        FROM cropprojects cp
-        LEFT JOIN investing_tracks it ON cp.id = it.project_id LIMIT 3");
-
-    // Total cropprojects
-    $totalcroppeoject = DB::select("SELECT COUNT(*) AS totalcroppeoject FROM cropprojects")[0]->totalcroppeoject;
-
-    // Total investor count
-    $totalinvestor = DB::select("SELECT COUNT(*) AS total_investors FROM investors")[0]->total_investors;
-    return view('index', compact('cropprojects', 'totalcroppeoject', 'totalinvestor'));
-});
+Route::get('/', Index::class)->name('home');
 // index page route end
 
 // website route start
 Route::prefix('/')->group(function () {
     // loans provider
     Route::prefix('/microloan')->group(function () {
-        Route::get('/', [appsfunctioncontroller::class, 'mindex'])->name('mindex');
-        Route::get('/profile/{id}', [microloneController::class, 'mview'])->name('mprofile');
+        Route::get('/', Mindex::class)->name('mindex');
+        Route::get('/profile/{id}', Mview::class)->name('mprofile');
     });
     // incurance
     Route::prefix('incurance')->group(function () {
-        Route::get('/', [appsfunctioncontroller::class, 'iindex'])->name('iindex');
-        Route::get('/profile/{id}', [insuranceController::class, 'iview'])->name('iprofile');
+        Route::get('/', Iindex::class)->name('iindex');
+        Route::get('/profile/{id}', Iview::class)->name('iprofile');
     });
     // invsting group
     Route::prefix('investinggroup')->group(function () {
-        Route::get('/', [appsfunctioncontroller::class, 'ivesindex'])->name('ivesindex');
-        Route::get('/profile/{id}', [investingorg::class, 'ivesview'])->name('ivesprofile');
+        Route::get('/', InvestingIndex::class)->name('ivesindex');
+        Route::get('/profile/{id}', InvestingView::class)->name('ivesprofile');
     });
     // agri project
-    Route::get('/agroproject', [appsfunctioncontroller::class, 'agropindex'])->name('agropindex');
-    Route::get('/showagroproject/{id}', [appsfunctioncontroller::class, 'showagriproject'])->name('agriproject.show');
+    Route::get('/agroproject', ProjectIndex::class)->name('agropindex');
+    Route::get('/showagroproject/{id}', ProjectView::class)->name('agriproject.show');
 });
 //website route end
 
@@ -53,7 +48,7 @@ Route::prefix('/')->group(function () {
 // agriculture office route start
 Route::prefix('agriculture_office')->group(function () {
     // login and register
-    Route::get('/login', [agriculturalofficerController::class, 'index'])->name('login_agri_officer');
+    Route::get('/login', AgriLogin::class)->name('login_agri_officer');
     Route::post('/login/owner', [agriculturalofficerController::class, 'login'])->name('agri_officer.login');
     Route::post('/register', [agriculturalofficerController::class, 'register'])->name('agri_officer.register');
     Route::get('/logout', [agriculturalofficerController::class, 'logout'])->name('agri_officer.logout');
@@ -73,7 +68,7 @@ Route::prefix('agriculture_office')->group(function () {
 // Farmer route start
 Route::prefix('farmer')->group(function () {
     // login and register
-    Route::get('/login', [farmerController::class, 'index'])->name('login_farmer');
+    Route::get('/login', Login::class)->name('login_farmer');
     Route::post('/login/owner', [farmerController::class, 'login'])->name('farmer.login');
     Route::post('/register', [farmerController::class, 'register'])->name('farmer.register');
     Route::get('/logout', [farmerController::class, 'logout'])->name('farmer.logout');
@@ -125,7 +120,7 @@ Route::prefix('farmer')->group(function () {
 // Investor route start
 Route::prefix('investor')->group(function () {
     // login and register
-    Route::get('/login', [investorController::class, 'index'])->name('login_investor');
+    Route::get('/login', InvertorLogin::class)->name('login_investor');
     Route::post('/login/owner', [investorController::class, 'login'])->name('investor.login');
     Route::post('/register', [investorController::class, 'register'])->name('investor.register');
     Route::get('/logout', [investorController::class, 'logout'])->name('investor.logout');
@@ -159,7 +154,7 @@ Route::prefix('investor')->group(function () {
 // flnancial_groups route start
 Route::prefix('flnancial_groups')->group(function () {
     // login and register
-    Route::get('/login', [orgcontroller::class, 'index'])->name('login_org');
+    Route::get('/login', FinLogin::class)->name('login_org');
     Route::post('/login/owner', [orgcontroller::class, 'login'])->name('org.login');
     Route::post('/register', [orgcontroller::class, 'register'])->name('org.register');
     Route::get('/logout', [orgcontroller::class, 'logout'])->name('org.logout');
