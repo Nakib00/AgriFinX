@@ -66,7 +66,7 @@
             </div>
             <div class="modal-footer">
                 <a href="{{ route('investor.investingorg.show') }}"><button type="button" class="btn btn-secondary"
-                        data-dismiss="modal">Back</button></a>
+                        data-dismiss="modal" >Back</button></a>
             </div>
 
             {{--  Investing button  --}}

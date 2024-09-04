@@ -23,8 +23,8 @@
                                     {{ $officer->l_name }}</td>
                                 <td>{{ $officer->address }}</td>
                                 <td>{{ $officer->email }}</td>
-                                
-                                <td><a href="{{ route('farmer.subsidy.openapply', ['id' => $officer->id]) }}" ><button
+
+                                <td><a href="{{ route('farmer.subsidy.openapply', ['id' => $officer->id]) }}" wire:navigate><button
                                         type="button" class="btn btn-primary btn-sm">Apply Subsidy</button>
                                     </a></td>
                             </tr>

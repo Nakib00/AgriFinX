@@ -13,11 +13,6 @@ use Illuminate\Support\Facades\DB;
 
 class orgcontroller extends Controller
 {
-    //login page and register page show
-    public function index()
-    {
-        return view('website.users.agri_org.main');
-    } //end
 
     //Register
     public function register(Request $request)

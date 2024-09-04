@@ -26,7 +26,7 @@
                                     <td>
                                         {{-- View Icon --}}
                                         <a href="{{ route('investor.investingorg.view', ['id' => $provider->id]) }}"
-                                            class="btn btn-info" title="View">
+                                            class="btn btn-info" title="View" wire:navigate>
                                             <i class="far fa-eye">Invest</i>
                                         </a>
                                     </td>

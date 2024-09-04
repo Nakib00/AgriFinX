@@ -18,7 +18,7 @@
                     <tbody>
                         @foreach ($Insuranceroviders as $provider)
                             <tr>
-                                <td><a href="{{ route('viewinsuranceprovider', $provider->id) }}">{{ $provider->f_name }}
+                                <td><a href="{{ route('viewinsuranceprovider', $provider->id) }}" wire:navigate>{{ $provider->f_name }}
                                         {{ $provider->l_name }}</a></td>
                                 <td>{{ $provider->address }}</td>
                                 <td>{{ $provider->email }}</td>

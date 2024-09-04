@@ -31,7 +31,7 @@
                                     <td>
                                         {{-- View Icon --}}
                                         <a href="{{ route('investor.cropproject.view', ['id' => $cropproject->id]) }}"
-                                            class="btn btn-info" title="View">
+                                            class="btn btn-info" title="View" wire:navigate>
                                             <i class="far fa-eye">Invest</i>
                                         </a>
                                     </td>

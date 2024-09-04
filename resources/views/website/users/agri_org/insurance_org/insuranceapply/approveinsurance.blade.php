@@ -27,7 +27,7 @@
                                             <td>{{ $ins->crop_amount }} KG</td>
                                             <td>
                                                 <a href="{{ route('org.insurance.insuranceview.report', $ins->id) }}"
-                                                    class="btn btn-primary">View Details</a>
+                                                    class="btn btn-primary" wire:navigate>View Details</a>
                                             </td>
                                         </tr>
                                     @endforeach

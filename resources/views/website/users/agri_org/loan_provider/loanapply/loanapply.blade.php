@@ -29,7 +29,7 @@
                                             <td>{{ $microloan->interest_rate }}</td>
                                             <td>
                                                 <a href="{{ route('org.loanprovider.loanview', $microloan->id) }}"
-                                                    class="btn btn-primary">View Details</a>
+                                                    class="btn btn-primary" wire:navigate>View Details</a>
                                             </td>
                                         </tr>
                                     @endforeach

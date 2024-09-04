@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\{ProfileController, appsfunctioncontroller, microloneController, insuranceController, investingorg, adminNavigation, adminCrop, subsidy};
+use App\Http\Controllers\{ProfileController, microloneController, insuranceController, investingorg, adminNavigation, adminCrop, subsidy};
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\agriofficer\agriculturalofficerController;
 use App\Http\Controllers\agri_org\orgcontroller;
@@ -42,28 +42,6 @@ Route::prefix('/')->group(function () {
     Route::get('/showagroproject/{id}', ProjectView::class)->name('agriproject.show');
 });
 //website route end
-
-
-
-// agriculture office route start
-Route::prefix('agriculture_office')->group(function () {
-    // login and register
-    Route::get('/login', AgriLogin::class)->name('login_agri_officer');
-    Route::post('/login/owner', [agriculturalofficerController::class, 'login'])->name('agri_officer.login');
-    Route::post('/register', [agriculturalofficerController::class, 'register'])->name('agri_officer.register');
-    Route::get('/logout', [agriculturalofficerController::class, 'logout'])->name('agri_officer.logout');
-    //end
-    Route::middleware('agricultural_officer')->group(function () {
-        //Dashboard routes start
-        Route::prefix('dashboard')->group(function () {
-            Route::get('/', [agriculturalofficerController::class, 'dashboard'])->name('agri_officer.dashboard');
-            Route::get('/edit', [agriculturalofficerController::class, 'editprofile'])->name('agri_officer.profile.edit');
-            Route::put('/update', [agriculturalofficerController::class, 'updateprofile'])->name('agri_officer.profile.update');
-        });
-        //end
-    });
-});
-// agriculture office route end
 
 // Farmer route start
 Route::prefix('farmer')->group(function () {
@@ -116,6 +94,29 @@ Route::prefix('farmer')->group(function () {
     });
 });
 // Farmer  route end
+
+
+// agriculture office route start
+Route::prefix('agriculture_office')->group(function () {
+    // login and register
+    Route::get('/login', AgriLogin::class)->name('login_agri_officer');
+    Route::post('/login/owner', [agriculturalofficerController::class, 'login'])->name('agri_officer.login');
+    Route::post('/register', [agriculturalofficerController::class, 'register'])->name('agri_officer.register');
+    Route::get('/logout', [agriculturalofficerController::class, 'logout'])->name('agri_officer.logout');
+    //end
+    Route::middleware('agricultural_officer')->group(function () {
+        //Dashboard routes start
+        Route::prefix('dashboard')->group(function () {
+            Route::get('/', [agriculturalofficerController::class, 'dashboard'])->name('agri_officer.dashboard');
+            Route::get('/edit', [agriculturalofficerController::class, 'editprofile'])->name('agri_officer.profile.edit');
+            Route::put('/update', [agriculturalofficerController::class, 'updateprofile'])->name('agri_officer.profile.update');
+        });
+        //end
+    });
+});
+// agriculture office route end
+
+
 
 // Investor route start
 Route::prefix('investor')->group(function () {

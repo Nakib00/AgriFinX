@@ -5,7 +5,7 @@
 
         {{--  <!-- add new crop project -->  --}}
         <div class="text-right mb-3">
-            <a href="{{ route('farmer.cropproject.add') }}" class="btn btn-success" role="button">Add New Crop Project</a>
+            <a href="{{ route('farmer.cropproject.add') }}" class="btn btn-success" role="button" wire:navigate>Add New Crop Project</a>
         </div>
         {{--  Table  --}}
         <div class="table-responsive">
@@ -24,7 +24,7 @@
                     @foreach ($cropprojects as $cropproject)
                         <tr>
                             <td><a
-                                    href="{{ route('farmer.cropproject.show', ['id' => $cropproject->id]) }}"><b>{{ $cropproject->project_name }}</b></a>
+                                    href="{{ route('farmer.cropproject.show', ['id' => $cropproject->id]) }}" wire:navigate><b>{{ $cropproject->project_name }}</b></a>
                             </td>
                             <td>{{ $cropproject->launch_date }}</td>
                             <td>{{ $cropproject->end_date }}</td>
@@ -33,13 +33,13 @@
                             <td>
                                 {{-- View Icon --}}
                                 <a href="{{ route('farmer.cropproject.show', ['id' => $cropproject->id]) }}"
-                                    class="btn btn-info" title="View">
+                                    class="btn btn-info" title="View" wire:navigate>
                                     <i class="bi bi-eye-fill"></i>
                                 </a>
 
                                 {{-- Edit Icon --}}
                                 <a href="{{ route('farmer.cropproject.edit', ['id' => $cropproject->id]) }}"
-                                    class="btn btn-primary" title="Edit">
+                                    class="btn btn-primary" title="Edit" wire:navigate>
                                     <i class="bi bi-pencil-square"></i>
                                 </a>
 
@@ -50,7 +50,7 @@
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-sm"
                                         style="background-color: #ff0000; color: #ffffff;" title="Delete"
-                                        onclick="return confirm('Are you sure you want to delete this crop project?')">
+                                        onclick="return confirm('Are you sure you want to delete this crop project?')" wire:navigate>
                                         <i class="bi bi-trash"></i>
                                     </button>
                                 </form>

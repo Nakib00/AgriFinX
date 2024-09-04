@@ -27,11 +27,11 @@
                             <h1 class="section-title">Conditions</h1>
                             <p class="section-content">{!! $about->conditions !!}</p>
                         </div>
-                        <a href="{{ route('loanprovider.editabout') }}" class="btn btn-success">Make Update</a>
+                        <a href="{{ route('loanprovider.editabout') }}" class="btn btn-success" wire:navigate>Make Update</a>
                     @else
                         <p class="no-info-message">No about information available.</p>
                         {{-- Button to add new information --}}
-                        <a href="{{ route('loanprovider.addAbout') }}" class="btn btn-primary">Add Information</a>
+                        <a href="{{ route('loanprovider.addAbout') }}" class="btn btn-primary" wire:navigate>Add Information</a>
                     @endif
                 </div>
             </div>
