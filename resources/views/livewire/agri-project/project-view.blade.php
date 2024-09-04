@@ -83,8 +83,8 @@
                                 {{-- Back button --}}
                                 <a href="{{ route('agropindex') }}" class="btn btn-secondary btn-lg mr-3">Back</a>
 
-                                <a href="{{ route('login_investor') }}"><button type="button"
-                                        class="btn btn-outline-success btn-lg">Invest</button></a>
+                                <a href="{{ route('login_investor') }}" class="btn btn-outline-success btn-lg"
+                                    wire:navigate>Invest</a>
                             </div>
                         </div>
                     </div>
