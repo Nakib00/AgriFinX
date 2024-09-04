@@ -13,7 +13,7 @@
                                 <div class="custom-block">
                                     <div class="custom-block-body">
                                         <h5 class="mb-3">{{ $project->project_name }}</h5>
-                                        <p>{{ $project->description }}</p>
+                                        <p>{{ \Illuminate\Support\Str::words($project->description, 20, '...') }}</p>
 
                                         <div class="progress mt-4">
                                             <div class="progress-bar w-75" role="progressbar" aria-valuenow="75"
@@ -37,7 +37,6 @@
                             </div>
                         </div>
                     @endforeach
-
                 </div>
             </div>
         </section>

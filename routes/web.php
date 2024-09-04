@@ -15,6 +15,7 @@ use App\Livewire\Farmer\{Login};
 use App\Livewire\AgriOfficer\{AgriLogin};
 use App\Livewire\Investor\{InvertorLogin};
 use App\Livewire\FinancalGroup\{FinLogin};
+use App\Livewire\Farmer\project\{AddProject};
 
 // index page route start
 Route::get('/', Index::class)->name('home');
@@ -61,7 +62,6 @@ Route::prefix('farmer')->group(function () {
             Route::prefix('project')->group(function () {
                 Route::get('/cropproject', [farmerController::class, 'cropproject'])->name('farmer.cropproject');
                 Route::get('/addproject', [farmerController::class, 'addproject'])->name('farmer.cropproject.add');
-                Route::post('/storeproject', [farmerController::class, 'storeproject'])->name('farmer.cropproject.store');
                 Route::get('/showproject/{id}', [farmerController::class, 'showproject'])->name('farmer.cropproject.show');
                 Route::get('/editproject/{id}', [farmerController::class, 'editproject'])->name('farmer.cropproject.edit');
                 Route::put('/updateproject/{id}', [farmerController::class, 'updateproject'])->name('farmer.cropproject.update');

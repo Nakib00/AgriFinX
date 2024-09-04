@@ -15,7 +15,7 @@
             @include('website.users.farmer.include.sidebar')
             <div class="col-md-9">
                 <div class="dashboard-content">
-                    @yield('agriofficer.dashboard')
+                    @yield('farmer.dashboard')
                 </div>
             </div>
         </div>

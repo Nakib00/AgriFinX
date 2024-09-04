@@ -50,7 +50,7 @@
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-sm"
                                         style="background-color: #ff0000; color: #ffffff;" title="Delete"
-                                        onclick="return confirm('Are you sure you want to delete this crop project?')" wire:navigate>
+                                        onclick="return confirm('Are you sure you want to delete this crop project?')">
                                         <i class="bi bi-trash"></i>
                                     </button>
                                 </form>

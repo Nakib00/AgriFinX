@@ -5,9 +5,7 @@
 @include('website.include.napver')
 
 <main>
-
     @yield('content')
-
 </main>
 
 {{--  include footer  --}}

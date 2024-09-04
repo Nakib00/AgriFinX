@@ -140,34 +140,7 @@ class farmerController extends Controller
     // add crop project
     public function addproject()
     {
-        $crop = DB::select("SELECT * FROM crops");
-        return view('website.users.farmer.addcropproject', ['crop' => $crop]);
-    }
-    // stroe project
-    public function storeproject(Request $request)
-    {
-        // find out login farmer id
-        $userid = auth()->guard('farmer')->user()->id;
-
-        // Create a new crop project instance
-        $cropproject = new Cropproject();
-        $cropproject->farmer_id =  $userid;
-        $cropproject->project_name = $request['project_name'];
-        $cropproject->description = $request['description'];
-        $cropproject->crop_id = $request['corp_id'];
-        $cropproject->launch_date = $request['launch_date'];
-        $cropproject->end_date = $request['end_date'];
-        $cropproject->farm_size = $request['farm_size'];
-        $cropproject->corp_quality = $request['corp_quality'];
-        $cropproject->pesticide_cost = $request['pesticide_cost'];
-        $cropproject->labour_cost = $request['labour_cost'];
-        $cropproject->funding_status = '0';
-
-        // Save the crop project
-        $cropproject->save();
-
-        // Redirect the user back or to any specific route after successful submission
-        return redirect()->back()->with('success', 'Crop project created successfully.');
+        return view('website.users.farmer.addcropproject');
     }
 
     // Show crop projectq
@@ -190,7 +163,7 @@ class farmerController extends Controller
 
         // Pass the crop project data to the view
         // dd($cropproject);
-        return view('website.users.farmer.showcropproject', compact('cropproject','cropproject_id'));
+        return view('website.users.farmer.showcropproject', compact('cropproject', 'cropproject_id'));
     }
 
     // Open edit crop project page

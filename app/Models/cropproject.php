@@ -9,7 +9,17 @@ class cropproject extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'farmer_id', 'project_name', 'description', 'launch_date', 'end_date', 'farm_size', 'corp_quality', 'pesticide_cost', 'labour_cost', 'funding_status', 'sells'
+        'farmer_id',
+        'project_name',
+        'description',
+        'crop_id',
+        'launch_date',
+        'end_date',
+        'farm_size',
+        'corp_quality',
+        'pesticide_cost',
+        'labour_cost',
+        'funding_status',
     ];
 
     // Define relationships if needed

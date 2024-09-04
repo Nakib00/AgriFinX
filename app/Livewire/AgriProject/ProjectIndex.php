@@ -14,6 +14,7 @@ class ProjectIndex extends Component
         FROM cropprojects cp
         LEFT JOIN investing_tracks it ON cp.id = it.project_id
     ");
+
         return view('livewire.agri-project.project-index', compact('cropprojects'));
     }
 }
