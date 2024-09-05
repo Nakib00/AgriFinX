@@ -1,12 +1,13 @@
-@extends('website.users.farmer.layout.farmerlayout')
-@section('agriofficer.dashboard')
+<div>
     <div class="container">
         <h2 class="mt-4 mb-4">Crop Projects</h2>
 
         {{--  <!-- add new crop project -->  --}}
         <div class="text-right mb-3">
-            <a href="{{ route('farmer.cropproject.add') }}" class="btn btn-success" role="button" wire:navigate>Add New Crop Project</a>
+            <a href="{{ route('farmer.cropproject.add') }}" class="btn btn-success" role="button" wire:navigate>Add New
+                Crop Project</a>
         </div>
+
         {{--  Table  --}}
         <div class="table-responsive">
             <table class="table table-striped table-bordered">
@@ -23,9 +24,8 @@
                 <tbody>
                     @foreach ($cropprojects as $cropproject)
                         <tr>
-                            <td><a
-                                    href="{{ route('farmer.cropproject.show', ['id' => $cropproject->id]) }}" wire:navigate><b>{{ $cropproject->project_name }}</b></a>
-                            </td>
+                            <td><a href="{{ route('farmer.cropproject.show', ['id' => $cropproject->id]) }}"
+                                    wire:navigate><b>{{ $cropproject->project_name }}</b></a></td>
                             <td>{{ $cropproject->launch_date }}</td>
                             <td>{{ $cropproject->end_date }}</td>
                             <td>{{ $cropproject->farm_size }}</td>
@@ -44,16 +44,11 @@
                                 </a>
 
                                 {{-- Delete Icon --}}
-                                <form action="{{ route('farmer.deleteproject.update', ['id' => $cropproject->id]) }}"
-                                    method="POST" style="display: inline;">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-sm"
-                                        style="background-color: #ff0000; color: #ffffff;" title="Delete"
-                                        onclick="return confirm('Are you sure you want to delete this crop project?')">
-                                        <i class="bi bi-trash"></i>
-                                    </button>
-                                </form>
+                                <button wire:click="deleteProject({{ $cropproject->id }})" class="btn btn-sm"
+                                    style="background-color: #ff0000; color: #ffffff;" title="Delete"
+                                    onclick="return confirm('Are you sure you want to delete this crop project?')">
+                                    <i class="bi bi-trash"></i>
+                                </button>
                             </td>
                         </tr>
                     @endforeach
@@ -61,4 +56,4 @@
             </table>
         </div>
     </div>
-@endsection
+</div>

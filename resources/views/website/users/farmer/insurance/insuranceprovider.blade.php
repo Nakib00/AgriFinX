@@ -18,7 +18,8 @@
                     <tbody>
                         @foreach ($Insuranceroviders as $provider)
                             <tr>
-                                <td><a href="{{ route('viewinsuranceprovider', $provider->id) }}" wire:navigate>{{ $provider->f_name }}
+                                <td><a href="{{ route('viewinsuranceprovider', $provider->id) }}"
+                                        wire:navigate>{{ $provider->f_name }}
                                         {{ $provider->l_name }}</a></td>
                                 <td>{{ $provider->address }}</td>
                                 <td>{{ $provider->email }}</td>
@@ -58,9 +59,10 @@
                                     <td>{{ $insu->claim_amount }}</td>
                                     <td>{{ $insu->crop_amount }}</td>
                                     <td>{{ $insu->approvel_status == 1 ? 'Approved' : 'Not Approved' }}</td>
-                                    <td><a href="{{ route('farmer.claiminsurance', ['id' => $insu->id]) }}" ><button
-                                        type="button" class="btn btn-primary btn-sm">Report Crop Loss</button>
-                                    </a></td>
+                                    <td><a href="{{ route('farmer.claiminsurance', ['id' => $insu->id]) }}"
+                                            wire:navigate><button type="button" class="btn btn-primary btn-sm">Report Crop
+                                                Loss</button>
+                                        </a></td>
                                 </tr>
                             @endforeach
                         </tbody>

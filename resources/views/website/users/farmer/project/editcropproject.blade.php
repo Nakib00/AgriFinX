@@ -1,4 +1,5 @@
 @extends('website.users.farmer.layout.farmerlayout')
+
 @section('agriofficer.dashboard')
-    @livewire('farmer.microloan.view-provider', ['id' => $provider_id])
+    @livewire('farmer.project.edit-project', ['id' => $cropproject_id])
 @endsection

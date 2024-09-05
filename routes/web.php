@@ -64,9 +64,6 @@ Route::prefix('farmer')->group(function () {
                 Route::get('/addproject', [farmerController::class, 'addproject'])->name('farmer.cropproject.add');
                 Route::get('/showproject/{id}', [farmerController::class, 'showproject'])->name('farmer.cropproject.show');
                 Route::get('/editproject/{id}', [farmerController::class, 'editproject'])->name('farmer.cropproject.edit');
-                Route::put('/updateproject/{id}', [farmerController::class, 'updateproject'])->name('farmer.cropproject.update');
-                Route::put('/updatesell/{id}', [farmerController::class, 'updatesell'])->name('farmer.sell.update');
-                Route::delete('/deleteproject/{id}', [farmerController::class, 'deleteproject'])->name('farmer.deleteproject.update');
             });
             // microloan
             Route::prefix('microloan')->group(function () {

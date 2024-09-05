@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
-use App\Models\{farmer, cropproject, micro_loan, insurance};
+use App\Models\{farmer,micro_loan, insurance};
 use Illuminate\Support\Facades\DB;
 
 class farmerController extends Controller
@@ -126,111 +126,29 @@ class farmerController extends Controller
     // show crop project
     public function cropproject()
     {
-        // Find the ID of the logged-in farmer
-        $userId = auth()->guard('farmer')->user()->id;
-
-        // Retrieve all crop projects created by the logged-in farmer
-        $cropprojects = DB::select("SELECT * FROM cropprojects
-            WHERE farmer_id = $userId
-        ",);
-
-        return view('website.users.farmer.croppeoject', ['cropprojects' => $cropprojects]);
+        return view('website.users.farmer.project.croppeoject');
     }
 
     // add crop project
     public function addproject()
     {
-        return view('website.users.farmer.addcropproject');
+        return view('website.users.farmer.project.addcropproject');
     }
 
     // Show crop projectq
     public function showproject($id)
     {
-        // Retrieve the crop project based on the provided ID
-        $cropproject = DB::selectOne("SELECT cp.*, c.*
-            FROM cropprojects cp
-            INNER JOIN crops c ON cp.crop_id = c.id
-            WHERE cp.id = $id
-        ");
-
         $cropproject_id = $id;
-
-        // Convert dates to month and day format using Carbon
-        $cropproject->cropStartMonthDay = Carbon::parse($cropproject->cultavation_start)->format('m-d');
-        $cropproject->cropEndMonthDay = Carbon::parse($cropproject->cultavation_end)->format('m-d');
-        $cropproject->launchMonthDay = Carbon::parse($cropproject->launch_date)->format('m-d');
-        $cropproject->endMonthDay = Carbon::parse($cropproject->end_date)->format('m-d');
-
-        // Pass the crop project data to the view
-        // dd($cropproject);
-        return view('website.users.farmer.showcropproject', compact('cropproject', 'cropproject_id'));
+        return view('website.users.farmer.project.showcropproject', compact('cropproject_id'));
     }
 
     // Open edit crop project page
     public function editproject($id)
     {
-        // Retrieve the crop project based on the provided ID
-        $cropproject = Cropproject::findOrFail($id);
-
-        $crop = DB::select("SELECT * FROM crops");;
-
+        $cropproject_id = $id;
         // Pass the crop project data to the view
-        return view('website.users.farmer.editcropproject', ['cropproject' => $cropproject], ['crop' => $crop]);
+        return view('website.users.farmer.project.editcropproject',compact('cropproject_id'));
     }
-
-    // Update crop project page
-    public function updateproject($id, Request $request)
-    {
-        // Find the crop project by ID
-        $cropproject = Cropproject::findOrFail($id);
-
-        // Update the crop project instance
-        $cropproject->project_name = $request['project_name'];
-        $cropproject->description = $request['description'];
-        $cropproject->crop_id = $request['crop_id'];
-        $cropproject->launch_date = $request['launch_date'];
-        $cropproject->end_date = $request['end_date'];
-        $cropproject->farm_size = $request['farm_size'];
-        $cropproject->corp_quality = $request['corp_quality'];
-        $cropproject->pesticide_cost = $request['pesticide_cost'];
-        $cropproject->labour_cost = $request['labour_cost'];
-
-        // Save the updated crop project
-        $cropproject->save();
-
-        // Redirect the user back or to any specific route after successful update
-        return redirect()->back()->with('success', 'Crop project updated successfully.');
-    }
-
-    // update sell information
-    public function updatesell($id, Request $request)
-    {
-        // dd($id);
-        DB::update('UPDATE cropprojects SET sells = ? WHERE id = ?', [$request->sell, $id]);
-
-        // // Redirect the user back or to any specific route after successful update
-        return redirect()->back()->with('success', 'Crop project sell updated successfully.');
-    }
-
-    // Delete the crop project
-    public function deleteproject($id)
-    {
-        // Find the crop project by its ID
-        $cropproject = Cropproject::find($id);
-
-        // Check if the crop project exists
-        if (!$cropproject) {
-            // If the crop project does not exist, return a redirect with an error message
-            return redirect()->back()->with('error', 'Crop project not found.');
-        }
-
-        // Delete the crop project
-        $cropproject->delete();
-
-        // Redirect back with a success message
-        return redirect()->back()->with('success', 'Crop project deleted successfully.');
-    }
-
 
     // Microloan
     public function showloanprovider()
@@ -253,13 +171,8 @@ class farmerController extends Controller
     // shwo loan provider profile
     public function viewloanprovider($id)
     {
-        // Find the organization record by its ID
-        $about = DB::select("SELECT * FROM ingo_financial_grups WHERE Organization_id = $id");
-
-        // Fetch additional information from the flnancial_groups table
-        $organization = DB::select("SELECT * FROM flnancial_groups WHERE id = $id");
-
-        return view('website.users.farmer.loan.viewloanprovider', ['about' => $about, 'organization' => $organization]);
+        $provider_id = $id;
+        return view('website.users.farmer.loan.viewloanprovider', compact('provider_id'));
     }
 
     // apply loan

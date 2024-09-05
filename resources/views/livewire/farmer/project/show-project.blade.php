@@ -1,6 +1,7 @@
-@extends('website.users.farmer.layout.farmerlayout')
-@section('agriofficer.dashboard')
+<div>
+    {{-- Care about people's approval and you will be their prisoner. --}}
     <div class="container mt-5">
+        @include('website.include.alirt')
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
@@ -92,11 +93,15 @@
                         </div>
                         <div class="mb-3"><br><br>
                             <strong class="pt-5">Cultavation Time feedback:</strong>
-                            @if ($cropproject->cropStartMonthDay <= $cropproject->launchMonthDay && $cropproject->cropEndMonthDay >= $cropproject->endMonthDay)
-                                <p style="text-align: center; color: green;">Start your crop project with confidence - our
+                            @if (
+                                $cropproject->cropStartMonthDay <= $cropproject->launchMonthDay &&
+                                    $cropproject->cropEndMonthDay >= $cropproject->endMonthDay)
+                                <p style="text-align: center; color: green;">Start your crop project with confidence -
+                                    our
                                     comprehensive risk assessment guarantees zero risk for your farm's success!</p>
                             @else
-                                <p style="text-align: center; color: red;"><strong>The launch and end dates of the project
+                                <p style="text-align: center; color: red;"><strong>The launch and end dates of the
+                                        project
                                         do not
                                         match the cultivation start and end dates of the crop.</strong></p>
                             @endif
@@ -115,17 +120,19 @@
                                 <tbody>
                                     <tr>
                                         <td>{{ $cropproject->labour_cost + $cropproject->pesticide_cost }} TK</td>
-                                        <td>{{ $cropproject->sells * $cropproject->corp_quality }} TK<i class="fa fa-tasks"
-                                                aria-hidden="true"></i></td>
+                                        <td>{{ $cropproject->sells * $cropproject->corp_quality }} TK<i
+                                                class="fa fa-tasks" aria-hidden="true"></i></td>
                                     </tr>
                                 </tbody>
                             </table>
                             @if ($cropproject->labour_cost + $cropproject->pesticide_cost < $cropproject->sells * $cropproject->corp_quality)
-                                <p style="text-align: center; color: green;"><strong>Congratulations! This crop project is
+                                <p style="text-align: center; color: green;"><strong>Congratulations! This crop project
+                                        is
                                         expected
                                         to yield profit.</strong></p>
                             @else
-                                <p style="text-align: center; color: red;"><strong>Unfortunately, this crop project is not
+                                <p style="text-align: center; color: red;"><strong>Unfortunately, this crop project is
+                                        not
                                         projected
                                         to yield profit.</strong></p>
                             @endif
@@ -149,20 +156,19 @@
                                 </tbody>
                             </table>
                             @if ($cropproject->Current_Price < $cropproject->sells)
-                                <p style="text-align: center; color: green;"><strong>Congratulations! This crop project is
+                                <p style="text-align: center; color: green;"><strong>Congratulations! This crop project
+                                        is
                                         expected
                                         to yield profit.</strong></p>
                             @else
-                                <p style="text-align: center; color: red;"><strong>Unfortunately, this crop project is not
+                                <p style="text-align: center; color: red;"><strong>Unfortunately, this crop project is
+                                        not
                                         projected
                                         to yield profit.</strong></p>
                             @endif
-
                         </div><br>
-
-
                         {{--  Back button  --}}
-                        <a href="{{ route('farmer.cropproject') }}" class="btn btn-secondary">Back</a>
+                        <a href="{{ route('farmer.cropproject') }}" class="btn btn-secondary" wire:Navigate>Back</a>
                     </div>
                 </div>
             </div>
@@ -171,8 +177,8 @@
 
 
     {{--  <!-- Sell Amount Modal -->  --}}
-    <div class="modal fade" id="sellAmountModal" tabindex="-1" role="dialog" aria-labelledby="sellAmountModalLabel"
-        aria-hidden="true">
+    <div wire:ignore.self class="modal fade" id="sellAmountModal" tabindex="-1" role="dialog"
+        aria-labelledby="sellAmountModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -182,12 +188,11 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('farmer.sell.update', $cropproject_id) }}" method="POST">
-                        @csrf
-                        @method('PUT')
+                    {{-- Livewire form for updating the sell price --}}
+                    <form wire:submit.prevent="updateSellPrice">
                         <div class="form-group">
                             <label for="sellPrice">1kg Sell Price</label>
-                            <input type="text" class="form-control" id="sellPrice" name="sell"
+                            <input type="text" class="form-control" id="sellPrice" wire:model="sell"
                                 placeholder="Enter Sell Price">
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
@@ -199,4 +204,4 @@
             </div>
         </div>
     </div>
-@endsection
+</div>
