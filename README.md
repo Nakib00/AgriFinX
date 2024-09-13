@@ -28,44 +28,6 @@ AgriFinx is a web application aimed at facilitating agricultural financing, risk
 - **Backend:** Laravel
 - **Database:** MySQL
 
-## Getting Started
-To run AgriFinx locally, follow these steps:
-1. Clone this repository.
-2. Install dependencies using `composer install` for Laravel.
-3. Set up a MySQL database and update the database configuration in the `.env` file.
-4. Run migrations using `php artisan migrate` to create the necessary tables.
-5. Serve the application using `php artisan serve`.
-
-
-#How to use
-
-# First migrate those table
-
-When migrating a table to the database, follow these steps:
-
-1. First, migrate the specific table by running the following command:
-
-    ```sh
-    php artisan migrate --path="database\migrations\2024_03_15_062836_create_crops_table.php"
-    ```
-
-   ```sh
-   php artisan migrate --path="database\migrations\2024_03_15_070801_create_flnancial_groups_table.php"
-    ```
-
-   ```sh
-    php artisan migrate --path="database\migrations\2024_03_15_082501_create_agricultural_officers_table.php"
-    ```
-
-1. After migrating the specific table, migrate all tables by running the following command:
-
-    ```sh
-    php artisan migrate
-    ```
-
-This command will migrate all pending migrations, including the one for the `crops` table and any other tables defined in your migration files.
-jani naa
-
 
 # Email Contacts
 
